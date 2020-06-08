@@ -84,7 +84,7 @@ export default class Form extends React.Component {
             <IconButton
               onPress={this._onSubmit}
               icon={() => (
-                <Icon color={colors.danger} name="pushpin" size={24} />
+                <Icon color={colors.accent} name="pushpin" size={24} />
               )}
             />
           </View>
