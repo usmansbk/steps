@@ -2,6 +2,7 @@ import React from 'react';
 import {View, StyleSheet, Image} from 'react-native';
 import {Text, Searchbar} from 'react-native-paper';
 import List from '../List';
+import Fab from '../common/Fab';
 
 export default () => {
   const name = 'michel';
@@ -28,7 +29,10 @@ export default () => {
       <View style={styles.search}>
         <Searchbar placeholder="How to..." />
       </View>
-      <List />
+      <View style={styles.list}>
+        <List />
+        <Fab />
+      </View>
     </View>
   );
 };
@@ -54,5 +58,9 @@ const styles = StyleSheet.create({
   },
   search: {
     marginVertical: 20,
+  },
+  list: {
+    flex: 1,
+    alignItems: 'center',
   },
 });
