@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet, Image} from 'react-native';
-import {Text} from 'react-native-paper';
+import {Text, Searchbar} from 'react-native-paper';
 
 export default () => {
   const name = 'michel';
@@ -24,6 +24,9 @@ export default () => {
         </View>
         <Image source={source} style={styles.avatar} />
       </View>
+      <View style={styles.search}>
+        <Searchbar placeholder="How to..." />
+      </View>
     </View>
   );
 };
@@ -36,7 +39,6 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: 'row',
-    flex: 1,
     justifyContent: 'space-between',
   },
   text: {
@@ -47,5 +49,8 @@ const styles = StyleSheet.create({
   avatar: {
     width: 64,
     height: 64,
+  },
+  search: {
+    marginVertical: 20,
   },
 });
