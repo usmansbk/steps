@@ -12,7 +12,11 @@ export default class Form extends React.Component {
           <Text>JUN 8</Text>
         </View>
         <View style={styles.steps}>
-          <TextInput placeholder="How to..." style={styles.textinput} />
+          <TextInput
+            autoFocus
+            placeholder="How to..."
+            style={styles.textinput}
+          />
         </View>
         <StepBox />
       </View>
