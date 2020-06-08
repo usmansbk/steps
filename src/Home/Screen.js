@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, Image} from 'react-native';
+import {View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import {Text, Searchbar} from 'react-native-paper';
 import List from '../List';
 import Fab from '../common/Fab';
@@ -9,6 +9,7 @@ export default ({navigation}) => {
   const [focus, setFocus] = useState(false);
   const onFocus = () => setFocus(true);
   const onBlur = () => setFocus(false);
+  const _hailOrange = () => navigation.navigate('Welcome');
   const navigateToDetails = (id) => navigation.navigate('Details', {id});
 
   const name = 'michel';
@@ -25,7 +26,9 @@ export default ({navigation}) => {
             </Text>
             <Text style={styles.text}>Good {partOfDay()}</Text>
           </View>
-          <Image source={source} style={styles.avatar} />
+          <TouchableOpacity onPress={_hailOrange}>
+            <Image source={source} style={styles.avatar} />
+          </TouchableOpacity>
         </View>
       )}
       <View style={styles.search}>
