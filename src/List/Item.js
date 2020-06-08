@@ -1,17 +1,17 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
-import {TouchableRipple, Text, Caption} from 'react-native-paper';
+import {View, TouchableOpacity, StyleSheet} from 'react-native';
+import {Text, Caption} from 'react-native-paper';
 
 export default ({title, date, onPress}) => {
   return (
-    <TouchableRipple onPress={onPress}>
+    <TouchableOpacity onPress={onPress}>
       <View style={styles.container}>
         <Text numberOfLines={2} ellipsizeMode="tail" style={styles.title}>
           {title}
         </Text>
         <Caption>{date}</Caption>
       </View>
-    </TouchableRipple>
+    </TouchableOpacity>
   );
 };
 
