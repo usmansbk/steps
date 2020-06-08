@@ -6,8 +6,8 @@ export default () => {
   return (
     <View style={styles.container}>
       <Image source={require('../images/male.png')} style={styles.avatar} />
-      <Text>Hello! Partner,</Text>
-      <Text>How should I call you?</Text>
+      <Text style={styles.question}>Hello! Partner,</Text>
+      <Text style={styles.question}>What should I call you?</Text>
     </View>
   );
 };
@@ -15,6 +15,12 @@ export default () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'white',
+    padding: 20,
+  },
+  question: {
+    fontSize: 24,
+    fontWeight: 'bold',
   },
   avatar: {
     width: 64,

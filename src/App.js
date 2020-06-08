@@ -1,5 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
+import Welcome from './Welcome';
 import Home from './Home';
 import Details from './Details';
 
@@ -14,6 +15,7 @@ export default () => {
         },
         title: null,
       }}>
+      <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Details" component={Details} />
     </Stack.Navigator>
