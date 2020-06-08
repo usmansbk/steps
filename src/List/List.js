@@ -1,19 +1,23 @@
 import React from 'react';
 import {FlatList, StyleSheet} from 'react-native';
-import {Text} from 'react-native-paper';
 import Empty from './Empty';
+import Item from './Item';
+import data from './data';
 
 export default class List extends React.Component {
-  _renderItem = () => {
-    return <Text>Item</Text>;
+  _renderItem = ({item}) => {
+    const {title, date} = item;
+    return <Item title={title} date={date} />;
   };
 
   _renderEmpty = () => <Empty />;
+  _keyExtractor = (item) => item.id;
 
   render() {
     return (
       <FlatList
-        data={[]}
+        data={data}
+        keyExtractor={this._keyExtractor}
         contentContainerStyle={styles.container}
         renderItem={this._renderItem}
         ListEmptyComponent={this._renderEmpty}

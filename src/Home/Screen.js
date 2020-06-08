@@ -29,8 +29,8 @@ export default () => {
       <View style={styles.search}>
         <Searchbar onFocus={onFocus} onBlur={onBlur} placeholder="How to..." />
       </View>
+      <List />
       <View style={styles.list}>
-        <List />
         <Fab />
       </View>
     </View>
