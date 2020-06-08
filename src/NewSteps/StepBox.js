@@ -4,12 +4,16 @@ import TextInput from '../common/TextInput';
 import Icon from '../common/Icon';
 import theme from '../config/theme';
 
-export default () => {
+export default ({step=1, ...rest}) => {
   return (
     <View style={styles.container}>
-      <Icon color={theme.colors.accent} size={24} name="camera" />
+      {/* <Icon color={theme.colors.accent} size={24} name="camera" /> */}
       <View style={styles.input}>
-        <TextInput style={styles.textinput} placeholder="Step 1..." />
+        <TextInput
+          style={styles.textinput}
+          placeholder={`Step ${step}...`}
+          {...rest}
+        />
       </View>
       <Icon color={theme.colors.accent} size={24} name="pluscircle" />
     </View>
