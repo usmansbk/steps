@@ -4,7 +4,8 @@ import {Text} from 'react-native-paper';
 import TextInput from '../common/TextInput';
 import Fab from '../common/Fab';
 
-export default () => {
+export default ({navigation}) => {
+  const onPress = () => navigation.navigate('Home');
   return (
     <View style={styles.container}>
       <Image source={require('../images/male.png')} style={styles.avatar} />
@@ -14,7 +15,7 @@ export default () => {
         <TextInput style={styles.textInput} placeholder="Call me Partner..." />
       </View>
       <View style={styles.rest}>
-        <Fab icon="chevron-right" />
+        <Fab onPress={onPress} icon="chevron-right" />
       </View>
     </View>
   );

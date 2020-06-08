@@ -3,7 +3,9 @@ import {StyleSheet} from 'react-native';
 import {FAB} from 'react-native-paper';
 
 export default ({icon, ...rest}) => {
-  return <FAB color="white" style={styles.fab} icon={icon || 'plus'} />;
+  return (
+    <FAB color="white" style={styles.fab} icon={icon || 'plus'} {...rest} />
+  );
 };
 
 const styles = StyleSheet.create({
