@@ -1,4 +1,9 @@
 apply plugin: "com.android.application"
+
+project.ext.vectoricons = [
+    iconFontNames: [ 'AntDesign.ttf' ] // Name of the font files you want to copy
+]
+
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 import com.android.build.OutputFile
 
@@ -81,12 +86,7 @@ project.ext.react = [
     enableHermes: true,  // clean and rebuild if changing
 ]
 
-project.ext.vectoricons = [
-    iconFontNames: [ 'AntDesign.ttf' ] // Name of the font files you want to copy
-]
-
 apply from: "../../node_modules/react-native/react.gradle"
-apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 /**
  * Set this to true to create two separate APKs instead of one:
  *   - An APK that only works on ARM devices
