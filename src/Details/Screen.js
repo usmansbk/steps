@@ -56,10 +56,10 @@ const item = {
   ],
 };
 
-export default () => {
+export default ({navigation}) => {
   const date = dayjs(item.date).format('MMM D YYYY HH:MM').toUpperCase();
   const onDelete = () => null;
-  const onEdit = () => null;
+  const onEdit = () => navigation.navigate('New', {id: item.id});
   return (
     <View style={styles.container}>
       <View style={styles.dateline}>

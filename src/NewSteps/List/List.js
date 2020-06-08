@@ -28,6 +28,7 @@ export default class List extends React.Component {
         keyExtractor={this._keyExtractor}
         ListFooterComponent={this._renderFooter}
         ItemSeparatorComponent={this._renderSeparator}
+        initialNumToRender={2}
       />
     );
   }
