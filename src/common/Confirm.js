@@ -8,7 +8,6 @@ import {colors} from '../config/theme';
 export default ({onConfirm, onCancel, isVisible = false}) => {
   return (
     <Modal
-      style={styles.modal}
       onBackButtonPress={onCancel}
       onBackdropPress={onCancel}
       isVisible={isVisible}>
@@ -31,15 +30,10 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
   content: {
+    backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
-    flex: 1,
-  },
-  modal: {
-    backgroundColor: 'white',
-    justifyContent: undefined,
-    alignItems: undefined,
-    margin: 0,
+    padding: 20,
   },
   buttons: {
     paddingVertical: 20,
