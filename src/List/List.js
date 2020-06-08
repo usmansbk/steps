@@ -25,6 +25,7 @@ export default class List extends React.Component {
         style={styles.list}
         keyExtractor={this._keyExtractor}
         renderItem={this._renderItem}
+        initialNumToRender={2}
         ListEmptyComponent={this._renderEmpty}
         ListHeaderComponent={this._renderHeader}
         ItemSeparatorComponent={this._renderItemSeparator}
