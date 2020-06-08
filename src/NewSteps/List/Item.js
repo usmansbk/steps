@@ -3,7 +3,7 @@ import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import {Text, IconButton} from 'react-native-paper';
 import Icon from '../../common/Icon';
 
-export default ({step, details, onPress, onLongPress}) => {
+export default ({step, details, onPress, onLongPress, isActive}) => {
   return (
     <TouchableOpacity onLongPress={onLongPress}>
       <View>
@@ -11,7 +11,13 @@ export default ({step, details, onPress, onLongPress}) => {
           <Text>STEP {step}</Text>
           <IconButton
             onPress={onPress}
-            icon={() => <Icon color="gray" size={20} name="closecircle" />}
+            icon={() => (
+              <Icon
+                color="gray"
+                size={20}
+                name={isActive ? 'swap' : 'closecircle'}
+              />
+            )}
           />
         </View>
         <Text style={styles.details}>{details}</Text>

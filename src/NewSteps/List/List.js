@@ -4,15 +4,21 @@ import FlatList from 'react-native-draggable-flatlist';
 import Item from './Item';
 
 export default class List extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: props.data,
+    };
+  }
   _onPressItem = () => console.log('cancel');
 
-  _keyExtractor = (item) => String(item.key);
-  _renderItem = ({item, drag}) => {
+  _keyExtractor = (item, index) => String(index);
+  _renderItem = ({item, drag, index, isActive}) => {
     return (
       <Item
-        step={item.key}
+        step={index}
         details={item.label}
-        onPress={this._onPressItem}
+        isActive={isActive}
         onLongPress={drag}
       />
     );
@@ -23,12 +29,13 @@ export default class List extends React.Component {
   render() {
     return (
       <FlatList
-        data={this.props.data}
+        data={this.state.data}
         renderItem={this._renderItem}
         keyExtractor={this._keyExtractor}
         ListFooterComponent={this._renderFooter}
         ItemSeparatorComponent={this._renderSeparator}
         initialNumToRender={2}
+        onDragEnd={({data}) => this.setState({data})}
       />
     );
   }
