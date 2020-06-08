@@ -1,8 +1,9 @@
 import React from 'react';
 import dayjs from 'dayjs';
 import {View, StyleSheet} from 'react-native';
-import {Text} from 'react-native-paper';
+import {Text, IconButton} from 'react-native-paper';
 import TextInput from '../common/TextInput';
+import Icon from '../common/Icon';
 import Steps from './List';
 import StepBox from './StepBox';
 
@@ -56,12 +57,20 @@ export default class Form extends React.Component {
     isNew: true,
   };
 
+  _goBack = () => this.props.navigation.goBack();
+
   render() {
     const date = dayjs().format('MMM D').toUpperCase();
     return (
       <View style={styles.container}>
-        <View style={styles.date}>
-          <Text>{date}</Text>
+        <View style={styles.header}>
+          <IconButton
+            onPress={this._goBack}
+            icon={() => <Icon name="left" size={24} />}
+          />
+          <View style={styles.date}>
+            <Text>{date}</Text>
+          </View>
         </View>
         <View style={styles.steps}>
           <TextInput
@@ -91,5 +100,9 @@ const styles = StyleSheet.create({
   textinput: {
     fontSize: 27,
     fontWeight: 'bold',
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
