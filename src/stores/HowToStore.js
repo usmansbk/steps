@@ -1,5 +1,5 @@
 import {observable, computed} from 'mobx';
-import {nanoid} from 'nanoid';
+import shortid from 'shortid';
 import dayjs from 'dayjs';
 
 export default class HowToStore {
@@ -34,7 +34,7 @@ export class HowTo {
 
   constructor(store, json) {
     this.store = store;
-    this.id = nanoid();
+    this.id = shortid.generate();
     this.date = dayjs().toISOString();
     this.title = json.title;
     this.steps = json.steps;
