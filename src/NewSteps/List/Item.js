@@ -8,7 +8,7 @@ export default ({step, details, onPress, onLongPress, isActive}) => {
     <TouchableOpacity onLongPress={onLongPress}>
       <View>
         <View style={styles.head}>
-          <Text>STEP {step}</Text>
+          <Text>STEP {step + 1}</Text>
           <IconButton
             onPress={onPress}
             icon={() => (
