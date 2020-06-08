@@ -16,8 +16,6 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
   },
   label: {
-    fontSize: 18,
-    fontFamily: 'sans-serif-bold',
     color: '#2d3436',
   },
   step: {
