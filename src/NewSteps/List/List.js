@@ -10,6 +10,12 @@ export default class List extends React.Component {
       data: props.data,
     };
   }
+  _onRef = (ref) => {
+    this.flatlist = ref;
+  };
+  scrollDown = () => {
+    this.flatlist && this.flatlist.current._component.scrollToEnd();
+  };
   _onPressItem = () => console.log('cancel');
 
   _keyExtractor = (item, index) => String(index);
@@ -36,6 +42,9 @@ export default class List extends React.Component {
         ItemSeparatorComponent={this._renderSeparator}
         initialNumToRender={2}
         onDragEnd={({data}) => this.setState({data})}
+        onRef={(ref) => {
+          this.flatlist = ref;
+        }}
       />
     );
   }

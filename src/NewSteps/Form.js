@@ -57,7 +57,14 @@ export default class Form extends React.Component {
     isNew: true,
   };
 
+  _stepsRef = (ref) => {
+    this.steps = ref;
+  };
   _goBack = () => this.props.navigation.goBack();
+  _scrollDown = () => this.steps && this.steps.scrollDown();
+  _onSubmit = () => {
+    this._scrollDown();
+  };
 
   render() {
     const date = dayjs().format('MMM D').toUpperCase();
@@ -79,8 +86,8 @@ export default class Form extends React.Component {
             style={styles.textinput}
           />
         </View>
-        <Steps data={data} />
-        <StepBox />
+        <Steps data={data} ref={this._stepsRef} />
+        <StepBox onSubmit={this._onSubmit} />
       </View>
     );
   }
