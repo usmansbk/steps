@@ -16,7 +16,6 @@ export default class List extends React.Component {
   _renderEmpty = () => <Empty />;
   _keyExtractor = (item) => item.id;
 
-
   render() {
     return (
       <FlatList
@@ -35,4 +34,4 @@ const styles = StyleSheet.create({
   separator: {
     height: 4,
   },
-})
+});
