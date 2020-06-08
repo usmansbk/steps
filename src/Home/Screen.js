@@ -3,6 +3,7 @@ import {View, StyleSheet, Image} from 'react-native';
 import {Text, Searchbar} from 'react-native-paper';
 import List from '../List';
 import Fab from '../common/Fab';
+import partOfDay from '../lib/time';
 
 export default ({navigation}) => {
   const [focus, setFocus] = useState(false);
@@ -22,7 +23,7 @@ export default ({navigation}) => {
               <Text style={styles.hail}>Hey </Text>
               {name},
             </Text>
-            <Text style={styles.text}>Good morning</Text>
+            <Text style={styles.text}>Good {partOfDay()}</Text>
           </View>
           <Image source={source} style={styles.avatar} />
         </View>
