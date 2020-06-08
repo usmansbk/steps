@@ -97,7 +97,7 @@ export default class Form extends React.Component {
           />
         </View>
         <Steps data={data} ref={this._stepsRef} />
-        <StepBox onAdd={this._onAdd} />
+        <StepBox step={data.length + 1} onAdd={this._onAdd} />
       </View>
     );
   }
