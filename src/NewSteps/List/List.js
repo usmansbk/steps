@@ -1,17 +1,19 @@
 import React from 'react';
-import {FlatList, View, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
+import FlatList from 'react-native-draggable-flatlist';
 import Item from './Item';
 
 export default class List extends React.Component {
   _onPressItem = () => console.log('cancel');
 
-  _keyExtractor = (item) => String(item.step);
-  _renderItem = ({item}) => {
+  _keyExtractor = (item) => String(item.key);
+  _renderItem = ({item, drag}) => {
     return (
       <Item
-        step={item.step}
-        details={item.details}
+        step={item.key}
+        details={item.label}
         onPress={this._onPressItem}
+        onLongPress={drag}
       />
     );
   };

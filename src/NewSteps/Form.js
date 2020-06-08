@@ -8,46 +8,46 @@ import StepBox from './StepBox';
 
 const data = [
   {
-    step: 1,
-    details: 'Go to the repo you want to work with',
+    key: 1,
+    label: 'Go to the repo you want to work with',
     attachment: null,
   },
   {
-    step: 2,
-    details:
+    key: 2,
+    label:
       'GGo to the repo you want to work withGo to the repo you want to work withGo to the repo you want to work withGo to the repo you want to work witho to the repo you want to work with',
   },
   {
-    step: 3,
-    details: 'Go to the repo you want to work with',
+    key: 3,
+    label: 'Go to the repo you want to work with',
   },
   {
-    step: 4,
-    details: 'Go to the repo you want to work with',
+    key: 4,
+    label: 'Go to the repo you want to work with',
   },
   {
-    step: 5,
-    details: 'Go to the repo you want to work with',
+    key: 5,
+    label: 'Go to the repo you want to work with',
   },
   {
-    step: 6,
-    details: 'Go to the repo you want to work with',
+    key: 6,
+    label: 'Go to the repo you want to work with',
   },
   {
-    step: 7,
-    details: 'Go to the repo you want to work with',
+    key: 7,
+    label: 'Go to the repo you want to work with',
   },
   {
-    step: 8,
-    details: 'Go to the repo you want to work with',
+    key: 8,
+    label: 'Go to the repo you want to work with',
   },
   {
-    step: 9,
-    details: 'Go to the repo you want to work with',
+    key: 9,
+    label: 'Go to the repo you want to work with',
   },
   {
-    step: 10,
-    details: 'Go to the repo you want to work with',
+    key: 10,
+    label: 'Go to the repo you want to work with',
   },
 ];
 
