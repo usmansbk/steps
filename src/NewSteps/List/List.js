@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList} from 'react-native';
+import {FlatList, View, StyleSheet} from 'react-native';
 import Item from './Item';
 
 export default class List extends React.Component {
@@ -15,6 +15,8 @@ export default class List extends React.Component {
       />
     );
   };
+  _renderFooter = () => <View style={styles.footer} />;
+  _renderSeparator = () => <View style={styles.separator} />;
 
   render() {
     return (
@@ -22,7 +24,18 @@ export default class List extends React.Component {
         data={this.props.data}
         renderItem={this._renderItem}
         keyExtractor={this._keyExtractor}
+        ListFooterComponent={this._renderFooter}
+        ItemSeparatorComponent={this._renderSeparator}
       />
     );
   }
 }
+
+const styles = StyleSheet.create({
+  footer: {
+    height: 50,
+  },
+  separator: {
+    height: 10,
+  },
+});

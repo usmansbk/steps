@@ -10,9 +10,49 @@ const data = [
     step: 1,
     details: 'Go to the repo you want to work with',
   },
+  {
+    step: 2,
+    details: 'Go to the repo you want to work with',
+  },
+  {
+    step: 3,
+    details: 'Go to the repo you want to work with',
+  },
+  {
+    step: 4,
+    details: 'Go to the repo you want to work with',
+  },
+  {
+    step: 5,
+    details: 'Go to the repo you want to work with',
+  },
+  {
+    step: 6,
+    details: 'Go to the repo you want to work with',
+  },
+  {
+    step: 7,
+    details: 'Go to the repo you want to work with',
+  },
+  {
+    step: 8,
+    details: 'Go to the repo you want to work with',
+  },
+  {
+    step: 9,
+    details: 'Go to the repo you want to work with',
+  },
+  {
+    step: 10,
+    details: 'Go to the repo you want to work with',
+  },
 ];
 
 export default class Form extends React.Component {
+  static defaultProps = {
+    isNew: true,
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -21,7 +61,7 @@ export default class Form extends React.Component {
         </View>
         <View style={styles.steps}>
           <TextInput
-            autoFocus
+            autoFocus={this.props.isNew}
             placeholder="How to..."
             style={styles.textinput}
           />
@@ -42,7 +82,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   steps: {
-    flex: 1,
   },
   date: {
     alignItems: 'center',
