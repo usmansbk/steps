@@ -15,7 +15,7 @@ export default ({navigation}) => {
         <TextInput style={styles.textInput} placeholder="Call me Partner..." />
       </View>
       <View style={styles.rest}>
-        <Fab onPress={onPress} icon="chevron-right" />
+        <Fab onPress={onPress} icon="chevron-up" />
       </View>
     </View>
   );

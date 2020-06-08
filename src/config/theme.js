@@ -3,6 +3,7 @@ import {DefaultTheme} from 'react-native-paper';
 export const colors = {
   accent: '#e67e22',
   lightGray: '#f2f2f2',
+  darkGray: '#d3d3d3',
 };
 
 const theme = {

@@ -2,7 +2,15 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Text} from 'react-native-paper';
 import TextInput from '../common/TextInput';
+import Steps from './List';
 import StepBox from './StepBox';
+
+const data = [
+  {
+    step: 1,
+    details: 'Go to the repo you want to work with',
+  },
+];
 
 export default class Form extends React.Component {
   render() {
@@ -18,6 +26,7 @@ export default class Form extends React.Component {
             style={styles.textinput}
           />
         </View>
+        <Steps data={data} />
         <StepBox />
       </View>
     );
