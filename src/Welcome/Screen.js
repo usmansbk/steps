@@ -9,13 +9,13 @@ export default ({navigation}) => {
   return (
     <View style={styles.container}>
       <Image source={require('../images/male.png')} style={styles.avatar} />
-      <Text style={styles.question}>Hello! Partner,</Text>
+      <Text style={styles.question}>Hello! Friend,</Text>
       <Text style={styles.question}>What should I call you?</Text>
       <View style={styles.input}>
         <TextInput
           autoFocus
           style={styles.textInput}
-          placeholder="Call me Partner..."
+          placeholder="Call me Friend..."
         />
       </View>
       <View style={styles.rest}>
