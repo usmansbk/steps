@@ -4,7 +4,7 @@ import TextInput from '../common/TextInput';
 import Icon from '../common/Icon';
 import theme from '../config/theme';
 
-export default ({step=1, ...rest}) => {
+export default ({step = 1, ...rest}) => {
   return (
     <View style={styles.container}>
       {/* <Icon color={theme.colors.accent} size={24} name="camera" /> */}
