@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, FlatList, StyleSheet} from 'react-native';
+import Footer from './Footer';
 import Item from './Item';
 
 export default class List extends React.Component {
@@ -13,6 +14,7 @@ export default class List extends React.Component {
     return <Item label={label} step={index + 1} itemKey={key} />;
   };
   _renderSeparator = () => <View style={styles.separator} />;
+  _renderFooter = () => <Footer />;
 
   render() {
     return (
@@ -20,6 +22,7 @@ export default class List extends React.Component {
         data={this.props.data}
         renderItem={this._renderItem}
         keyExtractor={this._keyExtractor}
+        ListFooterComponent={this._renderFooter}
         ItemSeparatorComponent={this._renderSeparator}
       />
     );
