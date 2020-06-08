@@ -16,10 +16,10 @@ export default () => {
         },
         headerShown: false,
       }}>
+      <Stack.Screen name="Details" component={Details} />
       <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="New" component={NewSteps} />
-      <Stack.Screen name="Details" component={Details} />
     </Stack.Navigator>
   );
 };
