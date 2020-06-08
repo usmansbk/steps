@@ -5,11 +5,13 @@ import Item from './Item';
 import data from './data';
 
 export default class List extends React.Component {
-  _onPressItem = () => console.log('Pressed');
+  _onPressItem = (id) => this.props.navigateToDetails(id);
 
   _renderItem = ({item}) => {
-    const {title, date} = item;
-    return <Item title={title} date={date} onPress={this._onPressItem} />;
+    const {id, title, date} = item;
+    return (
+      <Item id={id} title={title} date={date} onPress={this._onPressItem} />
+    );
   };
   _renderItemSeparator = () => <View style={styles.separator} />;
 

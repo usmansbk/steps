@@ -8,6 +8,7 @@ export default ({navigation}) => {
   const [focus, setFocus] = useState(false);
   const onFocus = () => setFocus(true);
   const onBlur = () => setFocus(false);
+  const navigateToDetails = (id) => navigation.navigate('Details', {id});
 
   const name = 'michel';
   let source = require('../images/male.png');
@@ -30,7 +31,7 @@ export default ({navigation}) => {
         <Searchbar onFocus={onFocus} onBlur={onBlur} placeholder="How to..." />
       </View>
       <View style={styles.list}>
-        <List />
+        <List navigateToDetails={navigateToDetails} />
       </View>
       <View style={styles.fab}>
         <Fab onPress={() => navigation.navigate('New')} />
