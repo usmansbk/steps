@@ -9,6 +9,7 @@ const data = [
   {
     step: 1,
     details: 'Go to the repo you want to work with',
+    attachment: null,
   },
   {
     step: 2,
@@ -80,8 +81,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingBottom: 10,
     backgroundColor: 'white',
-  },
-  steps: {
   },
   date: {
     alignItems: 'center',
