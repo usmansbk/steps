@@ -5,26 +5,23 @@ import TextInput from '../common/TextInput';
 import Icon from '../common/Icon';
 import theme from '../config/theme';
 
-export default ({step = 1, onSubmit = () => null, ...rest}) => {
-  return (
-    <View style={styles.container}>
-      {/* <Icon color={theme.colors.accent} size={24} name="camera" /> */}
-      <View style={styles.input}>
-        <TextInput
-          style={styles.textinput}
-          placeholder={`Step ${step}...`}
-          {...rest}
-        />
-      </View>
-      <IconButton
-        onPress={onSubmit}
-        icon={() => (
-          <Icon color={theme.colors.accent} size={24} name="pluscircle" />
-        )}
+export default ({step = 1, onAdd = () => null, ...rest}) => (
+  <View style={styles.container}>
+    <View style={styles.input}>
+      <TextInput
+        style={styles.textinput}
+        placeholder={`Step ${step}...`}
+        {...rest}
       />
     </View>
-  );
-};
+    <IconButton
+      onPress={onAdd}
+      icon={() => (
+        <Icon color={theme.colors.accent} size={24} name="pluscircle" />
+      )}
+    />
+  </View>
+);
 
 const styles = StyleSheet.create({
   container: {

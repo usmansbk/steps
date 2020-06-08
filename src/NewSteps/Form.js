@@ -6,6 +6,7 @@ import TextInput from '../common/TextInput';
 import Icon from '../common/Icon';
 import Steps from './List';
 import StepBox from './StepBox';
+import {colors} from '../config/theme';
 
 const data = [
   {
@@ -62,9 +63,10 @@ export default class Form extends React.Component {
   };
   _goBack = () => this.props.navigation.goBack();
   _scrollDown = () => this.steps && this.steps.scrollDown();
-  _onSubmit = () => {
+  _onAdd = () => {
     this._scrollDown();
   };
+  _onSubmit = () => null;
 
   render() {
     const date = dayjs().format('MMM D').toUpperCase();
@@ -78,6 +80,14 @@ export default class Form extends React.Component {
           <View style={styles.date}>
             <Text>{date}</Text>
           </View>
+          <View style={styles.pin}>
+            <IconButton
+              onPress={this._onSubmit}
+              icon={() => (
+                <Icon color={colors.danger} name="pushpin" size={24} />
+              )}
+            />
+          </View>
         </View>
         <View style={styles.steps}>
           <TextInput
@@ -87,7 +97,7 @@ export default class Form extends React.Component {
           />
         </View>
         <Steps data={data} ref={this._stepsRef} />
-        <StepBox onSubmit={this._onSubmit} />
+        <StepBox onAdd={this._onAdd} />
       </View>
     );
   }
@@ -111,5 +121,9 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  pin: {
+    flex: 1,
+    alignItems: 'flex-end',
   },
 });
