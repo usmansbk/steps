@@ -58,13 +58,19 @@ const item = {
 
 export default () => {
   const date = dayjs(item.date).format('MMM D YYYY HH:MM').toUpperCase();
+  const onDelete = () => null;
+  const onEdit = () => null;
   return (
     <View style={styles.container}>
       <View style={styles.dateline}>
         <Text>{date}</Text>
         <View style={styles.menu}>
-          <IconButton icon={() => <Icon name="edit" size={24} />} />
           <IconButton
+            onPress={onEdit}
+            icon={() => <Icon name="edit" size={24} />}
+          />
+          <IconButton
+            onPress={onDelete}
             icon={() => <Icon color={colors.danger} name="delete" size={24} />}
           />
         </View>
