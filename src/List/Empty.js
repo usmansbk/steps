@@ -5,7 +5,7 @@ import {Text} from 'react-native-paper';
 export default () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Hmmm... A good day to remember</Text>
+      <Text style={styles.text}>I'll help you remember</Text>
     </View>
   );
 };
