@@ -14,7 +14,7 @@ const data = [
   },
   {
     step: 2,
-    details: 'Go to the repo you want to work with',
+    details: 'GGo to the repo you want to work withGo to the repo you want to work withGo to the repo you want to work withGo to the repo you want to work witho to the repo you want to work with',
   },
   {
     step: 3,
