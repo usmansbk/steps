@@ -29,7 +29,9 @@ export default () => {
       <View style={styles.search}>
         <Searchbar onFocus={onFocus} onBlur={onBlur} placeholder="How to..." />
       </View>
-      <List />
+      <View style={styles.list}>
+        <List />
+      </View>
       <View style={styles.fab}>
         <Fab />
       </View>
@@ -62,5 +64,8 @@ const styles = StyleSheet.create({
   },
   fab: {
     alignItems: 'center',
+  },
+  list: {
+    flex: 1,
   },
 });

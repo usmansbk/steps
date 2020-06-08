@@ -14,12 +14,13 @@ export default class List extends React.Component {
   _renderItemSeparator = () => <View style={styles.separator} />;
 
   _renderEmpty = () => <Empty />;
-  _keyExtractor = (item) => item.id;
+  _keyExtractor = (item) => String(item.id);
 
   render() {
     return (
       <FlatList
         data={data}
+        style={styles.list}
         keyExtractor={this._keyExtractor}
         renderItem={this._renderItem}
         ListEmptyComponent={this._renderEmpty}
