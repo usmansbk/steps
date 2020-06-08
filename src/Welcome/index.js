@@ -2,6 +2,7 @@ import React from 'react';
 import {View, StyleSheet, Image} from 'react-native';
 import {Text} from 'react-native-paper';
 import TextInput from '../common/TextInput';
+import Fab from '../common/Fab';
 
 export default () => {
   return (
@@ -11,6 +12,9 @@ export default () => {
       <Text style={styles.question}>What should I call you?</Text>
       <View style={styles.input}>
         <TextInput style={styles.textInput} placeholder="Call me Partner..." />
+      </View>
+      <View style={styles.rest}>
+        <Fab icon="chevron-right" />
       </View>
     </View>
   );
@@ -36,5 +40,9 @@ const styles = StyleSheet.create({
   textInput: {
     fontSize: 27,
     fontWeight: 'bold',
+  },
+  rest: {
+    flex: 1,
+    alignItems: 'center',
   },
 });

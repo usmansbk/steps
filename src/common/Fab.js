@@ -2,8 +2,8 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 import {FAB} from 'react-native-paper';
 
-export default () => {
-  return <FAB color="white" style={styles.fab} icon="plus" />;
+export default ({icon, ...rest}) => {
+  return <FAB color="white" style={styles.fab} icon={icon || 'plus'} />;
 };
 
 const styles = StyleSheet.create({
