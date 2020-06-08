@@ -13,7 +13,7 @@ export default () => {
         headerStyle: {
           elevation: 0,
         },
-        title: null,
+        headerShown: false,
       }}>
       <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen name="Home" component={Home} />
