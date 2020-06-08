@@ -19,7 +19,7 @@ export default ({navigation}) => {
         />
       </View>
       <View style={styles.rest}>
-        <Fab onPress={onPress} icon="chevron-right" />
+        <Fab onPress={onPress} icon="like1" />
       </View>
     </View>
   );
