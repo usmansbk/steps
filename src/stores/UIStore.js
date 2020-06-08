@@ -8,4 +8,12 @@ export default class UIStore {
     title: '',
     steps: [],
   };
+
+  setDraft(howto) {
+    this.draft = howto;
+  }
+
+  toggleFirstLaunch() {
+    this.firstLaunch = false;
+  }
 }

@@ -6,9 +6,9 @@ export default class HowToStore {
   @observable data = [];
 
   createHowTo(json) {
-    const steps = new HowTo(this, json);
-    this.data.push(steps);
-    return steps;
+    const howto = new HowTo(this, json);
+    this.data.push(howto);
+    return howto;
   }
 
   removeHowTo(howto) {
@@ -16,9 +16,12 @@ export default class HowToStore {
   }
 
   updateHowTo(json) {
-    const howto = this.data.find((current) => current.id === json.id);
+    const howto =
+      json.id && this.data.find((current) => current.id === json.id);
     if (howto) {
       howto.updateFromJson(json);
+    } else {
+      this.createHowTo(json);
     }
   }
 }
