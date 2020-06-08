@@ -1,21 +1,21 @@
-import {observable, computed} from 'mobx';
+import {observable, computed, action} from 'mobx';
 import shortid from 'shortid';
 import dayjs from 'dayjs';
 
 export default class HowToStore {
   @observable data = [];
 
-  createHowTo(json) {
+  @action createHowTo(json) {
     const howto = new HowTo(this, json);
     this.data.push(howto);
     return howto;
   }
 
-  removeHowTo(howto) {
+  @action removeHowTo(howto) {
     this.data.splice(this.data.indexOf(howto.id), 1);
   }
 
-  updateHowTo(json) {
+  @action updateHowTo(json) {
     const howto =
       json.id && this.data.find((current) => current.id === json.id);
     if (howto) {
@@ -23,6 +23,10 @@ export default class HowToStore {
     } else {
       this.createHowTo(json);
     }
+  }
+
+  findById(id) {
+    return this.data.find((howto) => howto.id === id);
   }
 }
 
@@ -53,7 +57,7 @@ export class HowTo {
     };
   }
 
-  updateFromJson(json) {
+  @action updateFromJson(json) {
     this.title = json.title;
     this.steps = json.steps;
     this.date = dayjs().toISOString();
