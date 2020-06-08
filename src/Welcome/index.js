@@ -12,7 +12,11 @@ export default ({navigation}) => {
       <Text style={styles.question}>Hello! Partner,</Text>
       <Text style={styles.question}>What should I call you?</Text>
       <View style={styles.input}>
-        <TextInput style={styles.textInput} placeholder="Call me Partner..." />
+        <TextInput
+          autoFocus
+          style={styles.textInput}
+          placeholder="Call me Partner..."
+        />
       </View>
       <View style={styles.rest}>
         <Fab onPress={onPress} icon="chevron-up" />
