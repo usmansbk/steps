@@ -29,4 +29,24 @@ export default [
     title: 'Delete a repo',
     date: new Date().toDateString(),
   },
+  {
+    id: 8,
+    title: 'Delete a repo',
+    date: new Date().toDateString(),
+  },
+  {
+    id: 9,
+    title: 'Delete a repo',
+    date: new Date().toDateString(),
+  },
+  {
+    id: 10,
+    title: 'Delete a repo with very long data that should exceed this line',
+    date: new Date().toDateString(),
+  },
+  {
+    id: 11,
+    title: 'Delete a repo',
+    date: new Date().toDateString(),
+  },
 ];
