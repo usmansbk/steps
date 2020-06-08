@@ -8,7 +8,7 @@ export default ({navigation}) => {
   const onPress = () => navigation.navigate('Home');
   return (
     <View style={styles.container}>
-      <Image source={require('../images/male.png')} style={styles.avatar} />
+      <Image source={require('../images/orange.png')} style={styles.avatar} />
       <Text style={styles.question}>Hello! Friend,</Text>
       <Text style={styles.question}>What should I call you?</Text>
       <View style={styles.input}>
