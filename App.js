@@ -1,12 +1,11 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {Provider as PaperProvider} from 'react-native-paper';
+import App from './src/App';
 
-const App = () => {
+export default () => {
   return (
-    <View>
-      <Text>Hello World</Text>
-    </View>
+    <PaperProvider>
+      <App />
+    </PaperProvider>
   );
 };
-
-export default App;
