@@ -34,7 +34,7 @@ export default ({navigation}) => {
         <List navigateToDetails={navigateToDetails} />
       </View>
       <View style={styles.fab}>
-        <Fab onPress={() => navigation.navigate('New')} />
+        <Fab icon="plus" onPress={() => navigation.navigate('New')} />
       </View>
     </View>
   );
