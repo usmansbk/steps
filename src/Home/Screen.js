@@ -4,7 +4,7 @@ import {Text, Searchbar} from 'react-native-paper';
 import List from '../List';
 import Fab from '../common/Fab';
 
-export default () => {
+export default ({navigation}) => {
   const [focus, setFocus] = useState(false);
   const onFocus = () => setFocus(true);
   const onBlur = () => setFocus(false);
@@ -33,7 +33,7 @@ export default () => {
         <List />
       </View>
       <View style={styles.fab}>
-        <Fab />
+        <Fab onPress={() => navigation.navigate('New')} />
       </View>
     </View>
   );
