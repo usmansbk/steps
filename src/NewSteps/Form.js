@@ -1,4 +1,5 @@
 import React from 'react';
+import dayjs from 'dayjs';
 import {View, StyleSheet} from 'react-native';
 import {Text} from 'react-native-paper';
 import TextInput from '../common/TextInput';
@@ -55,10 +56,11 @@ export default class Form extends React.Component {
   };
 
   render() {
+    const date = dayjs().format('MMM D').toUpperCase();
     return (
       <View style={styles.container}>
         <View style={styles.date}>
-          <Text>JUN 8</Text>
+          <Text>{date}</Text>
         </View>
         <View style={styles.steps}>
           <TextInput
