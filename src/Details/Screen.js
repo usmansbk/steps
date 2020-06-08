@@ -1,8 +1,10 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import {Text} from 'react-native-paper';
+import {Text, IconButton} from 'react-native-paper';
 import dayjs from 'dayjs';
 import Steps from './List';
+import Icon from '../common/Icon';
+import {colors} from '../config/theme';
 
 const item = {
   id: 1,
@@ -58,7 +60,15 @@ export default () => {
   const date = dayjs(item.date).format('MMM D YYYY HH:MM').toUpperCase();
   return (
     <View style={styles.container}>
-      <Text>{date}</Text>
+      <View style={styles.dateline}>
+        <Text>{date}</Text>
+        <View style={styles.menu}>
+          <IconButton icon={() => <Icon name="edit" size={24} />} />
+          <IconButton
+            icon={() => <Icon color={colors.danger} name="delete" size={24} />}
+          />
+        </View>
+      </View>
       <Text style={styles.heading}>{item.title}</Text>
       <Steps data={item.steps} />
     </View>
@@ -74,5 +84,14 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 27,
     fontWeight: 'bold',
+    paddingBottom: 8,
+  },
+  dateline: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  menu: {
+    flexDirection: 'row',
   },
 });
