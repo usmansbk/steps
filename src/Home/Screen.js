@@ -6,13 +6,7 @@ import Fab from '../common/Fab';
 
 export default () => {
   const name = 'michel';
-  const gender = 'male';
-  let source;
-  if (gender === 'male') {
-    source = require('../images/male.png');
-  } else {
-    source = require('../images/female.png');
-  }
+  let source = require('../images/male.png');
 
   return (
     <View style={styles.container}>
