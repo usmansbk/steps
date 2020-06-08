@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Text, IconButton} from 'react-native-paper';
 import dayjs from 'dayjs';
 import Steps from './List';
+import Confirm from '../common/Confirm';
 import Icon from '../common/Icon';
 import {colors} from '../config/theme';
 
@@ -57,9 +58,13 @@ const item = {
 };
 
 export default ({navigation}) => {
+  const [isVisible, setVisible] = useState(false);
   const date = dayjs(item.date).format('MMM D YYYY HH:MM').toUpperCase();
-  const onDelete = () => null;
+  const onDelete = () => setVisible(true);
   const onEdit = () => navigation.navigate('New', {id: item.id});
+  const _onCancel = () => setVisible(false);
+  const _onConfirm = () => null;
+
   return (
     <View style={styles.container}>
       <View style={styles.dateline}>
@@ -77,6 +82,11 @@ export default ({navigation}) => {
       </View>
       <Text style={styles.heading}>{item.title}</Text>
       <Steps data={item.steps} />
+      <Confirm
+        isVisible={isVisible}
+        onCancel={_onCancel}
+        onConfirm={_onConfirm}
+      />
     </View>
   );
 };
