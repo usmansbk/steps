@@ -4,6 +4,14 @@ import {Text} from 'react-native-paper';
 
 export default () => {
   const name = 'michel';
+  const gender = 'male';
+  let source;
+  if (gender === 'male') {
+    source = require('../images/male.png');
+  } else {
+    source = require('../images/female.png');
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -14,7 +22,7 @@ export default () => {
           </Text>
           <Text style={styles.text}>Good morning</Text>
         </View>
-        <Image source={require('../images/male.png')} style={styles.avatar} />
+        <Image source={source} style={styles.avatar} />
       </View>
     </View>
   );
