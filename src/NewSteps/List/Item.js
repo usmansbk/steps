@@ -2,7 +2,6 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Text, IconButton} from 'react-native-paper';
 import Icon from '../../common/Icon';
-import {colors} from '../../config/theme';
 
 export default ({step, details, onPress}) => {
   return (
