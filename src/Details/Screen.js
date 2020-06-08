@@ -64,10 +64,15 @@ export default ({navigation}) => {
   const onEdit = () => navigation.navigate('New', {id: item.id});
   const _onCancel = () => setVisible(false);
   const _onConfirm = () => null;
+  const _goBack = () => navigation.goBack();
 
   return (
     <View style={styles.container}>
       <View style={styles.dateline}>
+        <IconButton
+          onPress={_goBack}
+          icon={() => <Icon name="left" size={24} />}
+        />
         <Text>{date}</Text>
         <View style={styles.menu}>
           <IconButton
