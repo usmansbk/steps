@@ -10,6 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.11.0",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/native": "^5.5.1",
     "@react-navigation/stack": "^5.5.1",
@@ -25,7 +26,8 @@
     "react-native-screens": "^2.8.0",
     "react-native-vector-icons": "^6.6.0",
     "shortid": "^2.2.15",
-    "unstated": "^2.1.1"
+    "unstated": "^2.1.1",
+    "unstated-persist": "^0.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",

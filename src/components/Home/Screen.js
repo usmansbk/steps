@@ -14,7 +14,6 @@ export default ({navigation, ui, howTos}) => {
     data,
     filterData,
   } = howTos;
-  console.log('render home');
   const [focus, setFocus] = useState(false);
   const onFocus = () => setFocus(true);
   const onBlur = () => setFocus(false);

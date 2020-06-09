@@ -1,7 +1,14 @@
-import {Container} from 'unstated';
+import AsyncStorage from '@react-native-community/async-storage';
+import {PersistContainer} from 'unstated-persist';
 import HowTo from './HowTo';
 
-export default class HowTosContainer extends Container {
+export default class HowTosContainer extends PersistContainer {
+  persist = {
+    key: 'howtos',
+    version: 1,
+    storage: AsyncStorage,
+  };
+
   state = {
     data: [],
     query: '',
