@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback, useMemo} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Text, IconButton} from 'react-native-paper';
 import dayjs from 'dayjs';
@@ -12,16 +12,24 @@ export default ({navigation, howTos, route}) => {
   const item = howTos.findById(id) || {};
 
   const [isVisible, setVisible] = useState(false);
-  const date = dayjs(item.date).format('MMM D YYYY HH:MM').toUpperCase();
-  const onDelete = () => setVisible(true);
-  const onEdit = () => navigation.navigate('New', {id});
-  const _onCancel = () => setVisible(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const date = useMemo(
+    () => dayjs(item.date).format('MMM D YYYY HH:MM').toUpperCase(),
+    [item.date],
+  );
+  const onDelete = useCallback(() => setVisible(true), []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const onEdit = useCallback(() => navigation.navigate('New', {id}), [id]);
+  const _onCancel = useCallback(() => setVisible(false), []);
   const _onConfirm = () => {
     howTos.delete(id);
     navigation.pop();
   };
-  const _goBack = () => navigation.goBack();
-  const _viewImage = (source) => navigation.navigate('ImageViewer', {source});
+  const _goBack = useCallback(() => navigation.goBack(), [navigation]);
+  const _viewImage = useCallback(
+    (source) => navigation.navigate('ImageViewer', {source}),
+    [navigation],
+  );
 
   return (
     <View style={styles.container}>
