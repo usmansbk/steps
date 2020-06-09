@@ -42,6 +42,7 @@ export default class DraftContainer extends PersistContainer {
 
   dispose = () => {
     this.setState({
+      id: null,
       title: '',
       steps: [],
     });

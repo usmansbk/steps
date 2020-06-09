@@ -5,6 +5,7 @@ export const colors = {
   lightGray: '#f2f2f2',
   darkGray: '#d3d3d3',
   danger: '#e74c3c',
+  accentOpacity: 'rgba(230, 126, 34, 0.1)',
 };
 
 const theme = {

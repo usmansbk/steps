@@ -18,7 +18,11 @@ export default class HowTosContainer extends PersistContainer {
 
   get data() {
     if (!this.state.query) {
-      return this.state.data;
+      return this.state.data.sort(
+        (a, b) =>
+          new Date(a.date).getMilliseconds() -
+          new Date(b.date).getMilliseconds(),
+      );
     }
     return this.state.data.filter((item) =>
       item.title.toLowerCase().includes(this.state.query.toLowerCase()),
