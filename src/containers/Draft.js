@@ -27,7 +27,6 @@ export default class DraftContainer extends Container {
   };
 
   removeStep = (id) => {
-    console.log(id);
     this.setState((prev) => ({
       steps: prev.steps.filter((step) => step.id !== id),
     }));

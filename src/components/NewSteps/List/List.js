@@ -37,6 +37,7 @@ export default class List extends React.Component {
         ListFooterComponent={this._renderFooter}
         ItemSeparatorComponent={this._renderSeparator}
         initialNumToRender={2}
+        keyboardShouldPersistTaps="always"
         onDragEnd={({data}) => this.props.onSwap(data)}
         onRef={(ref) => {
           this.flatlist = ref;

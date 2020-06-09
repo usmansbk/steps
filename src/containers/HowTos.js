@@ -20,7 +20,7 @@ export default class HowTosContainer extends Container {
   }
 
   createHowTo = () => {
-    const howTo = new HowTo(this, this.state.draft);
+    const howTo = new HowTo(this);
     this.setState({
       data: [...this.state.data, howTo],
     });

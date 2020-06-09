@@ -4,51 +4,6 @@ import dayjs from 'dayjs';
 
 const DATE_FORMAT = 'MMM D YYYY HH:MM';
 
-const data = [
-  {
-    key: 1,
-    label: 'Go to the repo you want to work with',
-    attachment: null,
-  },
-  {
-    key: 2,
-    label:
-      'GGo to the repo you want to work withGo to the repo you want to work withGo to the repo you want to work withGo to the repo you want to work witho to the repo you want to work with',
-  },
-  {
-    key: 3,
-    label: 'Go to the repo you want to work with',
-  },
-  {
-    key: 4,
-    label: 'Go to the repo you want to work with',
-  },
-  {
-    key: 5,
-    label: 'Go to the repo you want to work with',
-  },
-  {
-    key: 6,
-    label: 'Go to the repo you want to work with',
-  },
-  {
-    key: 7,
-    label: 'Go to the repo you want to work with',
-  },
-  {
-    key: 8,
-    label: 'Go to the repo you want to work with',
-  },
-  {
-    key: 9,
-    label: 'Go to the repo you want to work with',
-  },
-  {
-    key: 10,
-    label: 'Go to the repo you want to work with',
-  },
-];
-
 export class Step {
   id = null;
   label = null;
