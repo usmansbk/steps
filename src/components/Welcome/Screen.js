@@ -1,12 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, StyleSheet, Image} from 'react-native';
 import {Text} from 'react-native-paper';
 import TextInput from '../common/TextInput';
 import Fab from '../common/Fab';
 
-export default ({navigation}) => {
-  const userName = 'Friend';
-  const onPress = () => navigation.navigate('Home');
+export default ({navigation, ui}) => {
+  const {
+    state: {userName},
+    setName,
+    toggleFirstLaunch,
+  } = ui;
+  const [name, onChangeText] = useState(userName);
+  const onPress = () => {
+    setName(name);
+    toggleFirstLaunch();
+    navigation.navigate('Home');
+  };
 
   return (
     <View style={styles.container}>
@@ -19,9 +28,10 @@ export default ({navigation}) => {
       <View style={styles.input}>
         <TextInput
           autoFocus
-          value={userName}
+          value={name}
+          onChangeText={onChangeText}
           style={styles.textInput}
-          placeholder={`Call me ${userName}...`}
+          placeholder={`Call me ${name}...`}
         />
       </View>
       <View style={styles.rest}>
