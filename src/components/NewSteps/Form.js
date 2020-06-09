@@ -34,8 +34,9 @@ export default (props) => {
   const _goBack = () => navigation.goBack();
   const _scrollDown = () => _stepsRef.current.scrollDown();
   const _onAdd = () => {
-    draft.addStep(stepText);
+    draft.addStep(stepText, photo);
     onChangeStepText('');
+    setPhoto(null);
     _scrollDown();
   };
   const _onSubmit = () => {

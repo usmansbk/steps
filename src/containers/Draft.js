@@ -21,9 +21,9 @@ export default class DraftContainer extends PersistContainer {
     });
   };
 
-  addStep = (text) => {
-    if (text) {
-      const step = new Step(text);
+  addStep = (text, photo) => {
+    if (text || photo) {
+      const step = new Step(text, photo);
       this.setState((prev) => ({
         steps: [...prev.steps, step],
       }));
