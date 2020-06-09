@@ -1,9 +1,17 @@
 import React from 'react';
-import {View, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import {Text, IconButton} from 'react-native-paper';
 import Icon from '../../common/Icon';
 
-export default ({step, details, id, onDelete, onLongPress, isActive}) => {
+export default ({
+  step,
+  details,
+  photo,
+  id,
+  onDelete,
+  onLongPress,
+  isActive,
+}) => {
   const onPress = () => onDelete(id);
   return (
     <TouchableOpacity onLongPress={onLongPress}>
@@ -22,7 +30,8 @@ export default ({step, details, id, onDelete, onLongPress, isActive}) => {
             )}
           />
         </View>
-        <Text style={styles.details}>{details}</Text>
+        {Boolean(photo) && <Image source={photo} style={styles.image} />}
+        {Boolean(details) && <Text style={styles.details}>{details}</Text>}
       </View>
     </TouchableOpacity>
   );
@@ -41,5 +50,10 @@ const styles = StyleSheet.create({
   },
   details: {
     fontWeight: 'bold',
+  },
+  image: {
+    height: 200,
+    borderRadius: 16,
+    marginBottom: 4,
   },
 });

@@ -19,6 +19,7 @@ export default class List extends React.Component {
         id={item.id}
         step={index}
         details={item.label}
+        photo={item.photo}
         isActive={isActive}
         onLongPress={drag}
         onDelete={this._onDelete}
