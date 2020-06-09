@@ -101,12 +101,13 @@ export default (props) => {
       />
       <StepBox
         value={stepText}
+        photo={photo}
         onPickPhoto={_onPickPhoto}
         onChangeText={onChangeStepText}
         step={steps.length + 1}
         onAdd={_onAdd}
         autoFocus={title}
-        disabled={!stepText}
+        disabled={!(stepText || photo)}
       />
     </View>
   );

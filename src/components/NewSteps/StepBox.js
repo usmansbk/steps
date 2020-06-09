@@ -9,13 +9,21 @@ export default ({
   step = 1,
   onAdd = () => null,
   disabled,
+  photo,
   onPickPhoto,
   ...rest
 }) => (
   <View style={styles.container}>
     <IconButton
       onPress={onPickPhoto}
-      icon={() => <Icon color={theme.colors.accent} size={24} name="camera" />}
+      icon={() => (
+        <Icon
+          source={photo}
+          color={theme.colors.accent}
+          size={24}
+          name="camera"
+        />
+      )}
     />
     <View style={styles.input}>
       <TextInput
