@@ -3,7 +3,7 @@ import {StyleSheet, View} from 'react-native';
 import Modal from 'react-native-modal';
 import {Text, Button} from 'react-native-paper';
 import Icon from './Icon';
-import {colors} from '../config/theme';
+import {colors} from '../../config/theme';
 
 export default ({onConfirm, onCancel, isVisible = false}) => {
   return (

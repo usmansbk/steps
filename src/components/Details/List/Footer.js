@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import Icon from '../../common/Icon';
-import {colors} from '../../config/theme';
+import {colors} from '../../../config/theme';
 
 export default () => {
   return (

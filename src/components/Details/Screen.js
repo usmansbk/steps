@@ -5,7 +5,7 @@ import dayjs from 'dayjs';
 import Steps from './List';
 import Confirm from '../common/Confirm';
 import Icon from '../common/Icon';
-import {colors} from '../config/theme';
+import {colors} from '../../config/theme';
 
 const item = {
   id: 1,

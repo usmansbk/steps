@@ -6,7 +6,7 @@ import TextInput from '../common/TextInput';
 import Icon from '../common/Icon';
 import Steps from './List';
 import StepBox from './StepBox';
-import {colors} from '../config/theme';
+import {colors} from '../../config/theme';
 
 const data = [
   {

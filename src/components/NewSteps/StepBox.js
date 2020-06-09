@@ -3,7 +3,7 @@ import {View, StyleSheet} from 'react-native';
 import {IconButton} from 'react-native-paper';
 import TextInput from '../common/TextInput';
 import Icon from '../common/Icon';
-import theme from '../config/theme';
+import theme from '../../config/theme';
 
 export default ({step = 1, onAdd = () => null, ...rest}) => (
   <View style={styles.container}>

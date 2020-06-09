@@ -3,7 +3,7 @@ import {View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import {Text, Searchbar} from 'react-native-paper';
 import List from '../List';
 import Fab from '../common/Fab';
-import partOfDay from '../lib/time';
+import partOfDay from '../../lib/time';
 
 export default ({navigation}) => {
   const [focus, setFocus] = useState(false);
