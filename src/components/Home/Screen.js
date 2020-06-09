@@ -13,7 +13,7 @@ export default ({navigation}) => {
   const navigateToDetails = (id) => navigation.navigate('Details', {id});
 
   const name = 'michel';
-  let source = require('../images/orange.png');
+  let source = require('../../images/orange.png');
 
   return (
     <View style={styles.container}>
