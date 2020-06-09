@@ -5,14 +5,16 @@ import List from '../List';
 import Fab from '../common/Fab';
 import partOfDay from '../../lib/time';
 
-export default ({navigation}) => {
+export default ({navigation, ui}) => {
+  const {
+    state: {userName},
+  } = ui;
   const [focus, setFocus] = useState(false);
   const onFocus = () => setFocus(true);
   const onBlur = () => setFocus(false);
   const _hailOrange = () => navigation.navigate('Welcome');
   const navigateToDetails = (id) => navigation.navigate('Details', {id});
 
-  const name = 'michel';
   let source = require('../../images/orange.png');
 
   return (
@@ -22,7 +24,7 @@ export default ({navigation}) => {
           <View>
             <Text style={styles.text}>
               <Text style={styles.hail}>Hey </Text>
-              {name},
+              {userName},
             </Text>
             <Text style={styles.text}>Good {partOfDay()}</Text>
           </View>

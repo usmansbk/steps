@@ -1,3 +1,3 @@
-import Screen from './Screen';
+import Screen from './Container';
 
 export default Screen;
