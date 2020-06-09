@@ -1,5 +1,6 @@
 import {Container} from 'unstated';
 import data from './data';
+import HowTo from './HowTo';
 
 export default class HowTosContainer extends Container {
   state = {
@@ -17,4 +18,12 @@ export default class HowTosContainer extends Container {
       item.title.toLowerCase().includes(this.state.query.toLowerCase()),
     );
   }
+
+  createHowTo = (json) => {
+    const howTo = new HowTo(this, json);
+    this.setState({
+      data: [...this.state.data, howTo],
+    });
+    return howTo;
+  };
 }
