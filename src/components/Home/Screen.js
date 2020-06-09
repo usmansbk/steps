@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback, useMemo} from 'react';
 import {View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import {Text, Searchbar} from 'react-native-paper';
 import List from '../List';
@@ -15,12 +15,17 @@ export default ({navigation, ui, howTos}) => {
     filterData,
   } = howTos;
   const [focus, setFocus] = useState(false);
-  const onFocus = () => setFocus(true);
-  const onBlur = () => setFocus(false);
-  const _hailOrange = () => navigation.navigate('Welcome');
-  const navigateToDetails = (id) => navigation.navigate('Details', {id});
+  const onFocus = useCallback(() => setFocus(true), []);
+  const onBlur = useCallback(() => setFocus(false), []);
+  const _hailOrange = useCallback(() => navigation.navigate('Welcome'), [
+    navigation,
+  ]);
+  const navigateToDetails = useCallback(
+    (id) => navigation.navigate('Details', {id}),
+    [navigation],
+  );
 
-  let source = require('../../images/orange.png');
+  let source = useMemo(() => require('../../images/orange.png'), []);
 
   return (
     <View style={styles.container}>
