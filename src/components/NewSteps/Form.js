@@ -30,6 +30,7 @@ export default (props) => {
     _scrollDown();
   };
   const _onSubmit = () => {
+    console.log(draft.state);
     howTos.createHowTo(draft.state);
     navigation.goBack();
     draft.dispose();

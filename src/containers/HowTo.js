@@ -26,6 +26,15 @@ export default class HowToContainer {
     this.store.removeHowTo(this.asJson);
   };
 
+  get normal() {
+    return {
+      id: this.id,
+      title: this.title,
+      date: this.date,
+      steps: this.steps,
+    };
+  }
+
   get asJson() {
     return {
       id: this.id,

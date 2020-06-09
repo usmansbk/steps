@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, TouchableOpacity, StyleSheet} from 'react-native';
 import {Text, Caption} from 'react-native-paper';
+import dayjs from 'dayjs';
 
 export default ({title, date, onPress, id}) => {
   const _onPress = () => onPress(id);
@@ -10,7 +11,7 @@ export default ({title, date, onPress, id}) => {
         <Text numberOfLines={2} ellipsizeMode="tail" style={styles.title}>
           {title}
         </Text>
-        <Caption>{date}</Caption>
+        <Caption>{dayjs(date).format('MMM D YYYY HH:MM')}</Caption>
       </View>
     </TouchableOpacity>
   );
