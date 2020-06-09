@@ -8,11 +8,21 @@ export default class List extends React.Component {
     data: [],
   };
 
-  _navigateToImageViewer = (source) => this.props.openImage(source);
+  _navigateToImageViewer = (source) => {
+    this.props.viewImage(source);
+  };
   _keyExtractor = (item) => String(item.key);
   _renderItem = ({item, index}) => {
     const {label, key, photo} = item;
-    return <Item label={label} step={index + 1} itemKey={key} photo={photo} />;
+    return (
+      <Item
+        label={label}
+        step={index + 1}
+        itemKey={key}
+        photo={photo}
+        viewImage={this._navigateToImageViewer}
+      />
+    );
   };
   _renderSeparator = () => <View style={styles.separator} />;
   _renderFooter = () => <Footer />;

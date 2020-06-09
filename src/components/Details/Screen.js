@@ -21,7 +21,7 @@ export default ({navigation, howTos, route}) => {
     navigation.pop();
   };
   const _goBack = () => navigation.goBack();
-  const _openImage = (source) => navigation.navigate('ImageViwer', {source});
+  const _viewImage = (source) => navigation.navigate('ImageViewer', {source});
 
   return (
     <View style={styles.container}>
@@ -42,7 +42,7 @@ export default ({navigation, howTos, route}) => {
           />
         </View>
       </View>
-      <Steps title={item.title} data={item.steps} openImage={_openImage} />
+      <Steps title={item.title} data={item.steps} viewImage={_viewImage} />
       <Confirm
         isVisible={isVisible}
         onCancel={_onCancel}
