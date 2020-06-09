@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     paddingHorizontal: 16,
-    paddingBottom: 10,
+    paddingBottom: 4,
     backgroundColor: 'white',
   },
   date: {
