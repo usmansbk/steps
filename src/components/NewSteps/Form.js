@@ -12,7 +12,7 @@ export default (props) => {
   const _stepsRef = React.useRef(null);
   const [stepText, onChangeStepText] = React.useState('');
 
-  const {draft, navigation, isNew = true, updateOrCreate} = props;
+  const {draft, navigation, updateOrCreate} = props;
   const date = dayjs().format('MMM D').toUpperCase();
   const _goBack = () => navigation.goBack();
   const _scrollDown = () => _stepsRef.current.scrollDown();
@@ -28,6 +28,7 @@ export default (props) => {
   };
   const _onSwap = (data) => draft.onSwap(data);
   const _removeStep = (removeId) => draft.removeStep(removeId);
+  const {title, steps} = draft.state;
 
   return (
     <View style={styles.container}>
@@ -41,7 +42,7 @@ export default (props) => {
         </View>
         <View style={styles.pin}>
           <IconButton
-            disabled={!draft.state.title}
+            disabled={!title}
             onPress={_onSubmit}
             icon={() => <Icon color={colors.accent} name="pushpin" size={24} />}
           />
@@ -49,15 +50,15 @@ export default (props) => {
       </View>
       <View style={styles.steps}>
         <TextInput
-          value={draft.state.title}
-          autoFocus={isNew}
+          value={title}
+          autoFocus={!title}
           onChangeText={draft.onTitleChange}
           placeholder="How to..."
           style={styles.textinput}
         />
       </View>
       <Steps
-        data={draft.state.steps}
+        data={steps}
         ref={_stepsRef}
         onSwap={_onSwap}
         removeStep={_removeStep}
@@ -65,8 +66,9 @@ export default (props) => {
       <StepBox
         value={stepText}
         onChangeText={onChangeStepText}
-        step={draft.state.steps.length + 1}
+        step={steps.length + 1}
         onAdd={_onAdd}
+        autoFocus={title}
         disabled={!stepText}
       />
     </View>
