@@ -1,7 +1,14 @@
-import {Container} from 'unstated';
+import AsyncStorage from '@react-native-community/async-storage';
+import {PersistContainer} from 'unstated-persist';
 import {Step} from './HowTo';
 
-export default class DraftContainer extends Container {
+export default class DraftContainer extends PersistContainer {
+  persist = {
+    key: 'draft',
+    version: 1,
+    storage: AsyncStorage,
+  };
+
   state = {
     id: null,
     title: '',
