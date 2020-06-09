@@ -5,8 +5,8 @@ import {Text} from 'react-native-paper';
 export default ({label, photo}) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>{label}</Text>
-      <Image source={photo} style={styles.image} />
+      {Boolean(label) && <Text style={styles.label}>{label}</Text>}
+      {Boolean(photo) && <Image source={photo} style={styles.image} />}
     </View>
   );
 };
