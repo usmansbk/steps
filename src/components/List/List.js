@@ -2,7 +2,6 @@ import React from 'react';
 import {FlatList, View, StyleSheet} from 'react-native';
 import Empty from './Empty';
 import Item from './Item';
-import data from './data';
 
 export default class List extends React.Component {
   _onPressItem = (id) => this.props.navigateToDetails(id);
@@ -21,7 +20,7 @@ export default class List extends React.Component {
   render() {
     return (
       <FlatList
-        data={data}
+        data={this.props.data}
         style={styles.list}
         keyExtractor={this._keyExtractor}
         renderItem={this._renderItem}

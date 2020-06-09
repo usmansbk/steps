@@ -5,10 +5,13 @@ import List from '../List';
 import Fab from '../common/Fab';
 import partOfDay from '../../lib/time';
 
-export default ({navigation, ui}) => {
+export default ({navigation, ui, howTos}) => {
   const {
     state: {userName},
   } = ui;
+  const {
+    state: {data},
+  } = howTos;
   const [focus, setFocus] = useState(false);
   const onFocus = () => setFocus(true);
   const onBlur = () => setFocus(false);
@@ -37,7 +40,7 @@ export default ({navigation, ui}) => {
         <Searchbar onFocus={onFocus} onBlur={onBlur} placeholder="How to..." />
       </View>
       <View style={styles.list}>
-        <List navigateToDetails={navigateToDetails} />
+        <List data={data} navigateToDetails={navigateToDetails} />
       </View>
       <View style={styles.fab}>
         <Fab icon="plus" onPress={() => navigation.navigate('New')} />
