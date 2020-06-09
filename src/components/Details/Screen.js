@@ -12,7 +12,6 @@ export default ({navigation, howTos, route}) => {
   const item = howTos.findById(id) || {};
 
   const [isVisible, setVisible] = useState(false);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const date = useMemo(
     () => dayjs(item.date).format('MMM D YYYY HH:MM').toUpperCase(),
     [item.date],

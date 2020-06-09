@@ -36,6 +36,7 @@ export default class List extends React.Component {
     return (
       <FlatList
         data={this.props.data}
+        extraData={this.props.title}
         renderItem={this._renderItem}
         keyExtractor={this._keyExtractor}
         ListFooterComponent={this._renderFooter}
