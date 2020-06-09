@@ -11,6 +11,7 @@ export default class UIContainer extends PersistContainer {
   state = {
     firstLaunch: true,
     userName: 'Friend',
+    isLoading: true,
   };
 
   setName = (userName) => {
@@ -18,6 +19,6 @@ export default class UIContainer extends PersistContainer {
   };
 
   toggleFirstLaunch = () => {
-    this.setState({firstLaunch: false});
+    this.setState({firstLaunch: false, isLoading: false});
   };
 }

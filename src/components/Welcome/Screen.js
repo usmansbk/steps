@@ -16,9 +16,8 @@ export default ({navigation, ui, route}) => {
     if (firstLaunch) {
       toggleFirstLaunch();
       navigation.replace('Home');
-    } else {
-      navigation.navigate('Home');
     }
+    navigation.pop();
   };
 
   return (
