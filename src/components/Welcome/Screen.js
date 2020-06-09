@@ -10,7 +10,7 @@ export default ({navigation, ui}) => {
     setName,
     toggleFirstLaunch,
   } = ui;
-  const [name, onChangeText] = useState(userName);
+  const [name, onChangeText] = useState('');
   const onPress = () => {
     setName(name);
     toggleFirstLaunch();
@@ -31,7 +31,7 @@ export default ({navigation, ui}) => {
           value={name}
           onChangeText={onChangeText}
           style={styles.textInput}
-          placeholder={`Call me ${name}...`}
+          placeholder={`Call me ${userName}...`}
         />
       </View>
       <View style={styles.rest}>
