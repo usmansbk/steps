@@ -1,25 +1,26 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState} from 'react';
+import AsyncStorage from '@react-native-community/async-storage';
 import {View, StyleSheet, Image} from 'react-native';
 import {Text} from 'react-native-paper';
 import TextInput from '../common/TextInput';
 import Fab from '../common/Fab';
 
-export default ({navigation, ui, route}) => {
+export default ({navigation, ui}) => {
   const {
-    state: {userName, firstLaunch},
+    state: {userName},
     setName,
-    toggleFirstLaunch,
   } = ui;
   const [name, onChangeText] = useState('');
-  const onPress = useCallback(() => {
+  const onPress = async () => {
+    const skipWelcome = await AsyncStorage.getItem('skipWelcome');
     setName(name || userName);
-    if (firstLaunch) {
-      toggleFirstLaunch();
+    if (!skipWelcome) {
+      AsyncStorage.setItem('skipWelcome', 'true');
       navigation.replace('Home');
     } else {
       navigation.goBack();
     }
-  }, [setName, name, userName, firstLaunch, toggleFirstLaunch, navigation]);
+  };
 
   return (
     <View style={styles.container}>
