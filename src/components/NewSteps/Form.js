@@ -8,100 +8,56 @@ import Steps from './List';
 import StepBox from './StepBox';
 import {colors} from '../../config/theme';
 
-const data = [
-  {
-    key: 1,
-    label: 'Go to the repo you want to work with',
-    attachment: null,
-  },
-  {
-    key: 2,
-    label:
-      'GGo to the repo you want to work withGo to the repo you want to work withGo to the repo you want to work withGo to the repo you want to work witho to the repo you want to work with',
-  },
-  {
-    key: 3,
-    label: 'Go to the repo you want to work with',
-  },
-  {
-    key: 4,
-    label: 'Go to the repo you want to work with',
-  },
-  {
-    key: 5,
-    label: 'Go to the repo you want to work with',
-  },
-  {
-    key: 6,
-    label: 'Go to the repo you want to work with',
-  },
-  {
-    key: 7,
-    label: 'Go to the repo you want to work with',
-  },
-  {
-    key: 8,
-    label: 'Go to the repo you want to work with',
-  },
-  {
-    key: 9,
-    label: 'Go to the repo you want to work with',
-  },
-  {
-    key: 10,
-    label: 'Go to the repo you want to work with',
-  },
-];
+export default (props) => {
+  const _stepsRef = React.useRef(null);
 
-export default class Form extends React.Component {
-  static defaultProps = {
-    isNew: true,
-  };
-
-  _stepsRef = (ref) => {
-    this.steps = ref;
-  };
-  _goBack = () => this.props.navigation.goBack();
-  _scrollDown = () => this.steps && this.steps.scrollDown();
-  _onAdd = () => {
-    this._scrollDown();
-  };
-  _onSubmit = () => null;
-
-  render() {
-    const date = dayjs().format('MMM D').toUpperCase();
-    return (
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <IconButton
-            onPress={this._goBack}
-            icon={() => <Icon name="left" size={24} />}
-          />
-          <View style={styles.date}>
-            <Text>{date}</Text>
-          </View>
-          <View style={styles.pin}>
-            <IconButton
-              onPress={this._onSubmit}
-              icon={() => (
-                <Icon color={colors.accent} name="pushpin" size={24} />
-              )}
-            />
-          </View>
-        </View>
-        <View style={styles.steps}>
-          <TextInput
-            autoFocus={this.props.isNew}
-            placeholder="How to..."
-            style={styles.textinput}
-          />
-        </View>
-        <Steps data={data} ref={this._stepsRef} />
-        <StepBox step={data.length + 1} onAdd={this._onAdd} />
-      </View>
-    );
+  const {howTos, navigation, route, isNew} = props;
+  const date = dayjs().format('MMM D').toUpperCase();
+  const id = route.params && route.params.id;
+  let draft;
+  if (!id) {
+    draft = howTos.state.draft;
+  } else {
+    draft = howTos.state.draft;
   }
-}
+  const _goBack = () => navigation.goBack();
+  const _scrollDown = () => _stepsRef.current.scrollDown();
+  const _onAdd = () => {
+    _scrollDown();
+  };
+  const _onSubmit = () => null;
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <IconButton
+          onPress={_goBack}
+          icon={() => <Icon name="left" size={24} />}
+        />
+        <View style={styles.date}>
+          <Text>{date}</Text>
+        </View>
+        <View style={styles.pin}>
+          <IconButton
+            onPress={_onSubmit}
+            icon={() => <Icon color={colors.accent} name="pushpin" size={24} />}
+          />
+        </View>
+      </View>
+      <View style={styles.steps}>
+        <TextInput
+          value={draft.title}
+          autoFocus={isNew}
+          onChangeText={howTos.onDraftTitleChange}
+          placeholder="How to..."
+          style={styles.textinput}
+        />
+      </View>
+      <Steps data={draft.steps} ref={_stepsRef} />
+      <StepBox step={draft.steps.length + 1} onAdd={_onAdd} />
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {

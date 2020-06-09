@@ -6,9 +6,26 @@ export default class HowTosContainer extends Container {
   state = {
     data: data,
     query: '',
+    draft: {
+      title: '',
+      steps: [],
+    },
   };
 
   filterData = (query) => this.setState({query});
+
+  onDraftTitleChange = (title) =>
+    this.setState((prev) => ({
+      draft: Object.assign({}, prev.draft, {title}),
+    }));
+
+  onAddStep = (step) => {
+    this.setState((prev) => ({
+      draft: Object.assign({}, prev.draft, {
+        steps: [...prev.draft.steps, step],
+      }),
+    }));
+  };
 
   get data() {
     if (!this.state.query) {
@@ -19,8 +36,8 @@ export default class HowTosContainer extends Container {
     );
   }
 
-  createHowTo = (json) => {
-    const howTo = new HowTo(this, json);
+  createHowTo = () => {
+    const howTo = new HowTo(this, this.state.draft);
     this.setState({
       data: [...this.state.data, howTo],
     });
