@@ -16,6 +16,7 @@ export default class List extends React.Component {
 
   _renderEmpty = () => <Empty />;
   _keyExtractor = (item) => String(item.id);
+  _renderFooter = () => <View style={styles.footer} />;
 
   render() {
     return (
@@ -27,6 +28,7 @@ export default class List extends React.Component {
         initialNumToRender={2}
         ListEmptyComponent={this._renderEmpty}
         ListHeaderComponent={this._renderHeader}
+        ListFooterComponent={this._renderFooter}
         ItemSeparatorComponent={this._renderItemSeparator}
       />
     );
@@ -36,5 +38,8 @@ export default class List extends React.Component {
 const styles = StyleSheet.create({
   separator: {
     height: 4,
+  },
+  footer: {
+    height: 80,
   },
 });

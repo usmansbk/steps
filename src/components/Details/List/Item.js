@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Text} from 'react-native-paper';
-import {colors} from '../../../config/theme';
 
 export default ({label, step}) => {
   return (
