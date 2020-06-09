@@ -41,6 +41,7 @@ export default (props) => {
         </View>
         <View style={styles.pin}>
           <IconButton
+            disabled={!draft.state.title}
             onPress={_onSubmit}
             icon={() => <Icon color={colors.accent} name="pushpin" size={24} />}
           />
