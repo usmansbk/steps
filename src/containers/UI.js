@@ -18,6 +18,6 @@ export default class UIContainer extends PersistContainer {
   };
 
   toggleFirstLaunch = () => {
-    this.setState({firsLaunch: false});
+    this.setState({firstLaunch: false});
   };
 }
