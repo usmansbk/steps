@@ -7,7 +7,7 @@ export default class List extends React.Component {
   _onPressItem = (id) => this.props.navigateToDetails(id);
 
   _renderItem = ({item}) => {
-    const {id, title, date} = item;
+    const {id, title, date} = item.asJson;
     return (
       <Item id={id} title={title} date={date} onPress={this._onPressItem} />
     );

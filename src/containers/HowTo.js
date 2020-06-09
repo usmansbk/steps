@@ -28,10 +28,10 @@ export default class HowToContainer {
 
   get asJson() {
     return {
-      id: this.state.id,
-      title: this.state.title,
-      date: dayjs(this.state.date).format(DATE_FORMAT),
-      steps: this.state.steps,
+      id: this.id,
+      title: this.title,
+      date: dayjs(this.date).format(DATE_FORMAT),
+      steps: this.steps,
     };
   }
 
