@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import dayjs from 'dayjs';
 import {View, StyleSheet, Platform} from 'react-native';
 import {Text, IconButton} from 'react-native-paper';
@@ -31,14 +31,16 @@ export default (props) => {
   }
 
   const date = dayjs().format('MMM D').toUpperCase();
-  const _goBack = () => navigation.goBack();
-  const _scrollDown = () => _stepsRef.current.scrollDown();
-  const _onAdd = () => {
+  const _goBack = useCallback(() => navigation.goBack(), [navigation]);
+  const _scrollDown = useCallback(() => _stepsRef.current.scrollDown(), [
+    _stepsRef,
+  ]);
+  const _onAdd = useCallback(() => {
     draft.addStep(stepText, photo);
     onChangeStepText('');
     setPhoto(null);
     _scrollDown();
-  };
+  }, [draft, stepText, photo, _scrollDown]);
   const _onSubmit = () => {
     howTos.createHowTo(draft.state, photo);
     navigation.goBack();
@@ -47,8 +49,8 @@ export default (props) => {
   const _onSwap = (data) => draft.onSwap(data);
   const _removeStep = (removeId) => draft.removeStep(removeId);
   const _clear = () => draft.dispose();
-  const _unPickPhoto = () => setPhoto(null);
-  const _onPickPhoto = () => {
+  const _unPickPhoto = useCallback(() => setPhoto(null), []);
+  const _onPickPhoto = useCallback(() => {
     ImagePicker.showImagePicker(options, (response) => {
       if (!(response.error || response.didCancel)) {
         let uri = '';
@@ -61,7 +63,7 @@ export default (props) => {
         setPhoto(source);
       }
     });
-  };
+  }, []);
   const {title, steps} = draft.state;
 
   return (
