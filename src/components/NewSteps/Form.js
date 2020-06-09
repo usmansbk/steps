@@ -36,6 +36,7 @@ export default (props) => {
   };
   const _onSwap = (data) => draft.onSwap(data);
   const _removeStep = (removeId) => draft.removeStep(removeId);
+  const _clear = () => draft.dispose();
   const {title, steps} = draft.state;
 
   return (
@@ -48,12 +49,21 @@ export default (props) => {
         <View style={styles.date}>
           <Text>{date}</Text>
         </View>
-        <View style={styles.pin}>
-          <IconButton
-            disabled={!title}
-            onPress={_onSubmit}
-            icon={() => <Icon color={colors.accent} name="pushpin" size={24} />}
-          />
+        <View style={styles.buttons}>
+          <View style={styles.rowBtn}>
+            <IconButton
+              disabled={!title}
+              onPress={_clear}
+              icon={() => <Icon color={colors.danger} name="close" size={24} />}
+            />
+            <IconButton
+              disabled={!title}
+              onPress={_onSubmit}
+              icon={() => (
+                <Icon color={colors.accent} name="pushpin" size={24} />
+              )}
+            />
+          </View>
         </View>
       </View>
       <View style={styles.steps}>
@@ -102,8 +112,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  pin: {
+  buttons: {
     flex: 1,
-    alignItems: 'flex-end',
+    alignSelf: 'flex-end',
+  },
+  rowBtn: {
+    flexDirection: 'row',
+    alignSelf: 'flex-end',
   },
 });

@@ -5,14 +5,12 @@ import {Subscribe} from 'unstated';
 import UI from '../../containers/UI';
 import {colors} from '../../config/theme';
 
-const Screen = ({firstLaunch, navigation, loading}) => {
-  React.useEffect(() => {
-    if (firstLaunch) {
-      navigation.replace('Welcome');
-    } else if (!loading) {
-      navigation.replace('Home');
-    }
-  }, [firstLaunch, loading, navigation]);
+const Screen = ({firstLaunch, navigation}) => {
+  if (firstLaunch) {
+    navigation.replace('Welcome');
+  } else {
+    navigation.replace('Home');
+  }
   return (
     <View style={styles.container}>
       <ActivityIndicator color={colors.accent} />

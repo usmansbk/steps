@@ -31,6 +31,6 @@ export default class List extends React.Component {
 
 const styles = StyleSheet.create({
   separator: {
-    height: 4,
+    height: 8,
   },
 });
