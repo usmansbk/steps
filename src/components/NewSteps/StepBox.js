@@ -9,7 +9,6 @@ export default ({step = 1, onAdd = () => null, disabled, ...rest}) => (
   <View style={styles.container}>
     <IconButton
       onPress={onAdd}
-      disabled={disabled}
       icon={() => <Icon color={theme.colors.accent} size={24} name="camera" />}
     />
     <View style={styles.input}>
