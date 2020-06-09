@@ -46,6 +46,7 @@ export default (props) => {
   const _onSwap = (data) => draft.onSwap(data);
   const _removeStep = (removeId) => draft.removeStep(removeId);
   const _clear = () => draft.dispose();
+  const _unPickPhoto = () => setPhoto(null);
   const _onPickPhoto = () => {
     ImagePicker.showImagePicker(options, (response) => {
       console.log(response);
@@ -103,6 +104,7 @@ export default (props) => {
         value={stepText}
         photo={photo}
         onPickPhoto={_onPickPhoto}
+        unPickPhoto={_unPickPhoto}
         onChangeText={onChangeStepText}
         step={steps.length + 1}
         onAdd={_onAdd}

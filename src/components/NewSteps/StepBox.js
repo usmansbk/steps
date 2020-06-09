@@ -11,11 +11,13 @@ export default ({
   disabled,
   photo,
   onPickPhoto,
+  unPickPhoto,
   ...rest
 }) => (
   <View style={styles.container}>
     <IconButton
       onPress={onPickPhoto}
+      onLongPress={unPickPhoto}
       icon={() => (
         <Icon
           source={photo}
