@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, StyleSheet, Image} from 'react-native';
 import {Text} from 'react-native-paper';
 import TextInput from '../common/TextInput';
@@ -11,13 +11,15 @@ export default ({navigation, ui, route}) => {
     toggleFirstLaunch,
   } = ui;
   const [name, onChangeText] = useState('');
-  const onPress = () => {
+  const onPress = useEffect(() => {
     setName(name || userName);
     if (firstLaunch) {
       toggleFirstLaunch();
+      navigation.replace('Home');
+    } else {
+      navigation.goBack();
     }
-    navigation.replace('Home');
-  };
+  });
 
   return (
     <View style={styles.container}>
