@@ -8,6 +8,7 @@ export default class List extends React.Component {
     data: [],
   };
 
+  _navigateToImageViewer = (source) => this.props.openImage(source);
   _keyExtractor = (item) => String(item.key);
   _renderItem = ({item, index}) => {
     const {label, key, photo} = item;

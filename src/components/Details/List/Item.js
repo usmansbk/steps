@@ -2,12 +2,12 @@ import React from 'react';
 import {View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import {Text} from 'react-native-paper';
 
-export default ({label, photo, onPress}) => {
+export default ({label, photo, onPress, viewImage}) => {
   return (
     <View style={styles.container}>
       {Boolean(label) && <Text style={styles.label}>{label}</Text>}
       {Boolean(photo) && (
-        <TouchableOpacity onPress={onPress}>
+        <TouchableOpacity onPress={viewImage}>
           <Image
             source={photo}
             style={styles.image}
