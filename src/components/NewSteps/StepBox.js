@@ -5,10 +5,16 @@ import TextInput from '../common/TextInput';
 import Icon from '../common/Icon';
 import theme from '../../config/theme';
 
-export default ({step = 1, onAdd = () => null, disabled, ...rest}) => (
+export default ({
+  step = 1,
+  onAdd = () => null,
+  disabled,
+  onPickPhoto,
+  ...rest
+}) => (
   <View style={styles.container}>
     <IconButton
-      onPress={onAdd}
+      onPress={onPickPhoto}
       icon={() => <Icon color={theme.colors.accent} size={24} name="camera" />}
     />
     <View style={styles.input}>

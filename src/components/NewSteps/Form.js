@@ -1,16 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import dayjs from 'dayjs';
 import {View, StyleSheet} from 'react-native';
 import {Text, IconButton} from 'react-native-paper';
+import ImagePicker from 'react-native-image-picker';
 import TextInput from '../common/TextInput';
 import Icon from '../common/Icon';
 import Steps from './List';
 import StepBox from './StepBox';
 import {colors} from '../../config/theme';
 
+const options = {
+  title: 'Select Picture',
+  storageOptions: {
+    skipBackup: true,
+    path: 'images',
+  },
+};
 export default (props) => {
   const _stepsRef = React.useRef(null);
-  const [stepText, onChangeStepText] = React.useState('');
+  const [stepText, onChangeStepText] = useState('');
+  const [photo, setPhoto] = useState(null);
 
   const {draft, navigation, howTos, route} = props;
   const id = route.params && route.params.id;
@@ -37,6 +46,15 @@ export default (props) => {
   const _onSwap = (data) => draft.onSwap(data);
   const _removeStep = (removeId) => draft.removeStep(removeId);
   const _clear = () => draft.dispose();
+  const _onPickPhoto = () => {
+    ImagePicker.showImagePicker(options, (response) => {
+      console.log(response);
+      if (!(response.error || response.didCancel)) {
+        const source = {uri: response.uri};
+        setPhoto(source);
+      }
+    });
+  };
   const {title, steps} = draft.state;
 
   return (
@@ -83,6 +101,7 @@ export default (props) => {
       />
       <StepBox
         value={stepText}
+        onPickPhoto={_onPickPhoto}
         onChangeText={onChangeStepText}
         step={steps.length + 1}
         onAdd={_onAdd}
