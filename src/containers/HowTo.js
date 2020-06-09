@@ -49,6 +49,14 @@ const data = [
   },
 ];
 
+export class Step {
+  id = null;
+  label = null;
+  constructor(label) {
+    this.label = label;
+    this.key = this.id = shortid.generate();
+  }
+}
 export default class HowToContainer extends Container {
   state = {
     id: null,

@@ -1,6 +1,6 @@
 import {Container} from 'unstated';
 import data from './data';
-import HowTo from './HowTo';
+import HowTo, {Step} from './HowTo';
 
 export default class HowTosContainer extends Container {
   state = {
@@ -19,12 +19,16 @@ export default class HowTosContainer extends Container {
       draft: Object.assign({}, prev.draft, {title}),
     }));
 
-  onAddStep = (step) => {
-    this.setState((prev) => ({
-      draft: Object.assign({}, prev.draft, {
-        steps: [...prev.draft.steps, step],
-      }),
-    }));
+  addStep = (text) => {
+    if (text) {
+      const step = new Step(text);
+      console.log(step);
+      this.setState((prev) => ({
+        draft: Object.assign({}, prev.draft, {
+          steps: [...prev.draft.steps, step],
+        }),
+      }));
+    }
   };
 
   get data() {

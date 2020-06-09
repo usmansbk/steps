@@ -10,8 +10,9 @@ import {colors} from '../../config/theme';
 
 export default (props) => {
   const _stepsRef = React.useRef(null);
+  const [stepText, onChangeStepText] = React.useState('');
 
-  const {howTos, navigation, route, isNew} = props;
+  const {howTos, navigation, route, isNew = true} = props;
   const date = dayjs().format('MMM D').toUpperCase();
   const id = route.params && route.params.id;
   let draft;
@@ -23,9 +24,11 @@ export default (props) => {
   const _goBack = () => navigation.goBack();
   const _scrollDown = () => _stepsRef.current.scrollDown();
   const _onAdd = () => {
+    howTos.addStep(stepText);
     _scrollDown();
   };
   const _onSubmit = () => null;
+  console.log(draft);
 
   return (
     <View style={styles.container}>
@@ -54,7 +57,13 @@ export default (props) => {
         />
       </View>
       <Steps data={draft.steps} ref={_stepsRef} />
-      <StepBox step={draft.steps.length + 1} onAdd={_onAdd} />
+      <StepBox
+        value={stepText}
+        onChangeText={onChangeStepText}
+        step={draft.steps.length + 1}
+        onAdd={_onAdd}
+        disabled={!stepText}
+      />
     </View>
   );
 };

@@ -5,7 +5,7 @@ import TextInput from '../common/TextInput';
 import Icon from '../common/Icon';
 import theme from '../../config/theme';
 
-export default ({step = 1, onAdd = () => null, ...rest}) => (
+export default ({step = 1, onAdd = () => null, disabled, ...rest}) => (
   <View style={styles.container}>
     <View style={styles.input}>
       <TextInput
@@ -16,6 +16,7 @@ export default ({step = 1, onAdd = () => null, ...rest}) => (
     </View>
     <IconButton
       onPress={onAdd}
+      disabled={disabled}
       icon={() => (
         <Icon color={theme.colors.accent} size={24} name="pluscircle" />
       )}
