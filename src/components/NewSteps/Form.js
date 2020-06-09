@@ -31,8 +31,8 @@ export default (props) => {
   };
   const _onSubmit = () => {
     howTos.createHowTo(draft.state);
-    draft.dispose();
     navigation.goBack();
+    draft.dispose();
   };
   const _onSwap = (data) => draft.onSwap(data);
   const _removeStep = (removeId) => draft.removeStep(removeId);
