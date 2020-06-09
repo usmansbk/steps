@@ -14,7 +14,7 @@ export default ({navigation, ui}) => {
   const onPress = () => {
     setName(name);
     toggleFirstLaunch();
-    navigation.navigate('Home');
+    navigation.replace('Home');
   };
 
   return (
