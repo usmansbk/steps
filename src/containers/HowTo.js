@@ -4,9 +4,12 @@ import dayjs from 'dayjs';
 export class Step {
   id = null;
   label = null;
-  constructor(label) {
+  photo = null;
+
+  constructor(label, photo) {
     this.label = label;
     this.key = this.id = shortid.generate();
+    this.photo = photo;
   }
 }
 export default class HowToContainer {

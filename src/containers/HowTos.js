@@ -29,8 +29,8 @@ export default class HowTosContainer extends PersistContainer {
     );
   }
 
-  createHowTo = (json) => {
-    const howTo = new HowTo(json);
+  createHowTo = (json, photo) => {
+    const howTo = new HowTo(json, photo);
     if (json.id) {
       this.setState({
         data: this.state.data
