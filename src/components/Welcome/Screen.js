@@ -12,7 +12,7 @@ export default ({navigation, ui}) => {
   } = ui;
   const [name, onChangeText] = useState('');
   const onPress = () => {
-    setName(name);
+    setName(name || userName);
     toggleFirstLaunch();
     navigation.replace('Home');
   };
