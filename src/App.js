@@ -1,6 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {Welcome, Home, Details, NewSteps} from './components';
+import {Welcome, Home, Details, NewSteps, ImageViewer} from './components';
 import Loading from './components/common/Loading';
 
 const Stack = createStackNavigator();
@@ -19,6 +19,7 @@ export default () => {
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="New" component={NewSteps} />
       <Stack.Screen name="Details" component={Details} />
+      <Stack.Screen name="ImageViewer" component={ImageViewer} />
     </Stack.Navigator>
   );
 };
