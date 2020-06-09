@@ -1,4 +1,3 @@
-import {Container} from 'unstated';
 import shortid from 'shortid';
 import dayjs from 'dayjs';
 
@@ -12,23 +11,15 @@ export class Step {
     this.key = this.id = shortid.generate();
   }
 }
-export default class HowToContainer extends Container {
-  state = {
-    id: null,
-    title: '',
-    date: '',
-    steps: [],
-  };
+export default class HowToContainer {
   store = null;
 
   constructor(store, json) {
+    this.id = shortid.generate();
+    this.title = json.title;
+    this.date = dayjs().toISOString();
+    this.steps = json.steps;
     this.store = store;
-    this.state = {
-      id: shortid.generate(),
-      title: json.title,
-      date: dayjs().toISOString(),
-      steps: json.steps,
-    };
   }
 
   delete = () => {
@@ -45,10 +36,8 @@ export default class HowToContainer extends Container {
   }
 
   updateFromJson = (json) => {
-    this.setState({
-      title: json.title,
-      date: dayjs().toISOString(),
-      steps: json.steps,
-    });
+    this.title = json.title;
+    this.date = dayjs().toISOString();
+    this.steps = json.steps;
   };
 }

@@ -12,7 +12,7 @@ export default (props) => {
   const _stepsRef = React.useRef(null);
   const [stepText, onChangeStepText] = React.useState('');
 
-  const {draft, navigation, isNew = true} = props;
+  const {draft, navigation, isNew = true, updateOrCreate} = props;
   const date = dayjs().format('MMM D').toUpperCase();
   const _goBack = () => navigation.goBack();
   const _scrollDown = () => _stepsRef.current.scrollDown();
@@ -21,7 +21,11 @@ export default (props) => {
     onChangeStepText('');
     _scrollDown();
   };
-  const _onSubmit = () => null;
+  const _onSubmit = () => {
+    updateOrCreate(draft.state);
+    draft.dispose();
+    navigation.goBack();
+  };
   const _onSwap = (data) => draft.onSwap(data);
   const _removeStep = (removeId) => draft.removeStep(removeId);
 

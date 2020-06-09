@@ -1,10 +1,9 @@
 import {Container} from 'unstated';
-import data from './data';
 import HowTo from './HowTo';
 
 export default class HowTosContainer extends Container {
   state = {
-    data: data,
+    data: [],
     query: '',
   };
 
@@ -19,8 +18,8 @@ export default class HowTosContainer extends Container {
     );
   }
 
-  createHowTo = () => {
-    const howTo = new HowTo(this);
+  createHowTo = (json) => {
+    const howTo = new HowTo(this, json);
     this.setState({
       data: [...this.state.data, howTo],
     });

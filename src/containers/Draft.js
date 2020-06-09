@@ -31,4 +31,11 @@ export default class DraftContainer extends Container {
       steps: prev.steps.filter((step) => step.id !== id),
     }));
   };
+
+  dispose = () => {
+    this.setState({
+      title: '',
+      steps: [],
+    });
+  };
 }
