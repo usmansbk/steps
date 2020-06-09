@@ -41,8 +41,7 @@ export default ({navigation, howTos, route}) => {
           />
         </View>
       </View>
-      <Text style={styles.heading}>{item.title}</Text>
-      <Steps data={item.steps} />
+      <Steps title={item.title} data={item.steps} />
       <Confirm
         isVisible={isVisible}
         onCancel={_onCancel}
@@ -57,11 +56,6 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: 'white',
-  },
-  heading: {
-    fontSize: 27,
-    fontWeight: 'bold',
-    paddingBottom: 8,
   },
   dateline: {
     flexDirection: 'row',
