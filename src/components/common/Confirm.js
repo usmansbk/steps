@@ -14,7 +14,7 @@ export default ({onConfirm, onCancel, isVisible = false}) => {
       <View style={styles.content}>
         <Icon name="exclamationcircle" size={24} color={colors.danger} />
         <Text style={styles.text}>Confirm</Text>
-        <Text>Are you sure you want to this?</Text>
+        <Text>Are you sure you want to delete this?</Text>
         <View style={styles.buttons}>
           <Button onPress={onCancel}>NO</Button>
           <Button onPress={onConfirm}>YES</Button>

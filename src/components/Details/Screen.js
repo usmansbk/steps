@@ -22,7 +22,6 @@ export default ({navigation, howTos, route}) => {
   };
   const _goBack = () => navigation.goBack();
 
-
   return (
     <View style={styles.container}>
       <View style={styles.dateline}>
