@@ -11,7 +11,7 @@ export default ({navigation, route}) => {
         <Screen
           route={route}
           navigation={navigation}
-          updateOrCreate={howTos.createHowTo}
+          howTos={howTos}
           draft={draft}
         />
       )}

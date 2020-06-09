@@ -12,7 +12,15 @@ export default (props) => {
   const _stepsRef = React.useRef(null);
   const [stepText, onChangeStepText] = React.useState('');
 
-  const {draft, navigation, updateOrCreate} = props;
+  const {draft, navigation, howTos, route} = props;
+  const id = route.params && route.params.id;
+
+  if (id) {
+    const toEdit = howTos.findById(id);
+    draft.prepare(toEdit);
+    navigation.setParams({id: null});
+  }
+
   const date = dayjs().format('MMM D').toUpperCase();
   const _goBack = () => navigation.goBack();
   const _scrollDown = () => _stepsRef.current.scrollDown();
@@ -22,7 +30,7 @@ export default (props) => {
     _scrollDown();
   };
   const _onSubmit = () => {
-    updateOrCreate(draft.state);
+    howTos.createHowTo(draft.state);
     draft.dispose();
     navigation.goBack();
   };

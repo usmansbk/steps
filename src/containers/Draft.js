@@ -3,6 +3,7 @@ import {Step} from './HowTo';
 
 export default class DraftContainer extends Container {
   state = {
+    id: null,
     title: '',
     steps: [],
   };
@@ -36,6 +37,14 @@ export default class DraftContainer extends Container {
     this.setState({
       title: '',
       steps: [],
+    });
+  };
+
+  prepare = (json) => {
+    this.setState({
+      id: json.id,
+      title: json.title,
+      steps: json.steps,
     });
   };
 }
