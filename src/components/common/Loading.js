@@ -6,11 +6,11 @@ import UI from '../../containers/UI';
 import {colors} from '../../config/theme';
 
 const Screen = ({firstLaunch, navigation}) => {
-  // if (firstLaunch) {
+  if (firstLaunch) {
     navigation.replace('Welcome');
-  // } else {
-  //   navigation.replace('Home');
-  // }
+  } else {
+    navigation.replace('Home');
+  }
   return (
     <View style={styles.container}>
       <ActivityIndicator color={colors.accent} />
