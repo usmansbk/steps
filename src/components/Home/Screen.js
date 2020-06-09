@@ -78,7 +78,8 @@ const styles = StyleSheet.create({
     height: 64,
   },
   search: {
-    marginVertical: 20,
+    marginTop: 20,
+    marginBottom: 10,
   },
   fab: {
     alignItems: 'center',
