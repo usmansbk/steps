@@ -1,10 +1,13 @@
 import React from 'react';
 import {View, StyleSheet, Image} from 'react-native';
 import {Text} from 'react-native-paper';
+import {useStore} from '../config/context';
 import TextInput from '../common/TextInput';
 import Fab from '../common/Fab';
 
 export default ({navigation}) => {
+  const stores = useStore();
+  console.log(stores.uiStore);
   const onPress = () => navigation.navigate('Home');
   return (
     <View style={styles.container}>
