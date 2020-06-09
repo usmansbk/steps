@@ -7,7 +7,7 @@ import Fab from '../common/Fab';
 
 export default ({navigation}) => {
   const stores = useStore();
-  console.log(stores.uiStore);
+  console.log(stores);
   const onPress = () => navigation.navigate('Home');
   return (
     <View style={styles.container}>

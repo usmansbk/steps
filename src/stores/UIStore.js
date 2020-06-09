@@ -9,6 +9,12 @@ export default class UIStore {
     steps: [],
   };
 
+  constructor() {
+    this.userName = 'Friend-test';
+    this.firstLaunch = true;
+    this.searchQuery = '';
+  }
+
   setDraft(howto) {
     this.draft = howto;
   }

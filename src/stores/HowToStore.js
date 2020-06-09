@@ -5,6 +5,10 @@ import dayjs from 'dayjs';
 export default class HowToStore {
   @observable data = [];
 
+  constructor() {
+    this.data = [];
+  }
+
   @action createHowTo(json) {
     const howto = new HowTo(this, json);
     this.data.push(howto);
