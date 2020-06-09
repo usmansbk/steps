@@ -4,17 +4,21 @@ import {Text} from 'react-native-paper';
 import TextInput from '../common/TextInput';
 import Fab from '../common/Fab';
 
-export default ({navigation, ui}) => {
+export default ({navigation, ui, route}) => {
   const {
-    state: {userName},
+    state: {userName, firstLaunch},
     setName,
     toggleFirstLaunch,
   } = ui;
   const [name, onChangeText] = useState('');
   const onPress = () => {
     setName(name || userName);
-    toggleFirstLaunch();
-    navigation.replace('Home');
+    if (firstLaunch) {
+      toggleFirstLaunch();
+      navigation.replace('Home');
+    } else {
+      navigation.navigate('Home');
+    }
   };
 
   return (
