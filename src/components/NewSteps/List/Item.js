@@ -30,7 +30,13 @@ export default ({
             )}
           />
         </View>
-        {Boolean(photo) && <Image source={photo} style={styles.image} />}
+        {Boolean(photo) && (
+          <Image
+            defaultSource={require('../../../images/noimage.jpg')}
+            source={photo}
+            style={styles.image}
+          />
+        )}
         {Boolean(details) && <Text style={styles.details}>{details}</Text>}
       </View>
     </TouchableOpacity>

@@ -17,7 +17,13 @@ export default ({title, date, onPress, id, head}) => {
           </Text>
           <Caption>{dayjs(date).format('MMM D YYYY HH:MM')}</Caption>
         </View>
-        {Boolean(source) && <Image source={source} style={styles.image} />}
+        {Boolean(source) && (
+          <Image
+            source={source}
+            style={styles.image}
+            defaultSource={require('../../images/noimage.jpg')}
+          />
+        )}
       </View>
     </TouchableOpacity>
   );

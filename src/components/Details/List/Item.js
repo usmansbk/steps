@@ -8,7 +8,11 @@ export default ({label, photo, onPress}) => {
       {Boolean(label) && <Text style={styles.label}>{label}</Text>}
       {Boolean(photo) && (
         <TouchableOpacity onPress={onPress}>
-          <Image source={photo} style={styles.image} />
+          <Image
+            source={photo}
+            style={styles.image}
+            defaultSource={require('../../../images/noimage.jpg')}
+          />
         </TouchableOpacity>
       )}
     </View>
