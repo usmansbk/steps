@@ -26,16 +26,23 @@ export default class HowTosContainer extends PersistContainer {
   }
 
   createHowTo = (json) => {
-    const howTo = new HowTo(this, json);
-    this.setState({
-      data: [...this.state.data, howTo.normal],
-    });
-    return howTo;
+    const howTo = new HowTo(json);
+    if (json.id) {
+      this.setState({
+        data: this.state.data
+          .filter((current) => current.id !== json.id)
+          .concat(howTo),
+      });
+    } else {
+      this.setState({
+        data: [...this.state.data, howTo],
+      });
+    }
   };
 
-  removeHowTo = (json) => {
+  delete = (id) => {
     this.setState({
-      data: this.state.data.filter((howTo) => howTo.id !== json.id),
+      data: this.state.data.filter((howTo) => howTo.id !== id),
     });
   };
 

@@ -17,7 +17,7 @@ export default ({navigation, howTos, route}) => {
   const onEdit = () => navigation.navigate('New', {id});
   const _onCancel = () => setVisible(false);
   const _onConfirm = () => {
-    item.delete();
+    howTos.delete(id);
     navigation.pop();
   };
   const _goBack = () => navigation.goBack();
