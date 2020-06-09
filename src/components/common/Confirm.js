@@ -13,8 +13,8 @@ export default ({onConfirm, onCancel, isVisible = false}) => {
       isVisible={isVisible}>
       <View style={styles.content}>
         <Icon name="exclamationcircle" size={24} color={colors.danger} />
-        <Text style={styles.text}>Confirm</Text>
-        <Text>Are you sure you want to delete this?</Text>
+        <Text style={styles.text}>Are you sure you want to delete this?</Text>
+        <Text>You cannot undo this action</Text>
         <View style={styles.buttons}>
           <Button onPress={onCancel}>NO</Button>
           <Button onPress={onConfirm}>YES</Button>
@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
   text: {
     fontWeight: 'bold',
     fontSize: 25,
+    textAlign: 'center',
   },
   content: {
     backgroundColor: 'white',

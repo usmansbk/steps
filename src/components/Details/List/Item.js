@@ -13,9 +13,7 @@ export default ({label, step}) => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 8,
-    backgroundColor: colors.lightGray,
-    borderRadius: 8,
+    paddingVertical: 12,
   },
   label: {
     color: '#2d3436',
