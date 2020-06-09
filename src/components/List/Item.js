@@ -6,6 +6,7 @@ import {colors} from '../../config/theme';
 
 export default ({title, date, onPress, id, head}) => {
   const source = head && head.photo;
+  console.log(source);
   const _onPress = () => onPress(id);
   return (
     <TouchableOpacity onPress={_onPress}>

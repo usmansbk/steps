@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import dayjs from 'dayjs';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, Platform} from 'react-native';
 import {Text, IconButton} from 'react-native-paper';
 import ImagePicker from 'react-native-image-picker';
 import TextInput from '../common/TextInput';
@@ -50,9 +50,14 @@ export default (props) => {
   const _unPickPhoto = () => setPhoto(null);
   const _onPickPhoto = () => {
     ImagePicker.showImagePicker(options, (response) => {
-      console.log(response);
       if (!(response.error || response.didCancel)) {
-        const source = {uri: response.uri};
+        let uri = '';
+        if (Platform.OS === 'android') {
+          uri = 'file:///' + response.path;
+        } else {
+          uri = response.uri;
+        }
+        const source = {uri};
         setPhoto(source);
       }
     });
