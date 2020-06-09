@@ -10,8 +10,11 @@ export default ({navigation, ui, howTos}) => {
     state: {userName},
   } = ui;
   const {
-    state: {data},
+    state: {query},
+    data,
+    filterData,
   } = howTos;
+  console.log(query, data);
   const [focus, setFocus] = useState(false);
   const onFocus = () => setFocus(true);
   const onBlur = () => setFocus(false);
@@ -37,7 +40,13 @@ export default ({navigation, ui, howTos}) => {
         </View>
       )}
       <View style={styles.search}>
-        <Searchbar onFocus={onFocus} onBlur={onBlur} placeholder="How to..." />
+        <Searchbar
+          value={query}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          onChangeText={filterData}
+          placeholder="How to..."
+        />
       </View>
       <View style={styles.list}>
         <List data={data} navigateToDetails={navigateToDetails} />
