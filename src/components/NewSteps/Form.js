@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState, useCallback, useEffect, useMemo} from 'react';
 import dayjs from 'dayjs';
 import {View, StyleSheet, Platform} from 'react-native';
 import {Text, IconButton} from 'react-native-paper';
@@ -22,15 +22,17 @@ export default (props) => {
   const [photo, setPhoto] = useState(null);
 
   const {draft, navigation, howTos, route} = props;
-  const id = route.params && route.params.id;
 
-  if (id) {
-    const toEdit = howTos.findById(id);
-    draft.prepare(toEdit);
-    navigation.setParams({id: null});
-  }
+  useEffect(() => {
+    const id = route.params && route.params.id;
+    if (id) {
+      const toEdit = howTos.findById(id);
+      draft.prepare(toEdit);
+      navigation.setParams({id: null});
+    }
+  });
 
-  const date = dayjs().format('MMM D').toUpperCase();
+  const date = useMemo(() => dayjs().format('MMM D').toUpperCase(), []);
   const _goBack = useCallback(() => navigation.goBack(), [navigation]);
   const _scrollDown = useCallback(() => _stepsRef.current.scrollDown(), [
     _stepsRef,
