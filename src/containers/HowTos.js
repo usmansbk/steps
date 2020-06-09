@@ -25,4 +25,14 @@ export default class HowTosContainer extends Container {
     });
     return howTo;
   };
+
+  removeHowTo = (json) => {
+    this.setState({
+      data: this.state.data.filter((howTo) => howTo.id !== json.id),
+    });
+  };
+
+  findById = (id) => {
+    return this.state.data.find((howTo) => howTo.id === id);
+  };
 }

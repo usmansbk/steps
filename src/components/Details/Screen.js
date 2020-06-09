@@ -7,64 +7,21 @@ import Confirm from '../common/Confirm';
 import Icon from '../common/Icon';
 import {colors} from '../../config/theme';
 
-const item = {
-  id: 1,
-  title: 'Create a PR',
-  date: new Date(),
-  steps: [
-    {
-      key: 1,
-      label: 'Go to the repo you want to work with',
-      attachment: null,
-    },
-    {
-      key: 2,
-      label:
-        'GGo to the repo you want to work withGo to the repo you want to work withGo to the repo you want to work withGo to the repo you want to work witho to the repo you want to work with',
-    },
-    {
-      key: 3,
-      label: 'Go to the repo you want to work with',
-    },
-    {
-      key: 4,
-      label: 'Go to the repo you want to work with',
-    },
-    {
-      key: 5,
-      label: 'Go to the repo you want to work with',
-    },
-    {
-      key: 6,
-      label: 'Go to the repo you want to work with',
-    },
-    {
-      key: 7,
-      label: 'Go to the repo you want to work with',
-    },
-    {
-      key: 8,
-      label: 'Go to the repo you want to work with',
-    },
-    {
-      key: 9,
-      label: 'Go to the repo you want to work with',
-    },
-    {
-      key: 10,
-      label: 'Go to the repo you want to work with',
-    },
-  ],
-};
+export default ({navigation, howTos, route}) => {
+  const id = route.params.id;
+  const item = howTos.findById(id) || {};
 
-export default ({navigation}) => {
   const [isVisible, setVisible] = useState(false);
   const date = dayjs(item.date).format('MMM D YYYY HH:MM').toUpperCase();
   const onDelete = () => setVisible(true);
-  const onEdit = () => navigation.navigate('New', {id: item.id});
+  const onEdit = () => navigation.navigate('New', {id});
   const _onCancel = () => setVisible(false);
-  const _onConfirm = () => null;
+  const _onConfirm = () => {
+    item.delete();
+    navigation.pop();
+  };
   const _goBack = () => navigation.goBack();
+
 
   return (
     <View style={styles.container}>
