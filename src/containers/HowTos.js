@@ -22,13 +22,20 @@ export default class HowTosContainer extends Container {
   addStep = (text) => {
     if (text) {
       const step = new Step(text);
-      console.log(step);
       this.setState((prev) => ({
         draft: Object.assign({}, prev.draft, {
           steps: [...prev.draft.steps, step],
         }),
       }));
     }
+  };
+
+  onSwap = (steps) => {
+    this.setState((prev) => ({
+      draft: Object.assign({}, prev.draft, {
+        steps,
+      }),
+    }));
   };
 
   get data() {

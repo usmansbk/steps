@@ -4,12 +4,6 @@ import FlatList from 'react-native-draggable-flatlist';
 import Item from './Item';
 
 export default class List extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: props.data,
-    };
-  }
   _onRef = (ref) => {
     this.flatlist = ref;
   };
@@ -35,13 +29,13 @@ export default class List extends React.Component {
   render() {
     return (
       <FlatList
-        data={this.state.data}
+        data={this.props.data}
         renderItem={this._renderItem}
         keyExtractor={this._keyExtractor}
         ListFooterComponent={this._renderFooter}
         ItemSeparatorComponent={this._renderSeparator}
         initialNumToRender={2}
-        onDragEnd={({data}) => this.setState({data})}
+        onDragEnd={({data}) => this.props.onSwap(data)}
         onRef={(ref) => {
           this.flatlist = ref;
         }}
@@ -52,7 +46,7 @@ export default class List extends React.Component {
 
 const styles = StyleSheet.create({
   footer: {
-    height: 50,
+    height: 100,
   },
   separator: {
     height: 10,

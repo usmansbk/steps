@@ -25,9 +25,11 @@ export default (props) => {
   const _scrollDown = () => _stepsRef.current.scrollDown();
   const _onAdd = () => {
     howTos.addStep(stepText);
+    onChangeStepText('');
     _scrollDown();
   };
   const _onSubmit = () => null;
+  const _onSwap = (data) => howTos.onSwap(data);
   console.log(draft);
 
   return (
@@ -56,7 +58,7 @@ export default (props) => {
           style={styles.textinput}
         />
       </View>
-      <Steps data={draft.steps} ref={_stepsRef} />
+      <Steps data={draft.steps} ref={_stepsRef} onSwap={_onSwap} />
       <StepBox
         value={stepText}
         onChangeText={onChangeStepText}
