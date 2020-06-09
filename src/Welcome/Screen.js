@@ -1,14 +1,13 @@
 import React from 'react';
 import {View, StyleSheet, Image} from 'react-native';
 import {Text} from 'react-native-paper';
-import {useStore} from '../config/context';
 import TextInput from '../common/TextInput';
 import Fab from '../common/Fab';
 
 export default ({navigation}) => {
-  const stores = useStore();
-  console.log(stores);
+  const userName = 'Friend';
   const onPress = () => navigation.navigate('Home');
+
   return (
     <View style={styles.container}>
       <Image source={require('../images/orange.png')} style={styles.avatar} />
@@ -17,8 +16,9 @@ export default ({navigation}) => {
       <View style={styles.input}>
         <TextInput
           autoFocus
+          value={userName}
           style={styles.textInput}
-          placeholder="Call me Friend..."
+          placeholder={`Call me ${userName}...`}
         />
       </View>
       <View style={styles.rest}>
