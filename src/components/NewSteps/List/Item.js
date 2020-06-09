@@ -3,7 +3,8 @@ import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import {Text, IconButton} from 'react-native-paper';
 import Icon from '../../common/Icon';
 
-export default ({step, details, onPress, onLongPress, isActive}) => {
+export default ({step, details, id, onDelete, onLongPress, isActive}) => {
+  const onPress = () => onDelete(id);
   return (
     <TouchableOpacity onLongPress={onLongPress}>
       <View>

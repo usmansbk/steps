@@ -25,4 +25,11 @@ export default class DraftContainer extends Container {
   onSwap = (steps) => {
     this.setState({steps});
   };
+
+  removeStep = (id) => {
+    console.log(id);
+    this.setState((prev) => ({
+      steps: prev.steps.filter((step) => step.id !== id),
+    }));
+  };
 }

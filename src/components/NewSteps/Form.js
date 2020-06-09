@@ -24,7 +24,6 @@ export default (props) => {
   const _onSubmit = () => null;
   const _onSwap = (data) => draft.onSwap(data);
   const _removeStep = (removeId) => draft.removeStep(removeId);
-  console.log(draft);
 
   return (
     <View style={styles.container}>

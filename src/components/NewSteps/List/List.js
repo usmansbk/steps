@@ -10,7 +10,7 @@ export default class List extends React.Component {
   scrollDown = () => {
     this.flatlist && this.flatlist.current._component.scrollToEnd();
   };
-  _onDelete = () => this.props.removeStep(this.props.id);
+  _onDelete = (id) => this.props.removeStep(id);
 
   _keyExtractor = (item, index) => String(index);
   _renderItem = ({item, drag, index, isActive}) => {
@@ -21,7 +21,7 @@ export default class List extends React.Component {
         details={item.label}
         isActive={isActive}
         onLongPress={drag}
-        onPress={this._onDelete}
+        onDelete={this._onDelete}
       />
     );
   };
