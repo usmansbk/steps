@@ -1,42 +1,14 @@
 import {Container} from 'unstated';
 import data from './data';
-import HowTo, {Step} from './HowTo';
+import HowTo from './HowTo';
 
 export default class HowTosContainer extends Container {
   state = {
     data: data,
     query: '',
-    draft: {
-      title: '',
-      steps: [],
-    },
   };
 
   filterData = (query) => this.setState({query});
-
-  onDraftTitleChange = (title) =>
-    this.setState((prev) => ({
-      draft: Object.assign({}, prev.draft, {title}),
-    }));
-
-  addStep = (text) => {
-    if (text) {
-      const step = new Step(text);
-      this.setState((prev) => ({
-        draft: Object.assign({}, prev.draft, {
-          steps: [...prev.draft.steps, step],
-        }),
-      }));
-    }
-  };
-
-  onSwap = (steps) => {
-    this.setState((prev) => ({
-      draft: Object.assign({}, prev.draft, {
-        steps,
-      }),
-    }));
-  };
 
   get data() {
     if (!this.state.query) {

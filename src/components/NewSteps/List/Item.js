@@ -11,6 +11,7 @@ export default ({step, details, onPress, onLongPress, isActive}) => {
           <Text>STEP {step + 1}</Text>
           <IconButton
             onPress={onPress}
+            disabled={isActive}
             icon={() => (
               <Icon
                 color="gray"

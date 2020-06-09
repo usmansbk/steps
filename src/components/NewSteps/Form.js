@@ -12,24 +12,18 @@ export default (props) => {
   const _stepsRef = React.useRef(null);
   const [stepText, onChangeStepText] = React.useState('');
 
-  const {howTos, navigation, route, isNew = true} = props;
+  const {draft, navigation, isNew = true} = props;
   const date = dayjs().format('MMM D').toUpperCase();
-  const id = route.params && route.params.id;
-  let draft;
-  if (!id) {
-    draft = howTos.state.draft;
-  } else {
-    draft = howTos.state.draft;
-  }
   const _goBack = () => navigation.goBack();
   const _scrollDown = () => _stepsRef.current.scrollDown();
   const _onAdd = () => {
-    howTos.addStep(stepText);
+    draft.addStep(stepText);
     onChangeStepText('');
     _scrollDown();
   };
   const _onSubmit = () => null;
-  const _onSwap = (data) => howTos.onSwap(data);
+  const _onSwap = (data) => draft.onSwap(data);
+  const _removeStep = (removeId) => draft.removeStep(removeId);
   console.log(draft);
 
   return (
@@ -51,18 +45,23 @@ export default (props) => {
       </View>
       <View style={styles.steps}>
         <TextInput
-          value={draft.title}
+          value={draft.state.title}
           autoFocus={isNew}
-          onChangeText={howTos.onDraftTitleChange}
+          onChangeText={draft.onTitleChange}
           placeholder="How to..."
           style={styles.textinput}
         />
       </View>
-      <Steps data={draft.steps} ref={_stepsRef} onSwap={_onSwap} />
+      <Steps
+        data={draft.state.steps}
+        ref={_stepsRef}
+        onSwap={_onSwap}
+        removeStep={_removeStep}
+      />
       <StepBox
         value={stepText}
         onChangeText={onChangeStepText}
-        step={draft.steps.length + 1}
+        step={draft.state.steps.length + 1}
         onAdd={_onAdd}
         disabled={!stepText}
       />

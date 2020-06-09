@@ -1,13 +1,13 @@
 import React from 'react';
 import {Subscribe} from 'unstated';
 import Screen from './Form';
-import HowTos from '../../containers/HowTos';
+import Draft from '../../containers/Draft';
 
 export default ({navigation, route}) => {
   return (
-    <Subscribe to={[HowTos]}>
-      {(howTos) => (
-        <Screen route={route} navigation={navigation} howTos={howTos} />
+    <Subscribe to={[Draft]}>
+      {(draft) => (
+        <Screen route={route} navigation={navigation} draft={draft} />
       )}
     </Subscribe>
   );
