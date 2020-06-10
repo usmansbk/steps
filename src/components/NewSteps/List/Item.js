@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
   head: {
     flexDirection: 'row',
     alignItems: 'center',
+    paddingLeft: 8,
     justifyContent: 'space-between',
   },
   number: {
