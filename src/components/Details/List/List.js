@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, FlatList, StyleSheet, Text} from 'react-native';
+import {Caption} from 'react-native-paper';
 import Footer from './Footer';
 import Item from './Item';
 
@@ -27,8 +28,9 @@ export default class List extends React.Component {
   _renderSeparator = () => <View style={styles.separator} />;
   _renderFooter = () => <Footer />;
   _renderHeader = () => (
-    <View>
+    <View style={styles.header}>
       <Text style={styles.heading}>{this.props.title}</Text>
+      <Caption style={styles.caption}>{this.props.category}</Caption>
     </View>
   );
 
@@ -36,7 +38,7 @@ export default class List extends React.Component {
     return (
       <FlatList
         data={this.props.data}
-        extraData={this.props.title}
+        extraData={this.props.title + this.props.category}
         renderItem={this._renderItem}
         keyExtractor={this._keyExtractor}
         ListFooterComponent={this._renderFooter}
@@ -51,9 +53,15 @@ const styles = StyleSheet.create({
   separator: {
     height: 8,
   },
+  header: {
+    paddingBottom: 8,
+  },
   heading: {
     fontSize: 27,
     fontWeight: 'bold',
-    paddingBottom: 8,
+  },
+  caption: {
+    fontWeight: 'bold',
+    fontSize: 14,
   },
 });

@@ -66,7 +66,7 @@ export default (props) => {
       }
     });
   }, []);
-  const {title, steps} = draft.state;
+  const {title, category, steps} = draft.state;
 
   return (
     <View style={styles.container}>
@@ -103,6 +103,12 @@ export default (props) => {
           placeholder="How to..."
           style={styles.textinput}
         />
+        <TextInput
+          value={category}
+          onChangeText={draft.onCategoryChange}
+          placeholder="Category: Recipe"
+          style={styles.category}
+        />
       </View>
       <Steps
         data={steps}
@@ -138,6 +144,10 @@ const styles = StyleSheet.create({
   },
   textinput: {
     fontSize: 27,
+    fontWeight: 'bold',
+  },
+  category: {
+    fontSize: 18,
     fontWeight: 'bold',
   },
   header: {

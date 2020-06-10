@@ -49,7 +49,12 @@ export default ({navigation, howTos, route}) => {
           />
         </View>
       </View>
-      <Steps title={item.title} data={item.steps} viewImage={_viewImage} />
+      <Steps
+        title={item.title}
+        category={item.category}
+        data={item.steps}
+        viewImage={_viewImage}
+      />
       <Confirm
         isVisible={isVisible}
         onCancel={_onCancel}

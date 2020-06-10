@@ -12,12 +12,19 @@ export default class DraftContainer extends PersistContainer {
   state = {
     id: null,
     title: '',
+    category: '',
     steps: [],
   };
 
   onTitleChange = (title) => {
     this.setState({
       title,
+    });
+  };
+
+  onCategoryChange = (category) => {
+    this.setState({
+      category,
     });
   };
 

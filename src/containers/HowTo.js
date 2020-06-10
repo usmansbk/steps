@@ -16,6 +16,7 @@ export default class HowToContainer {
   constructor(json) {
     this.id = json.id || shortid.generate();
     this.title = json.title;
+    this.category = json.category;
     this.date = dayjs().toISOString();
     this.steps = json.steps;
   }
