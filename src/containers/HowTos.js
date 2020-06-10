@@ -2,16 +2,17 @@ import AsyncStorage from '@react-native-community/async-storage';
 import {PersistContainer} from 'unstated-persist';
 import dayjs from 'dayjs';
 import HowTo from './HowTo';
+import tutorial from './tutorial';
 
 export default class HowTosContainer extends PersistContainer {
   persist = {
     key: 'howtos',
-    version: 1,
+    version: 2,
     storage: AsyncStorage,
   };
 
   state = {
-    data: [],
+    data: [tutorial],
     query: '',
   };
 
