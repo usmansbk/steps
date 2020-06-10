@@ -30,7 +30,9 @@ export default class List extends React.Component {
   _renderHeader = () => (
     <View style={styles.header}>
       <Text style={styles.heading}>{this.props.title}</Text>
-      <Caption style={styles.caption}>#{this.props.category}</Caption>
+      {Boolean(this.props.category) && (
+        <Caption style={styles.caption}>#{this.props.category}</Caption>
+      )}
     </View>
   );
 
