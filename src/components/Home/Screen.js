@@ -25,7 +25,7 @@ export default ({navigation, ui, howTos}) => {
     [navigation],
   );
 
-  let source = useMemo(() => require('../../images/orange.png'), []);
+  let source = useMemo(() => require('../../assets/orange.png'), []);
 
   return (
     <View style={styles.container}>
