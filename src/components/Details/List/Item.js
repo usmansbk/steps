@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import {Text} from 'react-native-paper';
+import {colors} from '../../../config/theme';
 
 export default ({label, photo, viewImage}) => {
   const _viewImage = () => viewImage(photo);
@@ -10,6 +11,7 @@ export default ({label, photo, viewImage}) => {
       {Boolean(photo) && (
         <TouchableOpacity onPress={_viewImage}>
           <Image
+            resizeMode="contain"
             source={photo}
             style={styles.image}
             defaultSource={require('../../../assets/noimage.jpg')}
@@ -23,12 +25,15 @@ export default ({label, photo, viewImage}) => {
 const styles = StyleSheet.create({
   container: {
     paddingVertical: 12,
+    backgroundColor: colors.lightGray,
+    borderRadius: 8,
   },
   label: {
     color: '#2d3436',
-    paddingBottom: 8,
+    padding: 8,
     fontSize: 15,
     lineHeight: 24,
+    marginBottom: 8,
   },
   step: {
     fontWeight: 'bold',
@@ -36,6 +41,8 @@ const styles = StyleSheet.create({
   },
   image: {
     height: 200,
+    width: '100%',
     borderRadius: 16,
+    marginBottom: 8,
   },
 });
