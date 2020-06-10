@@ -1,6 +1,7 @@
 export default {
   id: 1,
   title: 'Add a new Process',
+  category: 'Tutorial',
   date: new Date().toISOString(),
   steps: [
     {
@@ -20,21 +21,21 @@ export default {
       id: 3,
       key: 3,
       label:
-        'Now start adding all the steps as you go along. Remember you can always pause and add more later.',
+        'Now start adding all the steps as you go. You can always pause and add more later.',
       photo: require('../assets/addsteps.jpg'),
     },
     {
       id: 4,
       key: 4,
       label:
-        "You think you've got the order wrong? Dont worry you can always drag and swap steps. :)",
+        "Think you've got the order wrong? Dont worry you can always swap steps. :)",
       photo: require('../assets/swap.jpg'),
     },
     {
       id: 5,
       key: 5,
       label:
-        'Of course pictures are amazing. Add as much as you want with the button below',
+        'Of course pictures are amazing. Add as much as you want with the image button below',
       photo: require('../assets/addpics.jpg'),
     },
     {
