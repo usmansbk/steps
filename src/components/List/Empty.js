@@ -1,11 +1,15 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, Image} from 'react-native';
 import {Text} from 'react-native-paper';
 
 export default () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Do it once and I'll help you remember</Text>
+      <Image
+        resizeMode="contain"
+        source={require('../../assets/empty_list.png')}
+        style={styles.image}
+      />
     </View>
   );
 };
@@ -16,10 +20,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  text: {
-    fontSize: 27,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    color: 'gray',
+  image: {
+    width: 256,
+    height: 256,
   },
 });
