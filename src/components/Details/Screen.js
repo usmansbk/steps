@@ -67,7 +67,8 @@ export default ({navigation, howTos, route}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingVertical: 0,
     backgroundColor: 'white',
   },
   dateline: {
