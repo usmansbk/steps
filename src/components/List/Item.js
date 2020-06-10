@@ -4,7 +4,7 @@ import {Text, Caption} from 'react-native-paper';
 import dayjs from 'dayjs';
 import {colors} from '../../config/theme';
 
-export default ({title, date, onPress, id, head}) => {
+export default ({title, date, onPress, id, head, category}) => {
   const source = head && head.photo;
   const _onPress = () => onPress(id);
   return (
@@ -14,7 +14,10 @@ export default ({title, date, onPress, id, head}) => {
           <Text numberOfLines={2} ellipsizeMode="tail" style={styles.title}>
             {title}
           </Text>
-          <Caption>{dayjs(date).format('MMM D YYYY HH:MM')}</Caption>
+          <Caption>
+            {dayjs(date).format('MMM D YYYY')}{' '}
+            {Boolean(category) && <Caption>#{category}</Caption>}
+          </Caption>
         </View>
         {Boolean(source) && (
           <Image
