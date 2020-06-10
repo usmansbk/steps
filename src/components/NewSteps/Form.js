@@ -134,7 +134,7 @@ export default (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    paddingVertical: 0,
     paddingHorizontal: 16,
     paddingBottom: 4,
     backgroundColor: 'white',
