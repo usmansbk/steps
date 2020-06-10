@@ -13,29 +13,28 @@ export default {
     {
       id: 2,
       key: 2,
-      label:
-        'Enter a How-To title. It could be a recipe or a solution to anything...',
+      label: 'Enter your Recipe title...',
       photo: require('../assets/entertitle.jpg'),
     },
     {
       id: 3,
       key: 3,
       label:
-        'Now start adding all the steps as you go. You can always pause and add more later.',
+        'Now start adding all the steps as you go. You can always add more later.',
       photo: require('../assets/addsteps.jpg'),
     },
     {
       id: 4,
       key: 4,
       label:
-        "Think you've got the order wrong? Dont worry you can always swap steps. :)",
+        "Think you've got the order wrong? 🤔 Dont worry you can always swap steps. :)",
       photo: require('../assets/swap.jpg'),
     },
     {
       id: 5,
       key: 5,
       label:
-        'Of course pictures are amazing. Add as much as you want with the image button below',
+        'Of course pictures are amazing. Add as much as you like with the image button below',
       photo: require('../assets/addpics.jpg'),
     },
     {

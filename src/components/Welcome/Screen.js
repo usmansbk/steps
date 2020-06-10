@@ -24,10 +24,7 @@ export default ({navigation, ui}) => {
 
   return (
     <View style={styles.container}>
-      <Image
-        source={require('../../assets/orange.png')}
-        style={styles.avatar}
-      />
+      <Image source={require('../../assets/chef.png')} style={styles.avatar} />
       <Text style={styles.question}>Hello! Friend,</Text>
       <Text style={styles.question}>What should I call you?</Text>
       <View style={styles.input}>
