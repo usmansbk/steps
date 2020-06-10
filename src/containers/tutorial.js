@@ -1,6 +1,6 @@
 export default {
   id: 1,
-  title: 'Add a new How-To',
+  title: 'Add a new Process',
   date: new Date().toISOString(),
   steps: [
     {
