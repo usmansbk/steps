@@ -52,9 +52,7 @@ export default ({navigation, ui, howTos}) => {
           placeholder="How to..."
         />
       </View>
-      <View style={styles.list}>
-        <List data={data} navigateToDetails={navigateToDetails} />
-      </View>
+      <List data={data} navigateToDetails={navigateToDetails} />
       <View style={styles.fab}>
         <Fab icon="plus" onPress={() => navigation.navigate('New')} />
       </View>

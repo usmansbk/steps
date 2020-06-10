@@ -1,6 +1,5 @@
 import React from 'react';
 import {View, StyleSheet, Image} from 'react-native';
-import {Text} from 'react-native-paper';
 
 export default () => {
   return (
@@ -17,6 +16,7 @@ export default () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    height: 400,
     justifyContent: 'center',
     alignItems: 'center',
   },

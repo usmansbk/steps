@@ -29,7 +29,6 @@ export default class List extends React.Component {
     return (
       <FlatList
         data={[] || this.props.data}
-        contentContainerStyle={styles.list}
         keyExtractor={this._keyExtractor}
         renderItem={this._renderItem}
         initialNumToRender={2}
@@ -43,9 +42,6 @@ export default class List extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  list: {
-    height: '100%',
-  },
   separator: {
     height: 4,
   },
