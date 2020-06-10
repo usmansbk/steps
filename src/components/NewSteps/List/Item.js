@@ -17,7 +17,7 @@ export default ({
     <TouchableOpacity onLongPress={onLongPress}>
       <View>
         <View style={styles.head}>
-          <Text>STEP {step + 1}</Text>
+          <Text style={styles.step}>STEP {step + 1}</Text>
           <IconButton
             onPress={onPress}
             disabled={isActive}
@@ -54,8 +54,12 @@ const styles = StyleSheet.create({
     color: 'gray',
     fontSize: 16,
   },
-  details: {
+  step: {
     fontWeight: 'bold',
+  },
+  details: {
+    fontSize: 15,
+    lineHeight: 24,
   },
   image: {
     height: 200,
