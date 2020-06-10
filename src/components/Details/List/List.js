@@ -49,7 +49,7 @@ export default class List extends React.Component {
 
 const styles = StyleSheet.create({
   separator: {
-    height: 8,
+    height: 4,
   },
   heading: {
     fontSize: 27,
