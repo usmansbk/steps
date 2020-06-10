@@ -1,4 +1,4 @@
-package com.devusman.howtodo;
+package com.hng.howtodo;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "HowToDo";
+    return "MyRecipeDiary";
   }
 }

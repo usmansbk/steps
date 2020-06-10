@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "HowToDo.app"
-               BlueprintName = "HowToDo"
-               ReferencedContainer = "container:HowToDo.xcodeproj">
+               BuildableName = "MyRecipeDiary.app"
+               BlueprintName = "MyRecipeDiary"
+               ReferencedContainer = "container:MyRecipeDiary.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "HowToDoTests.xctest"
-               BlueprintName = "HowToDoTests"
-               ReferencedContainer = "container:HowToDo.xcodeproj">
+               BuildableName = "MyRecipeDiaryTests.xctest"
+               BlueprintName = "MyRecipeDiaryTests"
+               ReferencedContainer = "container:MyRecipeDiary.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "HowToDo.app"
-            BlueprintName = "HowToDo"
-            ReferencedContainer = "container:HowToDo.xcodeproj">
+            BuildableName = "MyRecipeDiary.app"
+            BlueprintName = "MyRecipeDiary"
+            ReferencedContainer = "container:MyRecipeDiary.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "HowToDo.app"
-            BlueprintName = "HowToDo"
-            ReferencedContainer = "container:HowToDo.xcodeproj">
+            BuildableName = "MyRecipeDiary.app"
+            BlueprintName = "MyRecipeDiary"
+            ReferencedContainer = "container:MyRecipeDiary.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

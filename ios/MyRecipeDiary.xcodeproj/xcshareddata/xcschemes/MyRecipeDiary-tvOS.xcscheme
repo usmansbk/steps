@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "HowToDo-tvOS.app"
-               BlueprintName = "HowToDo-tvOS"
-               ReferencedContainer = "container:HowToDo.xcodeproj">
+               BuildableName = "MyRecipeDiary-tvOS.app"
+               BlueprintName = "MyRecipeDiary-tvOS"
+               ReferencedContainer = "container:MyRecipeDiary.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "HowToDo-tvOSTests.xctest"
-               BlueprintName = "HowToDo-tvOSTests"
-               ReferencedContainer = "container:HowToDo.xcodeproj">
+               BuildableName = "MyRecipeDiary-tvOSTests.xctest"
+               BlueprintName = "MyRecipeDiary-tvOSTests"
+               ReferencedContainer = "container:MyRecipeDiary.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "HowToDo-tvOS.app"
-            BlueprintName = "HowToDo-tvOS"
-            ReferencedContainer = "container:HowToDo.xcodeproj">
+            BuildableName = "MyRecipeDiary-tvOS.app"
+            BlueprintName = "MyRecipeDiary-tvOS"
+            ReferencedContainer = "container:MyRecipeDiary.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "HowToDo-tvOS.app"
-            BlueprintName = "HowToDo-tvOS"
-            ReferencedContainer = "container:HowToDo.xcodeproj">
+            BuildableName = "MyRecipeDiary-tvOS.app"
+            BlueprintName = "MyRecipeDiary-tvOS"
+            ReferencedContainer = "container:MyRecipeDiary.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

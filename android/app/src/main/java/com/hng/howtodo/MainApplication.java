@@ -1,4 +1,4 @@
-package com.devusman.howtodo;
+package com.hng.howtodo;
 
 import android.app.Application;
 import android.content.Context;
@@ -63,7 +63,7 @@ public class MainApplication extends Application implements ReactApplication {
          We use reflection here to pick up the class that initializes Flipper,
         since Flipper library is not available in release mode
         */
-        Class<?> aClass = Class.forName("com.devusman.howtodo.ReactNativeFlipper");
+        Class<?> aClass = Class.forName("com.hng.howtodo.ReactNativeFlipper");
         aClass
             .getMethod("initializeFlipper", Context.class, ReactInstanceManager.class)
             .invoke(null, context, reactInstanceManager);

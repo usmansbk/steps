@@ -44,8 +44,8 @@ def flipper_post_install(installer)
   end
 end
 
-target 'HowToDo' do
-  # Pods for HowToDo
+target 'MyRecipeDiary' do
+  # Pods for MyRecipeDiary
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -79,7 +79,7 @@ target 'HowToDo' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
-  target 'HowToDoTests' do
+  target 'MyRecipeDiaryTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -96,10 +96,10 @@ target 'HowToDo' do
   end
 end
 
-target 'HowToDo-tvOS' do
-  # Pods for HowToDo-tvOS
+target 'MyRecipeDiary-tvOS' do
+  # Pods for MyRecipeDiary-tvOS
 
-  target 'HowToDo-tvOSTests' do
+  target 'MyRecipeDiary-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end
