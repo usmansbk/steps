@@ -20,7 +20,7 @@ export default ({title, date, onPress, id, head}) => {
           <Image
             source={source}
             style={styles.image}
-            defaultSource={require('../../images/noimage.jpg')}
+            defaultSource={require('../../assets/noimage.jpg')}
           />
         )}
       </View>

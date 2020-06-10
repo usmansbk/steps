@@ -32,7 +32,7 @@ export default ({
         </View>
         {Boolean(photo) && (
           <Image
-            defaultSource={require('../../../images/noimage.jpg')}
+            defaultSource={require('../../../assets/noimage.jpg')}
             source={photo}
             style={styles.image}
           />

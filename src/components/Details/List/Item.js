@@ -12,7 +12,7 @@ export default ({label, photo, viewImage}) => {
           <Image
             source={photo}
             style={styles.image}
-            defaultSource={require('../../../images/noimage.jpg')}
+            defaultSource={require('../../../assets/noimage.jpg')}
           />
         </TouchableOpacity>
       )}
