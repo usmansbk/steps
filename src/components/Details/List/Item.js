@@ -27,6 +27,8 @@ const styles = StyleSheet.create({
   label: {
     color: '#2d3436',
     paddingBottom: 8,
+    fontSize: 15,
+    lineHeight: 24,
   },
   step: {
     fontWeight: 'bold',
