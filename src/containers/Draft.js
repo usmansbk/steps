@@ -60,6 +60,7 @@ export default class DraftContainer extends PersistContainer {
       id: json.id,
       title: json.title,
       steps: json.steps,
+      category: json.category,
     });
   };
 }
