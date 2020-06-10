@@ -31,6 +31,8 @@ export default ({
       <TextInput
         style={styles.textinput}
         placeholder={`Step ${step}...`}
+        multiline
+        maxHeight={150}
         {...rest}
       />
     </View>
