@@ -51,6 +51,7 @@ export default class DraftContainer extends PersistContainer {
     this.setState({
       id: null,
       title: '',
+      category: '',
       steps: [],
     });
   };
