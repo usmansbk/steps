@@ -106,7 +106,7 @@ export default (props) => {
         <TextInput
           value={category}
           onChangeText={draft.onCategoryChange}
-          placeholder="Category: Recipe"
+          placeholder="Category"
           style={styles.category}
         />
       </View>

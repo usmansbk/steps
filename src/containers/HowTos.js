@@ -4,6 +4,25 @@ import dayjs from 'dayjs';
 import HowTo from './HowTo';
 import tutorial from './tutorial';
 
+function matchCategoryAndTitle(data, query) {
+  const searchRegex = /(#\w+\S)?\s?([\w\s\W]+)/gi;
+
+  const matches = searchRegex.exec(query);
+  return data.filter((item) => {
+    let matchCategory = true;
+    let matchTitle = true;
+    if (matches) {
+      const [, category, title] = matches;
+      matchTitle = item.title.toLocaleLowerCase().includes(title);
+      if (category) {
+        let cat = category.slice(1);
+        matchCategory = item.category.toLocaleLowerCase().includes(cat);
+      }
+    }
+    return matchCategory && matchTitle;
+  });
+}
+
 export default class HowTosContainer extends PersistContainer {
   persist = {
     key: 'howtos',
@@ -22,8 +41,9 @@ export default class HowTosContainer extends PersistContainer {
     if (!this.state.query) {
       return this.state.data.sort((a, b) => dayjs(a.date).diff(b.date) * -1);
     }
-    return this.state.data.filter((item) =>
-      item.title.toLowerCase().includes(this.state.query.toLowerCase()),
+    return matchCategoryAndTitle(
+      this.state.data,
+      this.state.query.toLocaleLowerCase(),
     );
   }
 
