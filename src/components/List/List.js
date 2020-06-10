@@ -28,7 +28,7 @@ export default class List extends React.Component {
   render() {
     return (
       <FlatList
-        data={[] || this.props.data}
+        data={this.props.data}
         keyExtractor={this._keyExtractor}
         renderItem={this._renderItem}
         initialNumToRender={2}
