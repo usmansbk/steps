@@ -5,11 +5,16 @@ import dayjs from 'dayjs';
 import {colors} from '../../config/theme';
 
 export default ({title, date, onPress, id, head, category}) => {
-  const source = head && head.photo;
+  const source = head ? head.photo : require('../../assets/fish.png');
   const _onPress = () => onPress(id);
   return (
     <TouchableOpacity onPress={_onPress}>
       <View style={styles.container}>
+        <Image
+          source={source}
+          style={styles.image}
+          defaultSource={require('../../assets/fish.png')}
+        />
         <View style={styles.body}>
           <Text numberOfLines={2} ellipsizeMode="tail" style={styles.title}>
             {title}
@@ -19,13 +24,6 @@ export default ({title, date, onPress, id, head, category}) => {
             {Boolean(category) && <Caption>#{category}</Caption>}
           </Caption>
         </View>
-        {Boolean(source) && (
-          <Image
-            source={source}
-            style={styles.image}
-            defaultSource={require('../../assets/noimage.jpg')}
-          />
-        )}
       </View>
     </TouchableOpacity>
   );
@@ -34,7 +32,7 @@ export default ({title, date, onPress, id, head, category}) => {
 const styles = StyleSheet.create({
   container: {
     height: 80,
-    padding: 16,
+    padding: 12,
     flexDirection: 'row',
     backgroundColor: colors.accentOpacity,
     borderRadius: 8,
@@ -43,6 +41,7 @@ const styles = StyleSheet.create({
   },
   body: {
     flex: 1,
+    paddingLeft: 8,
   },
   image: {
     height: 60,
