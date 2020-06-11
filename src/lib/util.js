@@ -16,3 +16,33 @@ export function filterByQuery(data, query) {
     return matchCategory && matchTitle;
   });
 }
+
+export function exportRecipeAsText(item) {
+  let subject;
+  const title = (subject = item.title);
+  const message = extractMessage(item);
+  const content = {
+    message,
+    title,
+  };
+  const options = {
+    subject,
+    dialogTitle: 'Share instructions via',
+  };
+
+  return [content, options];
+}
+
+function extractMessage({title, steps, category = []}) {
+  let message = '';
+  if (title) {
+    message = `[${title}\n]`;
+  }
+  if (category) {
+    message += `${category}\n`;
+  }
+  steps.forEach((step) => {
+    message += `\n${step.label}\n`;
+  });
+  return message;
+}

@@ -1,11 +1,18 @@
 import React, {useState, useCallback, useMemo} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, Share} from 'react-native';
 import {Text, IconButton} from 'react-native-paper';
 import dayjs from 'dayjs';
 import Steps from './List';
 import Confirm from '../common/Confirm';
 import Icon from '../common/Icon';
 import {colors} from '../../config/theme';
+import {exportRecipeAsText} from '../../lib/util';
+
+function share([content, options]) {
+  Share.share(content, options)
+    .then(() => null)
+    .catch(console.log);
+}
 
 export default ({navigation, howTos, route}) => {
   const id = route.params.id;
@@ -29,16 +36,25 @@ export default ({navigation, howTos, route}) => {
     (source) => navigation.navigate('ImageViewer', {source}),
     [navigation],
   );
+  const _share = useCallback(() => share(exportRecipeAsText(item)), [item]);
 
   return (
     <View style={styles.container}>
-      <View style={styles.dateline}>
-        <IconButton
-          onPress={_goBack}
-          icon={() => <Icon name="left" size={24} />}
-        />
-        <Text>{date}</Text>
+      <View style={styles.appbar}>
+        <View style={styles.left}>
+          <IconButton
+            onPress={_goBack}
+            icon={() => <Icon name="left" size={24} />}
+          />
+          <Text numberOfLines={1} ellipsizeMode="tail">
+            {date}
+          </Text>
+        </View>
         <View style={styles.menu}>
+          <IconButton
+            onPress={_share}
+            icon={() => <Icon name="sharealt" size={24} />}
+          />
           <IconButton
             onPress={onEdit}
             icon={() => <Icon name="edit" size={24} />}
@@ -71,12 +87,16 @@ const styles = StyleSheet.create({
     paddingVertical: 0,
     backgroundColor: 'white',
   },
-  dateline: {
+  appbar: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
   menu: {
     flexDirection: 'row',
+  },
+  left: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
