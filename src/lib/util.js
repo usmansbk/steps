@@ -50,8 +50,8 @@ function extractMessage({title, steps, category = []}) {
 }
 
 export async function scrapper(url) {
-  console.log('scrape', url);
-  throw new Error('Unable to scrape site for recipe');
+  const body = await fetch(url).then((res) => res.text());
+  console.log(body);
   return {
     title: 'Scrapped',
     category: 'online',
