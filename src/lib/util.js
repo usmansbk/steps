@@ -36,10 +36,10 @@ export function exportRecipeAsText(item) {
 function extractMessage({title, steps, category = []}) {
   let message = '';
   if (title) {
-    message = `[${title}\n]`;
+    message = `${title}\n`;
   }
   if (category) {
-    message += `${category}\n`;
+    message += `(${category})\n`;
   }
   steps.forEach((step) => {
     if (step.label) {
