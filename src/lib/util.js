@@ -42,7 +42,9 @@ function extractMessage({title, steps, category = []}) {
     message += `${category}\n`;
   }
   steps.forEach((step) => {
-    message += `\n${step.label}\n`;
+    if (step.label) {
+      message += `\n${step.label}\n`;
+    }
   });
   return message;
 }
