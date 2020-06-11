@@ -48,3 +48,13 @@ function extractMessage({title, steps, category = []}) {
   });
   return message;
 }
+
+export async function scrapper(url) {
+  console.log('scrape', url);
+  throw new Error('Unable to scrape site for recipe');
+  return {
+    title: 'Scrapped',
+    category: 'online',
+    steps: [],
+  };
+}

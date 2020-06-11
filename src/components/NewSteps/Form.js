@@ -1,13 +1,15 @@
 import React, {useState, useCallback, useEffect, useMemo} from 'react';
 import dayjs from 'dayjs';
+import isUrl from 'is-url';
 import {View, StyleSheet, Platform} from 'react-native';
-import {Text, IconButton} from 'react-native-paper';
+import {Text, IconButton, ProgressBar, Snackbar} from 'react-native-paper';
 import ImagePicker from 'react-native-image-picker';
 import TextInput from '../common/TextInput';
 import Icon from '../common/Icon';
 import Steps from './List';
 import StepBox from './StepBox';
 import {colors} from '../../config/theme';
+import {scrapper} from '../../lib/util';
 
 const options = {
   title: 'Select Picture',
@@ -20,8 +22,11 @@ export default (props) => {
   const _stepsRef = React.useRef(null);
   const [stepText, onChangeStepText] = useState('');
   const [photo, setPhoto] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const {draft, navigation, howTos, route} = props;
+  const {title, category, steps} = draft.state;
 
   useEffect(() => {
     const id = route.params && route.params.id;
@@ -66,7 +71,23 @@ export default (props) => {
       }
     });
   }, []);
-  const {title, category, steps} = draft.state;
+
+  const _onBlur = async () => {
+    if (isUrl(title)) {
+      setLoading(true);
+      try {
+        const recipe = await scrapper(title);
+        draft.prepare(recipe);
+      } catch (e) {
+        setError(e.message);
+      }
+      setLoading(false);
+    }
+  };
+
+  const _onDismissSnackBar = useCallback(() => {
+    setError('');
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -86,7 +107,7 @@ export default (props) => {
               icon={() => <Icon color={colors.danger} name="close" size={24} />}
             />
             <IconButton
-              disabled={!title}
+              disabled={!title || loading}
               onPress={_onSubmit}
               icon={() => (
                 <Icon color={colors.accent} name="pushpin" size={24} />
@@ -96,18 +117,22 @@ export default (props) => {
         </View>
       </View>
       <View style={styles.steps}>
+        {loading && <ProgressBar indeterminate />}
         <TextInput
           value={title}
           autoFocus={!title}
           onChangeText={draft.onTitleChange}
+          onBlur={_onBlur}
           placeholder="How to..."
           style={styles.textinput}
+          disabled={loading}
         />
         <TextInput
           value={category}
           onChangeText={draft.onCategoryChange}
           placeholder="Category"
           style={styles.category}
+          disabled={loading}
         />
       </View>
       <Steps
@@ -116,6 +141,13 @@ export default (props) => {
         onSwap={_onSwap}
         removeStep={_removeStep}
       />
+      <Snackbar
+        duration={Snackbar.DURATION_SHORT}
+        visible={Boolean(error)}
+        style={styles.snack}
+        onDismiss={_onDismissSnackBar}>
+        {error}
+      </Snackbar>
       <StepBox
         value={stepText}
         photo={photo}
@@ -125,7 +157,8 @@ export default (props) => {
         step={steps.length + 1}
         onAdd={_onAdd}
         autoFocus={title}
-        disabled={!(stepText || photo)}
+        disabled={!(stepText || photo) || loading}
+        editable={!loading}
       />
     </View>
   );
@@ -161,5 +194,8 @@ const styles = StyleSheet.create({
   rowBtn: {
     flexDirection: 'row',
     alignSelf: 'flex-end',
+  },
+  snack: {
+    backgroundColor: colors.danger,
   },
 });
