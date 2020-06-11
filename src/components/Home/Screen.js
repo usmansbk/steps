@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   fab: {
-    alignItems: 'center',
+    alignItems: 'flex-end',
   },
   list: {
     flex: 1,
