@@ -5,23 +5,25 @@ import shortid from 'shortid';
  */
 export function getProcess(data) {
   if (Array.isArray(data)) {
+    const recipe = data.find((item) => item['@type'] === 'Recipe') || {};
     const howTo = data.find((item) => item['@type'] === 'HowTo');
     if (howTo) {
       const {name, step, image} = howTo;
-      const category = howTo['@type'];
       let steps = [];
+      let ingredients = recipe.recipeIngredient.join('\n');
       // Add image to the recipe
       if (image) {
         steps.push({
           photo: {
             uri: image.url,
           },
+          label: ingredients,
         });
       }
       steps = steps.concat(process(step));
       return {
         title: name,
-        category,
+        category: recipe.recipeCategory || howTo['@type'],
         steps,
       };
     }
