@@ -8,7 +8,7 @@ import tutorial from './tutorial';
 export default class HowTosContainer extends PersistContainer {
   persist = {
     key: 'howtos',
-    version: 2,
+    version: 3,
     storage: AsyncStorage,
   };
 
@@ -26,8 +26,8 @@ export default class HowTosContainer extends PersistContainer {
     return filterByQuery(this.state.data, this.state.query.toLocaleLowerCase());
   }
 
-  createHowTo = (json, image) => {
-    const howTo = new HowTo(json, image);
+  createHowTo = (json) => {
+    const howTo = new HowTo(json);
     if (json.id) {
       this.setState({
         data: this.state.data

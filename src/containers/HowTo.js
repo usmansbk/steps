@@ -13,7 +13,7 @@ export class Step {
   }
 }
 export default class HowToContainer {
-  constructor(json, image) {
+  constructor(json) {
     this.id = json.id || shortid.generate();
     this.title = json.title;
     this.image = json.image;

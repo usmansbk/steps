@@ -5,7 +5,7 @@ import {Step} from './HowTo';
 export default class DraftContainer extends PersistContainer {
   persist = {
     key: 'draft',
-    version: 2,
+    version: 3,
     storage: AsyncStorage,
   };
 
@@ -16,6 +16,12 @@ export default class DraftContainer extends PersistContainer {
     category: '',
     ingredients: '',
     steps: [],
+  };
+
+  setImage = (image) => {
+    this.setState({
+      image,
+    });
   };
 
   onTitleChange = (title) => {

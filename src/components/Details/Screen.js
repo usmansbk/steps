@@ -66,8 +66,10 @@ export default ({navigation, howTos, route}) => {
         </View>
       </View>
       <Steps
+        image={item.image}
         title={item.title}
         category={item.category}
+        ingredients={item.ingredients}
         data={item.steps}
         viewImage={_viewImage}
       />

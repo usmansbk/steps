@@ -4,8 +4,8 @@ import {Text, Caption} from 'react-native-paper';
 import dayjs from 'dayjs';
 import {colors} from '../../config/theme';
 
-export default ({title, date, onPress, id, head, category}) => {
-  const source = head ? head.photo : require('../../assets/fish.png');
+export default ({title, date, onPress, id, image, category}) => {
+  const source = image || require('../../assets/fish.png');
   const _onPress = () => onPress(id);
   return (
     <TouchableOpacity onPress={_onPress}>
