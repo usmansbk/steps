@@ -3,11 +3,25 @@ import {View, StyleSheet} from 'react-native';
 import FlatList from 'react-native-draggable-flatlist';
 import Item from './Item';
 import Header from './Header';
+import Fab from '../../common/Fab';
 
 export default class List extends React.Component {
+  state = {
+    offsetY: 0,
+  };
   _onRef = (ref) => {
     this.flatlist = ref;
   };
+
+  _onScroll = (offsetY) => {
+    this.setState({
+      offsetY,
+    });
+  };
+
+  _scrollToTop = () =>
+    this.flatlist.current._component.scrollToIndex({index: 0});
+
   scrollDown = () => {
     this.flatlist && this.flatlist.current._component.scrollToEnd();
   };
@@ -62,21 +76,28 @@ export default class List extends React.Component {
 
   render() {
     return (
-      <FlatList
-        data={this.props.data}
-        removeClippedSubviews={false}
-        renderItem={this._renderItem}
-        keyExtractor={this._keyExtractor}
-        ListFooterComponent={this._renderFooter}
-        ListHeaderComponent={this._renderHeader}
-        ItemSeparatorComponent={this._renderSeparator}
-        initialNumToRender={1}
-        keyboardShouldPersistTaps="always"
-        onDragEnd={({data}) => this.props.onSwap(data)}
-        onRef={(ref) => {
-          this.flatlist = ref;
-        }}
-      />
+      <>
+        <FlatList
+          data={this.props.data}
+          removeClippedSubviews={false}
+          renderItem={this._renderItem}
+          onScrollOffsetChange={this._onScroll}
+          keyExtractor={this._keyExtractor}
+          ListFooterComponent={this._renderFooter}
+          ListHeaderComponent={this._renderHeader}
+          ItemSeparatorComponent={this._renderSeparator}
+          initialNumToRender={1}
+          keyboardShouldPersistTaps="always"
+          onDragEnd={({data}) => this.props.onSwap(data)}
+          onRef={(ref) => {
+            this.flatlist = ref;
+          }}
+          onScroll={this._onScroll}
+        />
+        {Boolean(this.state.offsetY > 600) && (
+          <Fab small style={styles.fab} icon="up" onPress={this._scrollToTop} />
+        )}
+      </>
     );
   }
 }
@@ -87,5 +108,10 @@ const styles = StyleSheet.create({
   },
   separator: {
     height: 10,
+  },
+  fab: {
+    right: 0,
+    bottom: 90,
+    margin: 16,
   },
 });
