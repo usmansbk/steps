@@ -22,7 +22,6 @@ export default ({
       <TextInput
         value={title}
         autoFocus={!title}
-        multiline
         onChangeText={onChangeTitle}
         onBlur={onBlurTitle}
         placeholder="How to make..."
