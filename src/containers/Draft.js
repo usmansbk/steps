@@ -13,6 +13,7 @@ export default class DraftContainer extends PersistContainer {
     id: null,
     title: '',
     category: '',
+    ingredients: '',
     steps: [],
   };
 
@@ -25,6 +26,12 @@ export default class DraftContainer extends PersistContainer {
   onCategoryChange = (category) => {
     this.setState({
       category,
+    });
+  };
+
+  onChangeIngredients = (ingredients) => {
+    this.setState({
+      ingredients,
     });
   };
 
@@ -52,6 +59,7 @@ export default class DraftContainer extends PersistContainer {
       id: null,
       title: '',
       category: '',
+      ingredients: '',
       steps: [],
     });
   };
@@ -60,6 +68,7 @@ export default class DraftContainer extends PersistContainer {
     this.setState({
       id: json.id,
       title: json.title,
+      ingredients: json.ingredients,
       steps: json.steps,
       category: json.category,
     });

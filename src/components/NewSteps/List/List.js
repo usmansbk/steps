@@ -2,6 +2,7 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import FlatList from 'react-native-draggable-flatlist';
 import Item from './Item';
+import Header from './Header';
 
 export default class List extends React.Component {
   _onRef = (ref) => {
@@ -28,14 +29,41 @@ export default class List extends React.Component {
   };
   _renderFooter = () => <View style={styles.footer} />;
   _renderSeparator = () => <View style={styles.separator} />;
+  _renderHeader = () => {
+    const {
+      title,
+      category,
+      ingredients,
+      onChangeIngredients,
+      onChangeCategory,
+      onChangeTitle,
+      onBlurTitle,
+      loading,
+    } = this.props;
+    return (
+      <Header
+        title={title}
+        category={category}
+        ingredients={ingredients}
+        onBlurTitle={onBlurTitle}
+        onChangeIngredients={onChangeIngredients}
+        onChangeCategory={onChangeCategory}
+        onChangeTitle={onChangeTitle}
+        loading={loading}
+      />
+    );
+  };
 
   render() {
     return (
       <FlatList
         data={this.props.data}
+        extraData={this.props.title}
+        removeClippedSubviews={false}
         renderItem={this._renderItem}
         keyExtractor={this._keyExtractor}
         ListFooterComponent={this._renderFooter}
+        ListHeaderComponent={this._renderHeader}
         ItemSeparatorComponent={this._renderSeparator}
         initialNumToRender={1}
         keyboardShouldPersistTaps="always"

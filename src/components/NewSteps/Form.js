@@ -4,7 +4,6 @@ import isUrl from 'is-url';
 import {View, StyleSheet, Platform} from 'react-native';
 import {Text, IconButton, ProgressBar, Snackbar} from 'react-native-paper';
 import ImagePicker from 'react-native-image-picker';
-import TextInput from '../common/TextInput';
 import Icon from '../common/Icon';
 import Steps from './List';
 import StepBox from './StepBox';
@@ -116,26 +115,15 @@ export default (props) => {
           </View>
         </View>
       </View>
-      <View style={styles.steps}>
-        {loading && <ProgressBar indeterminate />}
-        <TextInput
-          value={title}
-          autoFocus={!title}
-          onChangeText={draft.onTitleChange}
-          onBlur={_onBlur}
-          placeholder="How to..."
-          style={styles.textinput}
-          disabled={loading}
-        />
-        <TextInput
-          value={category}
-          onChangeText={draft.onCategoryChange}
-          placeholder="Category"
-          style={styles.category}
-          disabled={loading}
-        />
-      </View>
+      {loading && <ProgressBar indeterminate />}
       <Steps
+        title={title}
+        onChangeTitle={draft.onTitleChange}
+        onBlurTitle={_onBlur}
+        category={category}
+        onChangeCategory={draft.onCategoryChange}
+        onChangeIngredients={draft.onChangeIngredients}
+        disable={loading}
         data={steps}
         ref={_stepsRef}
         onSwap={_onSwap}
@@ -174,14 +162,6 @@ const styles = StyleSheet.create({
   },
   date: {
     alignItems: 'center',
-  },
-  textinput: {
-    fontSize: 27,
-    fontWeight: 'bold',
-  },
-  category: {
-    fontSize: 18,
-    fontWeight: 'bold',
   },
   header: {
     flexDirection: 'row',
