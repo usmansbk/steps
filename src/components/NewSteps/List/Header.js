@@ -25,7 +25,7 @@ export default ({
         multiline
         onChangeText={onChangeTitle}
         onBlur={onBlurTitle}
-        placeholder="How to..."
+        placeholder="How to make..."
         style={styles.textinput}
       />
       <TextInput
