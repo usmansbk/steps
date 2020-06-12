@@ -7,15 +7,15 @@ export default class List extends React.Component {
   _onPressItem = (id) => this.props.navigateToDetails(id);
 
   _renderItem = ({item}) => {
-    const {id, title, date, steps, category} = item;
+    const {id, title, date, category, image} = item;
     return (
       <Item
         id={id}
         title={title}
+        image={image}
         date={date}
         category={category}
         onPress={this._onPressItem}
-        head={steps[0]}
       />
     );
   };
