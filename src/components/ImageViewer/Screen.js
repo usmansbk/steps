@@ -14,7 +14,12 @@ export default ({route, navigation}) => {
           icon={() => <Icon name="left" size={24} />}
         />
       </Appbar>
-      <Image source={source} resizeMode="contain" style={styles.image} />
+      <Image
+        defaultSource={require('../../assets/fish.png')}
+        source={source}
+        resizeMode="contain"
+        style={styles.image}
+      />
     </View>
   );
 };

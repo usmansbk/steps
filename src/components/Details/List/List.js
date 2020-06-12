@@ -1,5 +1,12 @@
 import React from 'react';
-import {View, FlatList, StyleSheet, Text, Image} from 'react-native';
+import {
+  View,
+  TouchableOpacity,
+  FlatList,
+  StyleSheet,
+  Text,
+  Image,
+} from 'react-native';
 import {Caption} from 'react-native-paper';
 import Footer from './Footer';
 import Item from './Item';
@@ -33,12 +40,15 @@ export default class List extends React.Component {
       {Boolean(this.props.category) && (
         <Caption style={styles.caption}>#{this.props.category}</Caption>
       )}
-      <Image
-        resizeMode="contain"
-        style={styles.image}
-        source={this.props.image || require('../../../assets/fish.png')}
-        defaultSource={require('../../../assets/fish.png')}
-      />
+      <TouchableOpacity
+        onPress={() => this._navigateToImageViewer(this.props.image)}>
+        <Image
+          resizeMode={this.props.image ? 'cover' : 'contain'}
+          style={styles.image}
+          source={this.props.image || require('../../../assets/fish.png')}
+          defaultSource={require('../../../assets/fish.png')}
+        />
+      </TouchableOpacity>
       <Text style={styles.ingredients}>{this.props.ingredients}</Text>
     </View>
   );
@@ -81,6 +91,7 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: 200,
+    marginVertical: 8,
     borderRadius: 16,
     alignSelf: 'center',
   },
