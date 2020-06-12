@@ -31,6 +31,10 @@ export default (props) => {
 
   const date = useMemo(() => dayjs().format('MMM D').toUpperCase(), []);
   const _goBack = useCallback(() => navigation.goBack(), [navigation]);
+  const _navigateToEditStep = useCallback(
+    (id) => navigation.navigate('EditStep', {id}),
+    [navigation],
+  );
   const _scrollDown = useCallback(() => _stepsRef.current.scrollDown(), [
     _stepsRef,
   ]);
@@ -110,6 +114,7 @@ export default (props) => {
         ingredients={ingredients}
         onChangeCategory={draft.onCategoryChange}
         onChangeIngredients={draft.onChangeIngredients}
+        navigateToEditStep={_navigateToEditStep}
         disable={loading}
         data={steps}
         ref={_stepsRef}

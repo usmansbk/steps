@@ -11,9 +11,12 @@ export default ({
   id,
   onDelete,
   onLongPress,
+  onEditStep,
   isActive,
 }) => {
   const onPress = () => onDelete(id);
+  const _editStep = () => onEditStep(id);
+
   return (
     <TouchableOpacity onLongPress={onLongPress}>
       <View style={styles.container}>
@@ -21,7 +24,7 @@ export default ({
           <Text style={styles.step}>STEP {step + 1}</Text>
           <View style={styles.stepMenu}>
             <IconButton
-              onPress={onPress}
+              onPress={_editStep}
               disabled={isActive}
               icon={() => <Icon color="gray" size={20} name="edit" />}
             />

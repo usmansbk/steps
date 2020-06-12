@@ -12,6 +12,7 @@ export default class List extends React.Component {
     this.flatlist && this.flatlist.current._component.scrollToEnd();
   };
   _onDelete = (id) => this.props.removeStep(id);
+  _onEditStep = (id) => this.props.navigateToEditStep(id);
 
   _keyExtractor = (item, index) => String(index);
   _renderItem = ({item, drag, index, isActive}) => {
@@ -24,6 +25,7 @@ export default class List extends React.Component {
         isActive={isActive}
         onLongPress={drag}
         onDelete={this._onDelete}
+        onEditStep={this._onEditStep}
       />
     );
   };
