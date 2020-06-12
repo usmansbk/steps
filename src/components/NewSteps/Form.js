@@ -25,7 +25,7 @@ export default (props) => {
   const [error, setError] = useState('');
 
   const {draft, navigation, howTos, route} = props;
-  const {title, category, steps} = draft.state;
+  const {title, category, ingredients, steps} = draft.state;
 
   useEffect(() => {
     const id = route.params && route.params.id;
@@ -121,6 +121,7 @@ export default (props) => {
         onChangeTitle={draft.onTitleChange}
         onBlurTitle={_onBlur}
         category={category}
+        ingredients={ingredients}
         onChangeCategory={draft.onCategoryChange}
         onChangeIngredients={draft.onChangeIngredients}
         disable={loading}

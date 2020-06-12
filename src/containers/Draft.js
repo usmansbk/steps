@@ -5,7 +5,7 @@ import {Step} from './HowTo';
 export default class DraftContainer extends PersistContainer {
   persist = {
     key: 'draft',
-    version: 1,
+    version: 2,
     storage: AsyncStorage,
   };
 
