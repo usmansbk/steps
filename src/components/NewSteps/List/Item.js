@@ -19,17 +19,24 @@ export default ({
       <View style={styles.container}>
         <View style={styles.head}>
           <Text style={styles.step}>STEP {step + 1}</Text>
-          <IconButton
-            onPress={onPress}
-            disabled={isActive}
-            icon={() => (
-              <Icon
-                color="gray"
-                size={20}
-                name={isActive ? 'swap' : 'closecircle'}
-              />
-            )}
-          />
+          <View style={styles.stepMenu}>
+            <IconButton
+              onPress={onPress}
+              disabled={isActive}
+              icon={() => <Icon color="gray" size={20} name="edit" />}
+            />
+            <IconButton
+              onPress={onPress}
+              disabled={isActive}
+              icon={() => (
+                <Icon
+                  color="gray"
+                  size={20}
+                  name={isActive ? 'swap' : 'closecircle'}
+                />
+              )}
+            />
+          </View>
         </View>
         {Boolean(details) && <Text style={styles.details}>{details}</Text>}
         {Boolean(photo) && (
@@ -65,6 +72,9 @@ const styles = StyleSheet.create({
   },
   step: {
     fontWeight: 'bold',
+  },
+  stepMenu: {
+    flexDirection: 'row',
   },
   details: {
     color: '#2d3436',
