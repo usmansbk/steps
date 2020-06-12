@@ -31,6 +31,7 @@ export default class List extends React.Component {
   _renderSeparator = () => <View style={styles.separator} />;
   _renderHeader = () => {
     const {
+      image,
       title,
       category,
       ingredients,
@@ -38,10 +39,12 @@ export default class List extends React.Component {
       onChangeCategory,
       onChangeTitle,
       onBlurTitle,
+      onPressAvatar,
       loading,
     } = this.props;
     return (
       <Header
+        image={image}
         title={title}
         category={category}
         ingredients={ingredients}
@@ -49,6 +52,7 @@ export default class List extends React.Component {
         onChangeIngredients={onChangeIngredients}
         onChangeCategory={onChangeCategory}
         onChangeTitle={onChangeTitle}
+        onPressAvatar={onPressAvatar}
         loading={loading}
       />
     );

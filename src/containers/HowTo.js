@@ -13,9 +13,10 @@ export class Step {
   }
 }
 export default class HowToContainer {
-  constructor(json) {
+  constructor(json, image) {
     this.id = json.id || shortid.generate();
     this.title = json.title;
+    this.image = json.image;
     this.category = json.category;
     this.date = dayjs().toISOString();
     this.steps = json.steps;

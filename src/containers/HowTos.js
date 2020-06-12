@@ -26,8 +26,8 @@ export default class HowTosContainer extends PersistContainer {
     return filterByQuery(this.state.data, this.state.query.toLocaleLowerCase());
   }
 
-  createHowTo = (json) => {
-    const howTo = new HowTo(json);
+  createHowTo = (json, image) => {
+    const howTo = new HowTo(json, image);
     if (json.id) {
       this.setState({
         data: this.state.data

@@ -3,6 +3,7 @@ import {View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import TextInput from '../../common/TextInput';
 
 export default ({
+  image,
   title,
   category,
   ingredients,
@@ -10,13 +11,16 @@ export default ({
   onChangeTitle,
   onChangeCategory,
   onChangeIngredients,
+  onPressAvatar,
 }) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={onPressAvatar}>
         <Image
           style={styles.image}
-          source={require('../../../assets/fish.png')}
+          resizeMode="contain"
+          source={image || require('../../../assets/fish.png')}
+          defaultSource={require('../../../assets/fish.png')}
         />
       </TouchableOpacity>
       <TextInput
@@ -58,6 +62,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   image: {
+    borderRadius: 16,
     width: 100,
     height: 100,
     alignSelf: 'center',

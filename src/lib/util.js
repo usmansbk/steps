@@ -1,3 +1,6 @@
+import {Platform} from 'react-native';
+import ImagePicker from 'react-native-image-picker';
+
 export function filterByQuery(data, query) {
   const searchRegex = /(#\w+\S)?\s?([\w\s\W]+)/gi;
 
@@ -47,4 +50,27 @@ function extractMessage({title, steps, category = []}) {
     }
   });
   return message;
+}
+
+const options = {
+  title: 'Select Picture',
+  storageOptions: {
+    skipBackup: true,
+    path: 'images',
+  },
+};
+
+export function pickImage(callback) {
+  ImagePicker.showImagePicker(options, (response) => {
+    if (!(response.error || response.didCancel)) {
+      let uri = '';
+      if (Platform.OS === 'android') {
+        uri = 'file:///' + response.path;
+      } else {
+        uri = response.uri;
+      }
+      const source = {uri};
+      callback(source);
+    }
+  });
 }

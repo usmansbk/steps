@@ -1,26 +1,20 @@
 import React, {useState, useCallback, useEffect, useMemo} from 'react';
 import dayjs from 'dayjs';
 import isUrl from 'is-url';
-import {View, StyleSheet, Platform} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {Text, IconButton, ProgressBar, Snackbar} from 'react-native-paper';
-import ImagePicker from 'react-native-image-picker';
 import Icon from '../common/Icon';
 import Steps from './List';
 import StepBox from './StepBox';
 import {colors} from '../../config/theme';
 import scrapper from '../../lib/scrapper';
+import {pickImage} from '../../lib/util';
 
-const options = {
-  title: 'Select Picture',
-  storageOptions: {
-    skipBackup: true,
-    path: 'images',
-  },
-};
 export default (props) => {
   const _stepsRef = React.useRef(null);
   const [stepText, onChangeStepText] = useState('');
   const [photo, setPhoto] = useState(null);
+  const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -48,7 +42,7 @@ export default (props) => {
     _scrollDown();
   }, [draft, stepText, photo, _scrollDown]);
   const _onSubmit = () => {
-    howTos.createHowTo(draft.state, photo);
+    howTos.createHowTo(draft.state, image);
     navigation.goBack();
     draft.dispose();
   };
@@ -57,18 +51,10 @@ export default (props) => {
   const _clear = () => draft.dispose();
   const _unPickPhoto = useCallback(() => setPhoto(null), []);
   const _onPickPhoto = useCallback(() => {
-    ImagePicker.showImagePicker(options, (response) => {
-      if (!(response.error || response.didCancel)) {
-        let uri = '';
-        if (Platform.OS === 'android') {
-          uri = 'file:///' + response.path;
-        } else {
-          uri = response.uri;
-        }
-        const source = {uri};
-        setPhoto(source);
-      }
-    });
+    pickImage(setPhoto);
+  }, []);
+  const _onPickImage = useCallback(() => {
+    pickImage(setImage);
   }, []);
 
   const _onBlur = async () => {
@@ -101,7 +87,6 @@ export default (props) => {
         <View style={styles.buttons}>
           <View style={styles.rowBtn}>
             <IconButton
-              disabled={!title}
               onPress={_clear}
               icon={() => <Icon color={colors.danger} name="close" size={24} />}
             />
@@ -118,6 +103,8 @@ export default (props) => {
       {loading && <ProgressBar indeterminate />}
       <Steps
         title={title}
+        image={image}
+        onPressAvatar={_onPickImage}
         onChangeTitle={draft.onTitleChange}
         onBlurTitle={_onBlur}
         category={category}
