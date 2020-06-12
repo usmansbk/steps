@@ -32,8 +32,10 @@ function process(step = []) {
     if (type === 'HowToSection') {
       steps = steps.concat(process(item.itemListElement));
     } else {
+      const id = shortid.generate();
       steps.push({
-        key: shortid.generate(),
+        id,
+        key: id,
         label: item.text,
         photo: {
           uri: item.image,
