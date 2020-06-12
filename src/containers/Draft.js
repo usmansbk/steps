@@ -11,6 +11,7 @@ export default class DraftContainer extends PersistContainer {
 
   state = {
     id: null,
+    image: null,
     title: '',
     category: '',
     ingredients: '',
@@ -57,6 +58,7 @@ export default class DraftContainer extends PersistContainer {
   dispose = () => {
     this.setState({
       id: null,
+      image: null,
       title: '',
       category: '',
       ingredients: '',
@@ -67,6 +69,7 @@ export default class DraftContainer extends PersistContainer {
   prepare = (json) => {
     this.setState({
       id: json.id,
+      image: null,
       title: json.title,
       ingredients: json.ingredients,
       steps: json.steps,
