@@ -48,19 +48,3 @@ function extractMessage({title, steps, category = []}) {
   });
   return message;
 }
-
-export async function scrapper(url) {
-  const body = await fetch(url).then((res) => res.text());
-  console.log(ldjson(body));
-  return {
-    title: 'Scrapped',
-    category: 'online',
-    steps: [],
-  };
-}
-
-function ldjson(text) {
-  const regex = /<script\stype=["']application\/ld\+json["']>([\w\W]*?)<\/script><\/script>/g;
-  const matches = regex.exec(text);
-  return matches;
-}

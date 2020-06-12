@@ -9,7 +9,7 @@ import Icon from '../common/Icon';
 import Steps from './List';
 import StepBox from './StepBox';
 import {colors} from '../../config/theme';
-import {scrapper} from '../../lib/util';
+import scrapper from '../../lib/scrapper';
 
 const options = {
   title: 'Select Picture',
