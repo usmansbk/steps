@@ -15,9 +15,12 @@ export function getProcess(data) {
       steps = steps.concat(process(step));
       return {
         title: name,
-        image: {
-          uri: image.url,
-        },
+        image:
+          image && image.url
+            ? {
+                uri: image.url,
+              }
+            : null,
         ingredients,
         category: recipe.recipeCategory || howTo['@type'],
         steps,
@@ -40,9 +43,11 @@ function process(step = []) {
         id,
         key: id,
         label: item.text,
-        photo: {
-          uri: item.image,
-        },
+        photo: item.image
+          ? {
+              uri: item.image,
+            }
+          : null,
       });
     }
   });
