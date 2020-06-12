@@ -13,12 +13,15 @@ import {colors} from '../../config/theme';
 import {pickImage} from '../../lib/util';
 
 export default ({navigation, draft, route}) => {
-  const _goBack = useCallback(() => navigation.goBack(), [navigation]);
   const id = route && route.params && route.params.id;
+
+  const _goBack = useCallback(() => navigation.goBack(), [navigation]);
   const {label, photo} = useMemo(() => draft.findStepById(id), [draft, id]);
   const [text, setText] = useState(label);
   const [image, setImage] = useState(photo);
+  const _removeImage = useCallback(() => setImage(null), []);
   const _pickImage = useCallback(() => pickImage(setImage), []);
+
   const _submit = () => {
     draft.updateStep({
       id,
@@ -50,7 +53,7 @@ export default ({navigation, draft, route}) => {
           multiline
           autoFocus
         />
-        <TouchableOpacity onPress={_pickImage}>
+        <TouchableOpacity onPress={_pickImage} onLongPress={_removeImage}>
           <Image
             resizeMode="contain"
             source={image || require('../../assets/fish.png')}
