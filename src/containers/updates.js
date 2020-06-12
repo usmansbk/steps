@@ -8,7 +8,7 @@ export default {
       id: 1,
       key: 1,
       label:
-        'You can now grab recipes from popular sites. Just paste your link and press the enter key',
+        'You can now grab recipes from popular sites. Just paste your link and press anywhere on the form',
       photo: require('../assets/entertitle.jpg'),
     },
     {
