@@ -11,18 +11,11 @@ export function getProcess(data) {
       const {name, step, image} = howTo;
       let steps = [];
       let ingredients = recipe.recipeIngredient.join('\n');
-      // Add image to the recipe
-      if (image) {
-        steps.push({
-          photo: {
-            uri: image.url,
-          },
-          label: ingredients,
-        });
-      }
       steps = steps.concat(process(step));
       return {
         title: name,
+        image: image.url,
+        ingredients,
         category: recipe.recipeCategory || howTo['@type'],
         steps,
       };
