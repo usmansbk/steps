@@ -10,12 +10,28 @@ import {
 import {Caption} from 'react-native-paper';
 import Footer from './Footer';
 import Item from './Item';
+import Fab from '../../common/Fab';
 import {colors} from '../../../config/theme';
 
 export default class List extends React.Component {
   static defaultProps = {
     data: [],
   };
+  state = {
+    offsetY: 0,
+  };
+
+  _listRef = (ref) => {
+    this.list = ref;
+  };
+
+  _onScroll = (event) => {
+    this.setState({
+      offsetY: event.nativeEvent.contentOffset.y,
+    });
+  };
+
+  _scrollToTop = () => this.list.scrollToIndex({index: 0});
 
   _navigateToImageViewer = (source) => {
     this.props.viewImage(source);
@@ -60,20 +76,27 @@ export default class List extends React.Component {
 
   render() {
     return (
-      <FlatList
-        data={this.props.data}
-        extraData={
-          this.props.title +
-          this.props.category +
-          this.props.ingredients +
-          this.props.image
-        }
-        renderItem={this._renderItem}
-        keyExtractor={this._keyExtractor}
-        ListFooterComponent={this._renderFooter}
-        ListHeaderComponent={this._renderHeader}
-        ItemSeparatorComponent={this._renderSeparator}
-      />
+      <>
+        <FlatList
+          data={this.props.data}
+          extraData={
+            this.props.title +
+            this.props.category +
+            this.props.ingredients +
+            this.props.image
+          }
+          ref={this._listRef}
+          onScroll={this._onScroll}
+          renderItem={this._renderItem}
+          keyExtractor={this._keyExtractor}
+          ListFooterComponent={this._renderFooter}
+          ListHeaderComponent={this._renderHeader}
+          ItemSeparatorComponent={this._renderSeparator}
+        />
+        {Boolean(this.state.offsetY > 600) && (
+          <Fab small style={styles.fab} icon="up" onPress={this._scrollToTop} />
+        )}
+      </>
     );
   }
 }
@@ -112,5 +135,10 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     marginBottom: 8,
     fontWeight: 'bold',
+  },
+  fab: {
+    right: 0,
+    bottom: 30,
+    margin: 16,
   },
 });
