@@ -75,7 +75,7 @@ export default class DraftContainer extends PersistContainer {
   prepare = (json) => {
     this.setState({
       id: json.id,
-      image: null,
+      image: json.image,
       title: json.title,
       ingredients: json.ingredients,
       steps: json.steps,
