@@ -10,6 +10,7 @@ import {
 import {Caption} from 'react-native-paper';
 import Footer from './Footer';
 import Item from './Item';
+import {colors} from '../../../config/theme';
 
 export default class List extends React.Component {
   static defaultProps = {
@@ -49,7 +50,11 @@ export default class List extends React.Component {
           defaultSource={require('../../../assets/fish.png')}
         />
       </TouchableOpacity>
-      <Text style={styles.ingredients}>{this.props.ingredients}</Text>
+      {Boolean(this.props.ingredients) && (
+        <View style={styles.ingredients}>
+          <Text style={styles.label}>{this.props.ingredients}</Text>
+        </View>
+      )}
     </View>
   );
 
@@ -96,7 +101,15 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   ingredients: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    paddingVertical: 12,
+    backgroundColor: colors.lightGray,
+    borderRadius: 8,
+  },
+  label: {
+    color: '#2d3436',
+    padding: 8,
+    fontSize: 15,
+    lineHeight: 24,
+    marginBottom: 8,
   },
 });
