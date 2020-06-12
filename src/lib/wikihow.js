@@ -1,5 +1,8 @@
 import shortid from 'shortid';
 
+/**
+ * This module extracts recipes from 'wikihow.com` site
+ */
 export function getProcess(data) {
   if (Array.isArray(data)) {
     const howTo = data.find((item) => item['@type'] === 'HowTo');

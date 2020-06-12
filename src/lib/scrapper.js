@@ -1,21 +1,17 @@
 import {getProcess} from './wikihow';
 
 export default async function scrapper(url) {
-  const body = await fetch(url).then((res) => res.text());
-  const result = ldjson(body);
-  if (!result) {
+  const body = await fetch(url)
+    .then((res) => res.text())
+    .then(ldjson);
+  if (!body) {
     throw new Error('Unable to scrape this link');
   }
-  const process = getProcess(result.map(json));
+  const process = getProcess(body.map(stripJson));
   if (!process) {
     throw new Error('Oops! I dont support this site, yet.');
   }
-  const {title, steps, category} = process;
-  return {
-    title,
-    steps,
-    category,
-  };
+  return process;
 }
 
 // Extract the ldjson from the html response
@@ -26,7 +22,7 @@ function ldjson(text) {
 }
 
 // extract the body of the script element which is a json string
-function json(script = '') {
+function stripJson(script = '') {
   const start = script.indexOf('>') + 1;
   const stop = script.lastIndexOf('<');
   const _json = script.substring(start, stop);
