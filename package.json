@@ -16,6 +16,7 @@
     "@react-navigation/stack": "^5.5.1",
     "dayjs": "^1.8.28",
     "is-url": "^1.2.4",
+    "jsonld": "^3.1.1",
     "react": "^16.13.1",
     "react-native": "0.62.2",
     "react-native-draggable-flatlist": "^2.3.3",
