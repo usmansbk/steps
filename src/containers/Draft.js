@@ -52,10 +52,15 @@ export default class DraftContainer extends PersistContainer {
   };
 
   findStepById = (id) => this.state.steps.find((step) => step.id === id);
+
   updateStep = ({id, label, photo}) => {
-    const step = this.findStepById(id);
+    const index = this.state.steps.findIndex((step) => step.id === id);
+    const step = this.state.steps[index];
     const newStep = Object.assign({}, step, {label, photo});
-    const steps = this.state.steps.filter((s) => s.id !== id).concat([newStep]);
+    const steps = this.state.steps
+      .slice(0, index)
+      .concat([newStep])
+      .concat(this.state.steps.slice(index + 1));
     this.setState({steps});
   };
 
