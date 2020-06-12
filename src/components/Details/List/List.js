@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, FlatList, StyleSheet, Text} from 'react-native';
+import {View, FlatList, StyleSheet, Text, Image} from 'react-native';
 import {Caption} from 'react-native-paper';
 import Footer from './Footer';
 import Item from './Item';
@@ -33,6 +33,13 @@ export default class List extends React.Component {
       {Boolean(this.props.category) && (
         <Caption style={styles.caption}>#{this.props.category}</Caption>
       )}
+      <Image
+        resizeMode="contain"
+        style={styles.image}
+        source={this.props.image || require('../../../assets/fish.png')}
+        defaultSource={require('../../../assets/fish.png')}
+      />
+      <Text style={styles.ingredients}>{this.props.ingredients}</Text>
     </View>
   );
 
@@ -40,7 +47,12 @@ export default class List extends React.Component {
     return (
       <FlatList
         data={this.props.data}
-        extraData={this.props.title + this.props.category}
+        extraData={
+          this.props.title +
+          this.props.category +
+          this.props.ingredients +
+          this.props.image
+        }
         renderItem={this._renderItem}
         keyExtractor={this._keyExtractor}
         ListFooterComponent={this._renderFooter}
@@ -65,5 +77,15 @@ const styles = StyleSheet.create({
   caption: {
     fontWeight: 'bold',
     fontSize: 14,
+  },
+  image: {
+    width: '100%',
+    height: 200,
+    borderRadius: 16,
+    alignSelf: 'center',
+  },
+  ingredients: {
+    fontSize: 18,
+    fontWeight: 'bold',
   },
 });
