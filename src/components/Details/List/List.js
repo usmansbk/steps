@@ -93,7 +93,7 @@ export default class List extends React.Component {
           ListHeaderComponent={this._renderHeader}
           ItemSeparatorComponent={this._renderSeparator}
         />
-        {Boolean(this.state.offsetY > 600) && (
+        {Boolean(this.state.offsetY > 700) && (
           <Fab small style={styles.fab} icon="up" onPress={this._scrollToTop} />
         )}
       </>
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
   },
   fab: {
     right: 0,
-    bottom: 30,
+    bottom: 26,
     margin: 16,
   },
 });
