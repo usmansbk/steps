@@ -8,7 +8,7 @@ import tutorial from './tutorial';
 export default class HowTosContainer extends PersistContainer {
   persist = {
     key: 'howtos',
-    version: 3,
+    version: 4,
     storage: AsyncStorage,
   };
 

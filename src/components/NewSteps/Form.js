@@ -14,12 +14,11 @@ export default (props) => {
   const _stepsRef = React.useRef(null);
   const [stepText, onChangeStepText] = useState('');
   const [photo, setPhoto] = useState(null);
-  const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   const {draft, navigation, howTos, route} = props;
-  const {title, category, ingredients, steps} = draft.state;
+  const {title, image, category, ingredients, steps} = draft.state;
 
   useEffect(() => {
     const id = route.params && route.params.id;
@@ -42,7 +41,7 @@ export default (props) => {
     _scrollDown();
   }, [draft, stepText, photo, _scrollDown]);
   const _onSubmit = () => {
-    howTos.createHowTo(draft.state, image);
+    howTos.createHowTo(draft.state);
     navigation.goBack();
     draft.dispose();
   };
@@ -54,8 +53,8 @@ export default (props) => {
     pickImage(setPhoto);
   }, []);
   const _onPickImage = useCallback(() => {
-    pickImage(setImage);
-  }, []);
+    pickImage(draft.setImage);
+  }, [draft.setImage]);
 
   const _onBlur = async () => {
     if (isUrl(title)) {

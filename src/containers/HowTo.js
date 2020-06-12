@@ -18,6 +18,7 @@ export default class HowToContainer {
     this.title = json.title;
     this.image = json.image;
     this.category = json.category;
+    this.ingredients = json.ingredients;
     this.date = dayjs().toISOString();
     this.steps = json.steps;
   }
