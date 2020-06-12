@@ -17,7 +17,7 @@ export default ({
     <View style={styles.container}>
       <TouchableOpacity onPress={onPressAvatar}>
         <Image
-          style={styles.image}
+          style={image ? styles.image : styles.placeholder}
           resizeMode="contain"
           source={image || require('../../../assets/fish.png')}
           defaultSource={require('../../../assets/fish.png')}
@@ -62,6 +62,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   image: {
+    borderRadius: 16,
+    width: '100%',
+    height: 200,
+    alignSelf: 'center',
+  },
+  placeholder: {
     borderRadius: 16,
     width: 100,
     height: 100,

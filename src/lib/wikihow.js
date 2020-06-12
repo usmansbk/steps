@@ -8,13 +8,16 @@ export function getProcess(data) {
     const recipe = data.find((item) => item['@type'] === 'Recipe') || {};
     const howTo = data.find((item) => item['@type'] === 'HowTo');
     if (howTo) {
+      console.log(JSON.stringify(howTo, null, 2));
       const {name, step, image} = howTo;
       let steps = [];
       let ingredients = recipe.recipeIngredient.join('\n');
       steps = steps.concat(process(step));
       return {
         title: name,
-        image: image.url,
+        image: {
+          uri: image.url,
+        },
         ingredients,
         category: recipe.recipeCategory || howTo['@type'],
         steps,
