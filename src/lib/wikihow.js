@@ -18,7 +18,7 @@ export function getProcess(data) {
           },
         });
       }
-      steps = steps.concat(processStep(step));
+      steps = steps.concat(process(step));
       return {
         title: name,
         category,
@@ -29,21 +29,13 @@ export function getProcess(data) {
   return null;
 }
 
-function processStep(step = []) {
-  const steps = [];
+function process(step = []) {
+  let steps = [];
+
   step.forEach((item) => {
     const type = item['@type'];
     if (type === 'HowToSection') {
-      const {itemListElement} = item;
-      itemListElement.forEach((elem) => {
-        steps.push({
-          key: shortid.generate(),
-          label: elem.text,
-          photo: {
-            uri: elem.image,
-          },
-        });
-      });
+      steps = steps.concat(process(item.itemListElement));
     } else {
       steps.push({
         key: shortid.generate(),
@@ -54,5 +46,6 @@ function processStep(step = []) {
       });
     }
   });
+
   return steps;
 }
