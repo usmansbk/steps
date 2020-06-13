@@ -20,7 +20,7 @@ export default ({navigation, howTos, route}) => {
 
   const [isVisible, setVisible] = useState(false);
   const date = useMemo(
-    () => dayjs(item.date).format('MMM D YYYY HH:MM').toUpperCase(),
+    () => dayjs(item.date).format('MMM D YYYY hh:mm').toUpperCase(),
     [item.date],
   );
   const onDelete = useCallback(() => setVisible(true), []);
