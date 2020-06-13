@@ -38,7 +38,7 @@ export default ({
           defaultSource={require('../../../assets/fish.png')}
         />
       </TouchableOpacity>
-      <Text style={styles.topSpacing}>NAME</Text>
+      <Text style={styles.topSpacing}>HOW TO</Text>
       <TextInput
         value={title}
         autoFocus={!title}

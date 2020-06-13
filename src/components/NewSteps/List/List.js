@@ -94,7 +94,7 @@ export default class List extends React.Component {
           }}
           onScroll={this._onScroll}
         />
-        {Boolean(this.state.offsetY > 600) && (
+        {Boolean(this.state.offsetY > 800) && (
           <Fab small style={styles.fab} icon="up" onPress={this._scrollToTop} />
         )}
       </>
