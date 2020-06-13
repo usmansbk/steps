@@ -44,7 +44,7 @@ export default ({
         autoFocus={!title}
         onChangeText={onChangeTitle}
         onBlur={onBlurTitle}
-        placeholder="How to make..."
+        placeholder="..."
         style={styles.textinput}
       />
       <Text style={styles.topSpacing}>CATEGORY</Text>
