@@ -1,5 +1,5 @@
 import * as jsonld from 'jsonld';
-import processor from './jsonld_processor';
+import processor from './wikihow';
 
 export default async function scrapper(url) {
   let body = await fetch(url).then((res) => res.text());
