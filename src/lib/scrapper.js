@@ -34,8 +34,3 @@ function stripJson(script = '') {
   const _json = script.substring(start, stop);
   return JSON.parse(_json);
 }
-
-function getProcess(expanded_jsons) {
-  console.log(JSON.stringify(expanded_jsons, null, 3));
-  return null;
-}
