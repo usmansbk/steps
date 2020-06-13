@@ -5,7 +5,7 @@ import {View, StyleSheet} from 'react-native';
 import {Text, IconButton, ProgressBar, Snackbar} from 'react-native-paper';
 import Icon from '../common/Icon';
 import Steps from './List';
-import StepBox from './StepBox';
+import StepInput from './StepInput';
 import {colors} from '../../config/theme';
 import scrapper from '../../lib/scrapper';
 import {pickImage} from '../../lib/util';
@@ -128,7 +128,7 @@ export default (props) => {
         onDismiss={_onDismissSnackBar}>
         {error}
       </Snackbar>
-      <StepBox
+      <StepInput
         value={stepText}
         photo={photo}
         onPickPhoto={_onPickPhoto}

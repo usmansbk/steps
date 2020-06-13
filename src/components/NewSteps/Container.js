@@ -1,6 +1,6 @@
 import React from 'react';
 import {Subscribe} from 'unstated';
-import Screen from './Form';
+import Screen from './Screen';
 import Draft from '../../containers/Draft';
 import HowTos from '../../containers/HowTos';
 
