@@ -18,12 +18,14 @@ export default ({onEdit = () => null, onDelete = () => null, text, index}) => {
 
   return (
     <View style={styles.container}>
-      <IconButton
-        onPress={_onDelete}
-        icon={() => (
-          <Icon color={colors.danger} name="closecircleo" size={22} />
-        )}
-      />
+      <View style={styles.leftButton}>
+        <IconButton
+          onPress={_onDelete}
+          icon={() => (
+            <Icon color={colors.danger} name="closecircleo" size={22} />
+          )}
+        />
+      </View>
       <TouchableOpacity style={styles.textView} onPress={_toggleEditMode}>
         {editable ? (
           <TextInput value={value} autoFocus onChangeText={onChangeText} />
@@ -49,6 +51,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    paddingVertical: 8,
   },
   text: {
     fontSize: 18,
@@ -56,5 +59,8 @@ const styles = StyleSheet.create({
   },
   textView: {
     flex: 1,
+  },
+  leftButton: {
+    alignSelf: 'flex-start',
   },
 });

@@ -55,18 +55,15 @@ export default ({
         style={styles.category}
       />
       <Text style={styles.topSpacing}>INGREDIENTS</Text>
-      {Array.isArray(ingredients) && (
-        <View>
-          {ingredients.map((ing, index) => (
-            <IngredientItem
-              text={ing}
-              index={index}
-              onDelete={_removeIngredient}
-              onEdit={_editIngredient}
-            />
-          ))}
-        </View>
-      )}
+      {Array.isArray(ingredients) &&
+        ingredients.map((ing, index) => (
+          <IngredientItem
+            text={ing}
+            index={index}
+            onDelete={_removeIngredient}
+            onEdit={_editIngredient}
+          />
+        ))}
       <View style={styles.ingredientInput}>
         <TextInput
           value={ingredient}
