@@ -13,7 +13,7 @@ const INGREDIENT = SCHEMA + 'recipeIngredient';
 const STEPS = SCHEMA + 'step';
 
 export default async function processor(jsonld_arr) {
-  console.log(JSON.stringify(jsonld_arr, null, 3));
+  // console.log(JSON.stringify(jsonld_arr, null, 3));
   const recipeJson = jsonld_arr.find((arr) => {
     const found = arr.find((item) => item[TYPE].includes(RECIPE));
     return found;

@@ -14,7 +14,7 @@ const Screen = ({navigation}) => {
         navigation.replace('Home');
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
   useEffect(() => {

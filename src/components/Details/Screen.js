@@ -11,7 +11,7 @@ import {exportRecipeAsText} from '../../lib/util';
 function share([content, options]) {
   Share.share(content, options)
     .then(() => null)
-    .catch(console.log);
+    .then(() => null);
 }
 
 export default ({navigation, howTos, route}) => {
