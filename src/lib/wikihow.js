@@ -5,6 +5,9 @@ const URL = SCHEMA + 'url';
 const IMAGE = SCHEMA + 'image';
 const LABEL = SCHEMA + 'text';
 const HOWTO = SCHEMA + 'HowTo';
+const STEP = SCHEMA + 'HowToStep';
+const SECTION = SCHEMA + 'HowToSection';
+const SECTION_ITEMS = SCHEMA + 'itemListElement';
 
 const RECIPE = SCHEMA + 'Recipe';
 const NAME = SCHEMA + 'name';
@@ -13,7 +16,6 @@ const INGREDIENT = SCHEMA + 'recipeIngredient';
 const STEPS = SCHEMA + 'step';
 
 export default async function processor(jsonld_arr) {
-  // console.log(JSON.stringify(jsonld_arr, null, 3));
   const recipeJson = jsonld_arr.find((arr) => {
     const found = arr.find((item) => item[TYPE].includes(RECIPE));
     return found;
@@ -32,8 +34,10 @@ export default async function processor(jsonld_arr) {
     const found = arr.find((item) => item[TYPE].includes(HOWTO));
     return found;
   });
+
   const howto = first(howtoJson);
-  const steps = formatSteps(howto[STEPS]);
+  const stepsJson = howto[STEPS];
+  const steps = formatSteps(stepsJson);
 
   const result = {
     image: {
@@ -52,16 +56,26 @@ function formatIngredients(array) {
 }
 
 function formatSteps(array) {
-  return array.map((step) => {
-    const label = value(first(step[LABEL]));
-    const uri = value(first(step[IMAGE]), ID);
-    return {
-      label,
-      photo: uri
-        ? {
-            uri,
-          }
-        : null,
-    };
-  });
+  let steps = [];
+
+  for (let elem of array) {
+    if (elem[TYPE].includes(SECTION)) {
+      const items = elem[SECTION_ITEMS];
+      steps = steps.concat(formatSteps(items));
+    } else if (elem[TYPE].includes(STEP)) {
+      const label = value(first(elem[LABEL]));
+      const uri = value(first(elem[IMAGE]), ID);
+      steps.push({
+        label,
+        photo: uri
+          ? {
+              uri,
+            }
+          : null,
+      });
+    }
+    console.log(JSON.stringify(elem, null, 3));
+  }
+
+  return steps;
 }
