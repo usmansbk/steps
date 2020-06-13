@@ -51,7 +51,7 @@ export default class List extends React.Component {
       title,
       category,
       ingredients,
-      onChangeIngredients,
+      onAddIngredient,
       onChangeCategory,
       onChangeTitle,
       onBlurTitle,
@@ -65,7 +65,7 @@ export default class List extends React.Component {
         category={category}
         ingredients={ingredients}
         onBlurTitle={onBlurTitle}
-        onChangeIngredients={onChangeIngredients}
+        onAddIngredient={onAddIngredient}
         onChangeCategory={onChangeCategory}
         onChangeTitle={onChangeTitle}
         onPressAvatar={onPressAvatar}

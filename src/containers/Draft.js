@@ -14,7 +14,7 @@ export default class DraftContainer extends PersistContainer {
     image: null,
     title: '',
     category: '',
-    ingredients: '',
+    ingredients: [],
     steps: [],
   };
 
@@ -36,10 +36,10 @@ export default class DraftContainer extends PersistContainer {
     });
   };
 
-  onChangeIngredients = (ingredients) => {
-    this.setState({
-      ingredients,
-    });
+  onAddIngredient = (ingredient) => {
+    this.setState((prev) => ({
+      ingredients: [...prev.ingredients, ingredient],
+    }));
   };
 
   addStep = (text, photo) => {
@@ -80,7 +80,7 @@ export default class DraftContainer extends PersistContainer {
       image: null,
       title: '',
       category: '',
-      ingredients: '',
+      ingredients: [],
       steps: [],
     });
   };

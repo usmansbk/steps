@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import {Text, IconButton} from 'react-native-paper';
 import TextInput from '../../common/TextInput';
+import Icon from '../../common/Icon';
 
 export default ({
   image,
@@ -10,9 +12,15 @@ export default ({
   onBlurTitle,
   onChangeTitle,
   onChangeCategory,
-  onChangeIngredients,
+  onAddIngredient,
   onPressAvatar,
 }) => {
+  const [ingredient, onChangeIngredients] = useState('');
+  const _addIngredient = () => {
+    onAddIngredient(ingredient);
+    onChangeIngredients('');
+  };
+
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={onPressAvatar}>
@@ -37,13 +45,27 @@ export default ({
         placeholder="Category"
         style={styles.category}
       />
-      <TextInput
-        value={ingredients}
-        onChangeText={onChangeIngredients}
-        placeholder="Ingredients"
-        style={styles.category}
-        multiline
-      />
+      {Array.isArray(ingredients) && (
+        <View>
+          {ingredients.map((ing) => (
+            <Text style={[styles.category, styles.lineSpacing]}>{ing}</Text>
+          ))}
+        </View>
+      )}
+      <View style={styles.ingredientInput}>
+        <TextInput
+          value={ingredient}
+          onChangeText={onChangeIngredients}
+          placeholder="Add Ingredient..."
+          style={[styles.category, styles.ingredientInputBox]}
+          multiline
+        />
+        <IconButton
+          disabled={!ingredient}
+          onPress={_addIngredient}
+          icon={() => <Icon name="pluscircleo" size={24} />}
+        />
+      </View>
     </View>
   );
 };
@@ -72,5 +94,15 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     alignSelf: 'center',
+  },
+  ingredientInput: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  ingredientInputBox: {
+    flex: 1,
+  },
+  lineSpacing: {
+    marginVertical: 8,
   },
 });

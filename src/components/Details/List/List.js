@@ -66,9 +66,11 @@ export default class List extends React.Component {
           defaultSource={require('../../../assets/fish.png')}
         />
       </TouchableOpacity>
-      {Boolean(this.props.ingredients) && (
+      {Array.isArray(this.props.ingredients) && (
         <View style={styles.ingredients}>
-          <Text style={styles.label}>{this.props.ingredients}</Text>
+          {this.props.ingredients.map((ingredient) => (
+            <Text style={styles.label}>{ingredient}</Text>
+          ))}
         </View>
       )}
     </View>

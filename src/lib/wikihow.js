@@ -52,7 +52,7 @@ export default async function processor(jsonld_arr) {
 }
 
 function formatIngredients(array) {
-  return array.map((obj) => value(obj)).join('\n');
+  return array.map((obj) => value(obj));
 }
 
 function formatSteps(array) {
