@@ -18,7 +18,7 @@ export default ({
       <TouchableOpacity onPress={onPressAvatar}>
         <Image
           style={image ? styles.image : styles.placeholder}
-          resizeMode="contain"
+          resizeMode={image ? 'cover' : 'contain'}
           source={image || require('../../../assets/fish.png')}
           defaultSource={require('../../../assets/fish.png')}
         />

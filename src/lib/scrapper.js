@@ -1,4 +1,5 @@
 import * as jsonld from 'jsonld';
+import processor from './jsonld_processor';
 
 export default async function scrapper(url) {
   let body = await fetch(url).then((res) => res.text());
@@ -12,7 +13,7 @@ export default async function scrapper(url) {
     const expanded = await jsonld.expand(jsons[i]);
     expanded_jsons.push(expanded);
   }
-  const process = getProcess(expanded_jsons);
+  const process = await processor(expanded_jsons);
   if (!process) {
     throw new Error('Oops! I dont support this site, yet.');
   }
