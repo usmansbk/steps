@@ -8,7 +8,7 @@ This project is powered by React Native
 
 ### Prerequisites
 
-* Follow the official documentation on how to setup your environment. [Setting up the development environment](https://reactnative.dev/docs/environment-setup)
+* Follow the official documentation on how to setup your environment. See [Setting up the development environment](https://reactnative.dev/docs/environment-setup)
 
 * Install [NodeJs](https://nodejs.org/)
 
