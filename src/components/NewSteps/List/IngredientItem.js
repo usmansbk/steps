@@ -5,19 +5,14 @@ import Icon from '../../common/Icon';
 import TextInput from '../../common/TextInput';
 import {colors} from '../../../config/theme';
 
-export default ({
-  onSubmit = () => null,
-  onDelete = () => null,
-  text,
-  index,
-}) => {
+export default ({onEdit = () => null, onDelete = () => null, text, index}) => {
   const [value, onChangeText] = useState(text);
   const [editable, setEditable] = useState(false);
 
   const _onDelete = useCallback(() => onDelete(index), [index, onDelete]);
   const _toggleEditMode = () => setEditable(!editable);
   const _onSubmit = () => {
-    onSubmit(value, index);
+    onEdit(value, index);
     _toggleEditMode();
   };
 
@@ -31,12 +26,7 @@ export default ({
       />
       <TouchableOpacity style={styles.textView} onPress={_toggleEditMode}>
         {editable ? (
-          <TextInput
-            value={value}
-            onBlur={_toggleEditMode}
-            autoFocus
-            onChangeText={onChangeText}
-          />
+          <TextInput value={value} autoFocus onChangeText={onChangeText} />
         ) : (
           <Text style={styles.text}>{text}</Text>
         )}

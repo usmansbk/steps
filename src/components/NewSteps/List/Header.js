@@ -24,6 +24,9 @@ export default ({
   const _removeIngredient = (index) => {
     onAddIngredient(index, false);
   };
+  const _editIngredient = (text, index) => {
+    onAddIngredient(text, index, true);
+  };
 
   return (
     <View style={styles.container}>
@@ -59,6 +62,7 @@ export default ({
               text={ing}
               index={index}
               onDelete={_removeIngredient}
+              onEdit={_editIngredient}
             />
           ))}
         </View>
