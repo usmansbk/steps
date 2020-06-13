@@ -21,6 +21,9 @@ export default ({
     onAddIngredient(ingredient);
     onChangeIngredients('');
   };
+  const _removeIngredient = (index) => {
+    onAddIngredient(index, false);
+  };
 
   return (
     <View style={styles.container}>
@@ -51,8 +54,12 @@ export default ({
       <Text style={styles.topSpacing}>INGREDIENTS</Text>
       {Array.isArray(ingredients) && (
         <View>
-          {ingredients.map((ing) => (
-            <IngredientItem text={ing} />
+          {ingredients.map((ing, index) => (
+            <IngredientItem
+              text={ing}
+              index={index}
+              onDelete={_removeIngredient}
+            />
           ))}
         </View>
       )}

@@ -36,10 +36,19 @@ export default class DraftContainer extends PersistContainer {
     });
   };
 
-  onAddIngredient = (ingredient) => {
-    this.setState((prev) => ({
-      ingredients: [...prev.ingredients, ingredient],
-    }));
+  onAddIngredient = (ingredient, add = true) => {
+    if (add) {
+      this.setState((prev) => ({
+        ingredients: [...prev.ingredients, ingredient],
+      }));
+    } else {
+      const newList = this.state.ingredients
+        .slice(0, ingredient)
+        .concat(this.state.ingredients.slice(ingredient + 1));
+      this.setState({
+        ingredients: newList,
+      });
+    }
   };
 
   addStep = (text, photo) => {
