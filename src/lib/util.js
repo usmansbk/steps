@@ -1,5 +1,6 @@
 import {Platform} from 'react-native';
 import ImagePicker from 'react-native-image-picker';
+import {VALUE} from './constants';
 
 export function filterByQuery(data, query) {
   const searchRegex = /(#\w+\S)?\s?([\w\s\W]+)/gi;
@@ -73,4 +74,12 @@ export function pickImage(callback) {
       callback(source);
     }
   });
+}
+
+export function first(array) {
+  return array[0];
+}
+
+export function value(obj, key = VALUE) {
+  return obj[key];
 }

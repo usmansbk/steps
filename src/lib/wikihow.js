@@ -1,7 +1,6 @@
-const SCHEMA = 'http://schema.org/';
-const TYPE = '@type';
-const VALUE = '@value';
-const ID = '@id';
+import {SCHEMA, TYPE, ID} from './constants';
+import {first, value} from './util';
+
 const URL = SCHEMA + 'url';
 const IMAGE = SCHEMA + 'image';
 const LABEL = SCHEMA + 'text';
@@ -46,14 +45,6 @@ export default async function processor(jsonld_arr) {
     steps,
   };
   return result;
-}
-
-function first(array) {
-  return array[0];
-}
-
-function value(obj, key = VALUE) {
-  return obj[key];
 }
 
 function formatIngredients(array) {
