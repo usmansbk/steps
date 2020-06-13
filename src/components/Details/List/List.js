@@ -85,6 +85,7 @@ export default class List extends React.Component {
             this.props.ingredients +
             this.props.image
           }
+          initialNumToRender={1}
           ref={this._listRef}
           onScroll={this._onScroll}
           renderItem={this._renderItem}
