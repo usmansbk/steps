@@ -3,6 +3,7 @@ import {View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import {Text, IconButton} from 'react-native-paper';
 import TextInput from '../../common/TextInput';
 import Icon from '../../common/Icon';
+import IngredientItem from './IngredientItem';
 
 export default ({
   image,
@@ -31,6 +32,7 @@ export default ({
           defaultSource={require('../../../assets/fish.png')}
         />
       </TouchableOpacity>
+      <Text style={styles.topSpacing}>NAME</Text>
       <TextInput
         value={title}
         autoFocus={!title}
@@ -39,16 +41,18 @@ export default ({
         placeholder="How to make..."
         style={styles.textinput}
       />
+      <Text style={styles.topSpacing}>CATEGORY</Text>
       <TextInput
         value={category}
         onChangeText={onChangeCategory}
-        placeholder="Category"
+        placeholder="#"
         style={styles.category}
       />
+      <Text style={styles.topSpacing}>INGREDIENTS</Text>
       {Array.isArray(ingredients) && (
         <View>
           {ingredients.map((ing) => (
-            <Text style={[styles.category, styles.lineSpacing]}>{ing}</Text>
+            <IngredientItem text={ing} />
           ))}
         </View>
       )}
@@ -102,7 +106,7 @@ const styles = StyleSheet.create({
   ingredientInputBox: {
     flex: 1,
   },
-  lineSpacing: {
-    marginVertical: 8,
+  topSpacing: {
+    marginTop: 8,
   },
 });
