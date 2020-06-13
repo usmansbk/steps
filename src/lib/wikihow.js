@@ -74,7 +74,6 @@ function formatSteps(array) {
           : null,
       });
     }
-    console.log(JSON.stringify(elem, null, 3));
   }
 
   return steps;
