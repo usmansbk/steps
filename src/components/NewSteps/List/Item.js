@@ -4,56 +4,59 @@ import {Text, IconButton} from 'react-native-paper';
 import Icon from '../../common/Icon';
 import {colors} from '../../../config/theme';
 
-export default ({
-  step,
-  details,
-  photo,
-  id,
-  onDelete,
-  onLongPress,
-  onEditStep,
-  isActive,
-}) => {
-  const onPress = () => onDelete(id);
-  const _editStep = () => onEditStep(id);
+export default class Item extends React.Component {
+  _onPress = () => this.props.onDelete(this.props.id);
+  _editStep = () => this.props.onEditStep(this.props.id);
+  shouldComponentUpdate = (nextProps) => {
+    return (
+      nextProps.step !== this.props.step ||
+      nextProps.isActive !== this.props.isActive ||
+      nextProps.details !== this.props.details ||
+      nextProps.photo !== this.props.photo
+    );
+  };
 
-  return (
-    <TouchableOpacity onLongPress={onLongPress}>
-      <View style={styles.container}>
-        <View style={styles.head}>
-          <Text style={styles.step}>STEP {step + 1}</Text>
-          <View style={styles.stepMenu}>
-            <IconButton
-              onPress={_editStep}
-              disabled={isActive}
-              icon={() => <Icon color="gray" size={20} name="edit" />}
-            />
-            <IconButton
-              onPress={onPress}
-              disabled={isActive}
-              icon={() => (
-                <Icon
-                  color="gray"
-                  size={20}
-                  name={isActive ? 'swap' : 'closecircle'}
-                />
-              )}
-            />
+  render() {
+    const {step, details, photo, onLongPress, isActive} = this.props;
+
+    return (
+      <TouchableOpacity onLongPress={onLongPress}>
+        <View style={styles.container}>
+          <View style={styles.head}>
+            <Text style={styles.step}>STEP {step + 1}</Text>
+            <View style={styles.stepMenu}>
+              <IconButton
+                onPress={this._editStep}
+                disabled={isActive}
+                icon={() => <Icon color="gray" size={20} name="edit" />}
+              />
+              <IconButton
+                onPress={this._onPress}
+                disabled={isActive}
+                icon={() => (
+                  <Icon
+                    color="gray"
+                    size={20}
+                    name={isActive ? 'swap' : 'closecircle'}
+                  />
+                )}
+              />
+            </View>
           </View>
+          {Boolean(details) && <Text style={styles.details}>{details}</Text>}
+          {Boolean(photo) && (
+            <Image
+              resizeMode="contain"
+              defaultSource={require('../../../assets/noimage.jpg')}
+              source={photo}
+              style={styles.image}
+            />
+          )}
         </View>
-        {Boolean(details) && <Text style={styles.details}>{details}</Text>}
-        {Boolean(photo) && (
-          <Image
-            resizeMode="contain"
-            defaultSource={require('../../../assets/noimage.jpg')}
-            source={photo}
-            style={styles.image}
-          />
-        )}
-      </View>
-    </TouchableOpacity>
-  );
-};
+      </TouchableOpacity>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
