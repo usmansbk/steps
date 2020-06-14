@@ -4,6 +4,7 @@ import {Text, IconButton} from 'react-native-paper';
 import TextInput from '../../common/TextInput';
 import Icon from '../../common/Icon';
 import IngredientItem from './IngredientItem';
+import {colors} from '../../../config/theme';
 
 export default ({
   image,
@@ -75,7 +76,9 @@ export default ({
         <IconButton
           disabled={!ingredient}
           onPress={_addIngredient}
-          icon={() => <Icon name="pluscircleo" size={24} />}
+          icon={() => (
+            <Icon color={colors.accent} name="pluscircleo" size={24} />
+          )}
         />
       </View>
     </View>
