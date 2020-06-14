@@ -28,7 +28,12 @@ export default ({onEdit = () => null, onDelete = () => null, text, index}) => {
       </View>
       <TouchableOpacity style={styles.textView} onPress={_toggleEditMode}>
         {editable ? (
-          <TextInput value={value} autoFocus onChangeText={onChangeText} />
+          <TextInput
+            onBlur={_toggleEditMode}
+            value={value}
+            autoFocus
+            onChangeText={onChangeText}
+          />
         ) : (
           <Text style={styles.text}>{text}</Text>
         )}
