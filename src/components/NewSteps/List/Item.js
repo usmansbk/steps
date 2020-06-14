@@ -21,7 +21,7 @@ export default class Item extends React.Component {
 
     return (
       <TouchableOpacity onLongPress={onLongPress}>
-        <View style={styles.container}>
+        <View style={[styles.container, isActive ? styles.elevate : {}]}>
           <View style={styles.head}>
             <Text style={styles.step}>STEP {step + 1}</Text>
             <View style={styles.stepMenu}>
@@ -64,6 +64,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     backgroundColor: colors.lightGray,
     borderRadius: 8,
+  },
+  elevate: {
+    elevation: 4,
   },
   head: {
     flexDirection: 'row',
