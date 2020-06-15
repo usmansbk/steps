@@ -1,3 +1,4 @@
+import shortid from 'shortid';
 import {SCHEMA, TYPE, ID} from './constants';
 import {first, value} from './util';
 
@@ -66,6 +67,8 @@ function formatSteps(array) {
       const label = value(first(elem[LABEL]));
       const uri = value(first(elem[IMAGE]), ID);
       steps.push({
+        id: shortid.generate(),
+        key: shortid.generate(),
         label,
         photo: uri
           ? {
